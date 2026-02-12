@@ -105,7 +105,7 @@ const Footer = () => {
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">
             © 2026 IVTC CAMPUS. POWERED BY{" "}
-            <span className="text-white hover:text-blue-500 cursor-pointer">
+            <span className="text-white hover:text-amber-500 cursor-pointer">
               INZEEDO
             </span>
           </p>

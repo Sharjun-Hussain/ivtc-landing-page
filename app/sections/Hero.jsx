@@ -80,17 +80,17 @@ const HeroSection = memo(() => {
 
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
           <div className="hero-text opacity-0 translate-y-8 mb-6 flex items-center gap-4">
-            <span className="w-8 md:w-12 h-[1px] bg-white"></span>
-            <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-white/80">
+            <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-amber-500 to-orange-500"></span>
+            <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-amber-400/90">
               IVTC Campus Sri Lanka
             </span>
           </div>
-          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-[7.5rem] font-black text-white leading-[0.9] tracking-tighter max-w-4xl">
+          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-[7.5rem] font-black text-white leading-tight md:leading-tight tracking-tighter max-w-4xl">
             Empower Your <br />
-            <span className="text-white/90">Digital</span> Future.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500">Digital</span> Future.
           </h1>
           <div className="hero-text opacity-0 translate-y-8 mt-8 md:mt-12">
-            <button className="px-10 py-4 md:px-12 md:py-5 bg-white text-slate-900 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-slate-200 transition-colors">
+            <button className="group relative px-10 py-4 md:px-12 md:py-5 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:from-amber-700 hover:to-orange-700 transition-all duration-300 shadow-lg">
               Start Learning
             </button>
           </div>
@@ -288,8 +288,8 @@ const HeroWithMegaMenu = () => {
              href="https://lms.ivtccampus.lk"
               className={`hidden lg:block px-8 py-3 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all ${
                 isScrolled
-                  ? "bg-slate-900 dark:bg-white text-white dark:text-black shadow-lg"
-                  : "bg-white text-slate-900 shadow-xl"
+                  ? "bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg"
+                  : "bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-xl"
               }`}
             >
               Login to LMS
@@ -299,8 +299,8 @@ const HeroWithMegaMenu = () => {
               onClick={toggleMenu}
               className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full relative transition-colors ${
                 isScrolled
-                  ? "bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white"
-                  : "bg-white/10 text-white backdrop-blur-sm"
+                  ? "bg-slate-100 dark:bg-amber-600/20 text-slate-900 dark:text-amber-400"
+                  : "bg-amber-600/20 text-amber-400 backdrop-blur-sm"
               }`}
               aria-label="Toggle Menu"
             >
@@ -349,7 +349,7 @@ const HeroWithMegaMenu = () => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs"
+              className="w-full py-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
               onClick={closeMenu}
             >
               Login to LMS

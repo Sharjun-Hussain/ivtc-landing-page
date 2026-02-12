@@ -80,7 +80,7 @@ const CampusStats = () => {
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
                   {stat.comment}
                 </span>
-                <div className="h-px w-12 bg-slate-200 dark:bg-white/10 group-hover:w-20 group-hover:bg-blue-600 dark:group-hover:bg-white transition-all duration-700" />
+                <div className="h-px w-12 bg-slate-200 dark:bg-white/10 group-hover:w-20 group-hover:bg-amber-600 dark:group-hover:bg-amber-500 transition-all duration-700" />
               </div>
 
               {/* Counter Section */}
@@ -91,7 +91,7 @@ const CampusStats = () => {
                 >
                   0
                 </span>
-                <span className="text-4xl font-light text-blue-600/50 dark:text-gray-600">+</span>
+                <span className="text-4xl font-light text-amber-600/50 dark:text-gray-600">+</span>
               </div>
 
               {/* Content Section */}
