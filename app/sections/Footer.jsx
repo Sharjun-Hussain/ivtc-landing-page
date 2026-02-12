@@ -51,11 +51,10 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="text-3xl font-black tracking-tighter mb-6">
-              IVTC<span className="text-white">.</span>
+              IVT Campus<span className="text-white">.</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
-              Empowering the next generation of IT professionals in Sri Lanka
-              through world-class education and industry-driven research.
+ IVT Campus is committed to providing high-quality education through technology-driven learning experiences. Join us and unlock new opportunities for academic and professional growth.
             </p>
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin, Github].map(
