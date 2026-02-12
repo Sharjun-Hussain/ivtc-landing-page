@@ -114,7 +114,6 @@ const HeroWithMegaMenu = () => {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          // Only update state if the value actually changes
           const scrolled = window.scrollY > 20;
           setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
           ticking = false;
@@ -122,6 +121,9 @@ const HeroWithMegaMenu = () => {
         ticking = true;
       }
     };
+
+    // Initial check
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -162,7 +164,7 @@ const HeroWithMegaMenu = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[100] p-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
+        className={`fixed top-0 left-0 w-full z-100 p-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
           isScrolled && !isMenuOpen
             ? "-translate-y-2 md:translate-y-0"
             : "translate-y-0"
@@ -231,21 +233,21 @@ const HeroWithMegaMenu = () => {
                 {/* MEGA MENU PANEL */}
                 {link.hasMega && activeMenu === link.name && (
                   <div className="absolute top-full -left-20 pt-6 cursor-default">
-                    <div className="w-[600px] bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-2xl border border-slate-200 dark:border-white/10 text-left">
+                    <div className="w-[600px] bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] p-8 shadow-2xl border border-slate-200 dark:border-white/10 text-left">
                       <div className="grid grid-cols-2 gap-4">
                         {menuData[link.name].map((item, i) => (
                           <div
                             key={i}
-                            className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-slate-900 dark:hover:bg-white transition-colors duration-200"
+                            className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-amber-600 dark:hover:bg-amber-600 transition-colors duration-200"
                           >
-                            <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-1 flex items-center justify-between group-hover/item:text-white dark:group-hover/item:text-black transition-colors">
+                            <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-1 flex items-center justify-between group-hover/item:text-white dark:group-hover/item:text-white transition-colors">
                               {item.title}
                               <ArrowRight
                                 size={15}
                                 className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300"
                               />
                             </h4>
-                            <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover/item:text-slate-50 dark:group-hover/item:text-slate-900 transition-colors">
+                            <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover/item:text-white dark:group-hover/item:text-white/90 transition-colors">
                               {item.desc}
                             </p>
                           </div>
@@ -261,7 +263,7 @@ const HeroWithMegaMenu = () => {
                             Spring Semester • March 2026
                           </p>
                         </div>
-                        <button className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-black text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-slate-800 dark:hover:bg-slate-200 transition-all">
+                        <button className="px-6 py-3 bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white text-[10px] font-bold uppercase tracking-widest rounded-full transition-all shadow-lg">
                           View All Courses
                         </button>
                       </div>
@@ -288,8 +290,8 @@ const HeroWithMegaMenu = () => {
              href="https://lms.ivtccampus.lk"
               className={`hidden lg:block px-8 py-3 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all ${
                 isScrolled
-                  ? "bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg"
-                  : "bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-xl"
+                  ? "bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg"
+                  : "bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-xl"
               }`}
             >
               Login to LMS
@@ -312,7 +314,7 @@ const HeroWithMegaMenu = () => {
 
       {/* MOBILE OVERLAY */}
       <div
-        className={`fixed inset-0 z-[95] bg-white dark:bg-[#080808] transition-all duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-0 z-50 bg-white dark:bg-[#080808] transition-all duration-300 ease-in-out lg:hidden ${
           isMenuOpen
             ? "opacity-100 visible translate-y-0"
             : "opacity-0 invisible -translate-y-5"
@@ -349,7 +351,7 @@ const HeroWithMegaMenu = () => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
+              className="w-full py-4 bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
               onClick={closeMenu}
             >
               Login to LMS
