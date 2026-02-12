@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers/theme-provider";
+import SmoothScrollProvider from "./providers/SmoothScroll";
+import SocialSidebar from "./Components/SocialSidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +25,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-         <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="light"
           disableTransitionOnChange
-          >
-        {children}
+        >
+          <SmoothScrollProvider>
+            <SocialSidebar />
+            {children}
+          </SmoothScrollProvider>
 
         </ThemeProvider>
       </body>
