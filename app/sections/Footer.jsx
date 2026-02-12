@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import {
   Facebook,
   Twitter,
@@ -50,12 +51,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="text-3xl font-black tracking-tighter mb-6">
-              IVTC<span className="text-white">.</span>
+            <div className="mb-6">
+              <Image 
+                src="/ivtc_logo.png" 
+                alt="IVTC Campus Logo" 
+                width={220} 
+                height={90} 
+                className="brightness-0 invert object-contain"
+              />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
-              Empowering the next generation of IT professionals in Sri Lanka
-              through world-class education and industry-driven research.
+ IVT Campus is committed to providing high-quality education through technology-driven learning experiences. Join us and unlock new opportunities for academic and professional growth.
             </p>
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin, Github].map(
