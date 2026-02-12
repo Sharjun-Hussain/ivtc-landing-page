@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "IVTC Campus",
   description: "Developed by create Inzeedo",
+  icons: {
+    icon: "/ivtc_logo.png",
+    shortcut: "/ivtc_logo.png",
+    apple: "/ivtc_logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {

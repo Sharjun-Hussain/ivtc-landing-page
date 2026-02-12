@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback, memo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 
@@ -180,26 +181,21 @@ const HeroWithMegaMenu = () => {
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 z-[110]"
+            className="flex items-center gap-3 z-[110]"
             onClick={closeMenu}
           >
-            <div className="w-8 h-8 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center text-white dark:text-black font-black">
-              I
+            <div className="relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center">
+              <Image
+                src="/ivtc_logo.png"
+                alt="IVTC Campus Logo"
+                width={80}
+                height={80}
+                className={`object-contain transition-all duration-300 ${
+                  !isScrolled && !isMenuOpen ? "brightness-0 invert" : ""
+                }`}
+                priority
+              />
             </div>
-            <span
-              className={`text-lg md:text-xl font-black tracking-tighter transition-colors ${
-                isScrolled ? "text-slate-900 dark:text-white" : "text-white"
-              }`}
-            >
-              IVTC
-              <span
-                className={
-                  isScrolled ? "text-slate-900 dark:text-white" : "text-white"
-                }
-              >
-                CAMPUS
-              </span>
-            </span>
           </Link>
 
           {/* Desktop Nav */}
