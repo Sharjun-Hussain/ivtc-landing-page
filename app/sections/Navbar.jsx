@@ -199,7 +199,7 @@ const Navbar = memo(() => {
               Foundation
             </Link>
             <Link
-              href="/apply"
+              href="https://lms.ivtccampus.lk"
               className="hidden lg:block px-6 py-3 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all bg-slate-900 dark:bg-white text-white dark:text-black hover:opacity-90 shadow-md"
               onClick={closeMenu}
             >
@@ -265,7 +265,7 @@ const Navbar = memo(() => {
               Meerza Foundation
             </Link>
             <Link
-              href="/apply"
+              href="https://lms.ivtccampus.lk"
               className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
               onClick={closeMenu}
             >

@@ -285,7 +285,7 @@ const HeroWithMegaMenu = () => {
               Meerza Foundation
             </Link>
             <Link
-              href="/apply"
+             href="https://lms.ivtccampus.lk"
               className={`hidden lg:block px-8 py-3 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all ${
                 isScrolled
                   ? "bg-slate-900 dark:bg-white text-white dark:text-black shadow-lg"
@@ -348,7 +348,7 @@ const HeroWithMegaMenu = () => {
               Meerza Foundation
             </Link>
             <Link
-              href="/apply"
+              href="https://lms.ivtccampus.lk"
               className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs"
               onClick={closeMenu}
             >
