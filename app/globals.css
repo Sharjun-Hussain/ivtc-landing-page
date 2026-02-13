@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -119,7 +123,44 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Ensure WhatsApp widget stays on top and works properly */
+  [class*="floating-whatsapp"],
+  [class*="WAL_"] {
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Prevent smooth scroll from interfering with WhatsApp input */
+  [class*="floating-whatsapp"] input,
+  [class*="floating-whatsapp"] textarea,
+  [class*="WAL_"] input,
+  [class*="WAL_"] textarea {
+    pointer-events: auto !important;
+    touch-action: auto !important;
+  }
+
+  /* Premium Grid Transition */
+  .transition-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  .transition-tile {
+    background-color: #0a0a0a;
+    width: 10vw;
+    height: 10vh;
+    border: 0.5px solid rgba(255, 255, 255, 0.02);
   }
 }
