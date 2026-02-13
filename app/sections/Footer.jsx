@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import {
   Facebook,
@@ -29,19 +30,30 @@ const Footer = () => {
     {
       title: "Programs",
       links: [
-        "Software Engineering",
-        "Data Science",
-        "Cyber Security",
-        "Cloud Computing",
+        { name: "Software Engineering", path: "#" },
+        { name: "Data Science", path: "#" },
+        { name: "Cyber Security", path: "#" },
+        { name: "Cloud Computing", path: "#" },
       ],
     },
     {
       title: "Campus Life",
-      links: ["Student Portal", "Library", "Events", "Career Center"],
+      links: [
+        { name: "Student Portal", path: "#" },
+        { name: "Library", path: "#" },
+        { name: "Events", path: "#" },
+        { name: "Career Center", path: "#" },
+      ],
     },
     {
       title: "Institute",
-      links: ["About IVTC", "Research", "Contact Us", "Privacy Policy"],
+      links: [
+        { name: "About IVTC", path: "/about" },
+        { name: "Our Staff", path: "/about/our-staff" },
+        { name: "Campus Policy", path: "/about/campus-policy" },
+        { name: "Contact Us", path: "/contact" },
+        { name: "Privacy Policy", path: "#" },
+      ],
     },
   ];
 
@@ -90,16 +102,16 @@ const Footer = () => {
               <ul className="space-y-4">
                 {col.links.map((link, j) => (
                   <li key={j}>
-                    <a
-                      href="#"
+                    <Link
+                      href={link.path}
                       className="text-slate-400 hover:text-white text-sm transition-colors flex items-center gap-1 group"
                     >
-                      {link}
+                      {link.name}
                       <ArrowUpRight
                         size={12}
                         className="opacity-0 group-hover:opacity-100 transition-all"
                       />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
