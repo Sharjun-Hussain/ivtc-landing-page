@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers/theme-provider";
-import SmoothScrollProvider from "./providers/SmoothScroll";
+
 import SocialSidebar from "./Components/SocialSidebar";
+import WhatsAppButton from "./Components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,10 +36,11 @@ export default function RootLayout({ children }) {
           defaultTheme="light"
           disableTransitionOnChange
         >
-          <SmoothScrollProvider>
-            <SocialSidebar />
-            {children}
-          </SmoothScrollProvider>
+          {/* <SmoothScrollProvider> */}
+          <SocialSidebar />
+          <WhatsAppButton />
+          {children}
+          {/* </SmoothScrollProvider> */}
 
         </ThemeProvider>
       </body>
