@@ -39,10 +39,7 @@ const Footer = () => {
     {
       title: "Campus Life",
       links: [
-        { name: "Student Portal", path: "#" },
-        { name: "Library", path: "#" },
-        { name: "Events", path: "#" },
-        { name: "Career Center", path: "#" },
+        { name: "Student Portal", path: "https://lms.ivtccampus.lk" },
       ],
     },
     {
