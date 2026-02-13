@@ -61,10 +61,10 @@ const HeroSection = memo(() => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full flex justify-center bg-white dark:bg-[#0a0a0a] p-4 md:p-6 min-h-screen"
+      className="relative w-full flex justify-center bg-white dark:bg-[#0a0a0a] p-0 md:p-6 md:min-h-screen"
     >
       {/* Added transform-gpu to force hardware acceleration */}
-      <div className="relative w-full max-w-[1600px] aspect-[16/10] md:aspect-video lg:max-h-[850px] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
+      <div className="relative w-full max-w-[1600px] h-[550px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
         <video
           ref={videoRef}
           autoPlay
