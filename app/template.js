@@ -44,7 +44,7 @@ export default function Template({ children }) {
         z-[10001] ensures it is above even high z-index elements like WhatsApp button (9999).
         bg-neutral-900 is standard "Elegant Black". Change to your primary brand color if needed.
       */}
-            <div className="overlay fixed inset-0 z-[10001] bg-neutral-900 dark:bg-black pointer-events-none" />
+            <div className="overlay fixed inset-0 z-10001 bg-neutral-900 dark:bg-black pointer-events-none" />
 
             {/* PAGE CONTENT */}
             <div className="page-content w-full h-full">
