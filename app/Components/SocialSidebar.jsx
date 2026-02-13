@@ -91,7 +91,7 @@ const SocialSidebar = () => {
   return (
     <div 
       ref={containerRef}
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 items-center"
+      className="fixed right-3 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 items-center"
     >
       {/* Top Decorative Line */}
       <div className="social-line w-px h-12 bg-gradient-to-b from-transparent to-slate-400 dark:to-slate-600 origin-bottom" />

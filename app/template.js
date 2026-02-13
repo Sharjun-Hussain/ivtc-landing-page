@@ -23,15 +23,15 @@ export default function Template({ children }) {
         // 2. The Animation
         tl.to(".overlay", {
             yPercent: -100, // Slide curtain UP
-            duration: 1.2,
+            duration: 0.8,
         })
             .to(".page-content", {
                 y: 0, // Slide content UP to neutral
                 opacity: 1,
-                duration: 1.0,
+                duration: 0.8,
                 ease: "power3.out", // Content settles gently
                 clearProps: "all"
-            }, "-=1.0"); // Content starts moving 0.2s after curtain starts (Parallax effect)
+            }, "-=0.8"); // Content starts moving exactly when curtain starts
 
     }, { scope: containerRef, dependencies: [pathname] });
 
@@ -41,10 +41,10 @@ export default function Template({ children }) {
             {/* 
         THE CURTAIN OVERLAY 
         A single, clean layer.
-        z-50 ensures it is above everything.
+        z-[10001] ensures it is above even high z-index elements like WhatsApp button (9999).
         bg-neutral-900 is standard "Elegant Black". Change to your primary brand color if needed.
       */}
-            <div className="overlay fixed inset-0 z-50 bg-neutral-900 dark:bg-black pointer-events-none" />
+            <div className="overlay fixed inset-0 z-[10001] bg-neutral-900 dark:bg-black pointer-events-none" />
 
             {/* PAGE CONTENT */}
             <div className="page-content w-full h-full">
