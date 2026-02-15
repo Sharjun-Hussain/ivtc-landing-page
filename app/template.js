@@ -15,23 +15,29 @@ export default function Template({ children }) {
         });
 
         // 1. Initial State
-        // Overlay covers screen completely
         tl.set(".overlay", { yPercent: 0 })
             // Content is pushed down by 100px and slightly transparent
-            .set(".page-content", { y: 100, opacity: 0 });
+            .set(".page-content > *:not(header)", { y: 100, opacity: 0 })
+            .set("header", { opacity: 0 });
 
         // 2. The Animation
         tl.to(".overlay", {
             yPercent: -100, // Slide curtain UP
-            duration: 1.2,
+            duration: 0.8,
         })
-            .to(".page-content", {
-                y: 0, // Slide content UP to neutral
+            .to(".page-content > *:not(header)", {
+                y: 0,
                 opacity: 1,
-                duration: 1.0,
-                ease: "power3.out", // Content settles gently
+                duration: 0.8,
+                ease: "power3.out",
                 clearProps: "all"
-            }, "-=1.0"); // Content starts moving 0.2s after curtain starts (Parallax effect)
+            }, "-=0.8")
+            .to("header", {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out",
+                clearProps: "all"
+            }, "-=0.6"); // Fade header in slightly after curtain starts
 
     }, { scope: containerRef, dependencies: [pathname] });
 
@@ -41,10 +47,10 @@ export default function Template({ children }) {
             {/* 
         THE CURTAIN OVERLAY 
         A single, clean layer.
-        z-50 ensures it is above everything.
+        z-[10001] ensures it is above even high z-index elements like WhatsApp button (9999).
         bg-neutral-900 is standard "Elegant Black". Change to your primary brand color if needed.
       */}
-            <div className="overlay fixed inset-0 z-50 bg-neutral-900 dark:bg-black pointer-events-none" />
+            <div className="overlay fixed inset-0 z-10001 bg-neutral-900 dark:bg-black pointer-events-none" />
 
             {/* PAGE CONTENT */}
             <div className="page-content w-full h-full">

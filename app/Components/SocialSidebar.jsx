@@ -12,28 +12,24 @@ const SOCIALS = [
     icon: Facebook, 
     url: "https://facebook.com/ivtc.campus", 
     label: "Facebook",
-    color: "hover:text-blue-600" 
   },
   { 
     id: "inst",
     icon: Instagram, 
     url: "https://instagram.com/ivtc.campus", 
     label: "Instagram",
-    color: "hover:text-pink-600" 
   },
   { 
     id: "li",
     icon: Linkedin, 
     url: "https://linkedin.com/school/ivtc", 
     label: "LinkedIn",
-    color: "hover:text-blue-700" 
   },
   { 
     id: "yt",
     icon: Youtube, 
     url: "https://youtube.com/@ivtc", 
     label: "YouTube",
-    color: "hover:text-red-600" 
   },
 ];
 
@@ -91,10 +87,10 @@ const SocialSidebar = () => {
   return (
     <div 
       ref={containerRef}
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 items-center"
+      className="fixed right-3 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 items-center"
     >
       {/* Top Decorative Line */}
-      <div className="social-line w-px h-12 bg-gradient-to-b from-transparent to-slate-400 dark:to-slate-600 origin-bottom" />
+      <div className="social-line w-px h-12 bg-gradient-to-b from-transparent to-primary/40 dark:to-primary/60 origin-bottom" />
 
       {/* Icons List */}
       <div className="flex flex-col gap-4">
@@ -104,16 +100,16 @@ const SocialSidebar = () => {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`social-item group relative p-2 text-slate-400 transition-colors duration-300 ${social.color}`}
+            className="social-item group relative p-2 text-muted-foreground transition-colors duration-300 hover:text-primary"
             aria-label={social.label}
             onMouseEnter={(e) => handleHover(e, true)}
             onMouseLeave={(e) => handleHover(e, false)}
           >
             {/* Tooltip */}
-            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest rounded opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl">
+            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-neutral-900 dark:bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-md opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-2xl border border-white/10">
               {social.label}
               {/* Tooltip Arrow */}
-              <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-slate-900 rotate-45 transform" />
+              <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-neutral-900 dark:bg-neutral-800 rotate-45 transform border-r border-t border-white/10" />
             </span>
 
             {/* Icon */}
@@ -123,7 +119,7 @@ const SocialSidebar = () => {
       </div>
 
       {/* Bottom Decorative Line */}
-      <div className="social-line w-px h-12 bg-gradient-to-t from-transparent to-slate-400 dark:to-slate-600 origin-top" />
+      <div className="social-line w-px h-12 bg-gradient-to-t from-transparent to-primary/40 dark:to-primary/60 origin-top" />
     </div>
   );
 };

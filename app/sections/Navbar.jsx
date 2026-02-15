@@ -24,6 +24,9 @@ const Navbar = memo(() => {
       }
     };
 
+    // Initial check
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -35,6 +38,7 @@ const Navbar = memo(() => {
   }, []);
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Programs", href: "/programs", hasMega: true },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
@@ -72,7 +76,7 @@ const Navbar = memo(() => {
       {/* --- STICKY NAVBAR --- */}
       {/* Added pt-6 for mobile to prevent touching top status bar */}
       <header
-        className={`fixed top-0 left-0 w-full z-[100] px-4 pt-6 pb-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
+        className={`fixed top-0 left-0 w-full z-100 px-4 pt-6 pb-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
           isScrolled && !isMenuOpen
             ? "-translate-y-2 md:translate-y-0"
             : "translate-y-0"
@@ -81,14 +85,14 @@ const Navbar = memo(() => {
         <nav
           className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-all duration-500 ${
             isScrolled
-              ? "bg-white/90 dark:bg-black/90 shadow-lg backdrop-blur-md"
+              ? "bg-white/95 dark:bg-black/95 shadow-lg backdrop-blur-sm"
               : "bg-white/5 dark:bg-white/5 backdrop-blur-sm border border-slate-200 dark:border-white/5"
           }`}
         >
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 z-[110]"
+            className="flex items-center gap-2 z-110"
             onClick={closeMenu}
           >
             <div className="w-8 h-8 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center text-white dark:text-black font-black">
@@ -118,7 +122,7 @@ const Navbar = memo(() => {
                         : "text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white"
                     } ${
                       isActive
-                        ? "!text-slate-900 dark:!text-white font-extrabold"
+                        ? "text-slate-900! dark:text-white! font-extrabold"
                         : ""
                     }`}
                   >
@@ -186,7 +190,7 @@ const Navbar = memo(() => {
           </div>
 
           {/* Mobile Toggle & Actions */}
-          <div className="flex items-center gap-3 z-[110]">
+          <div className="flex items-center gap-3 z-110">
             <Link
               href="/meerza-foundation"
               className={`hidden lg:block px-6 py-3 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all border ${
@@ -220,7 +224,7 @@ const Navbar = memo(() => {
 
       {/* --- MOBILE OVERLAY --- */}
       <div
-        className={`fixed inset-0 z-[95] bg-white dark:bg-[#080808] transition-all duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-0 z-95 bg-white dark:bg-[#080808] transition-all duration-300 ease-in-out lg:hidden ${
           isMenuOpen
             ? "opacity-100 visible translate-y-0"
             : "opacity-0 invisible -translate-y-5"

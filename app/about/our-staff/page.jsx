@@ -260,7 +260,7 @@ const StaffPage = () => {
           </div>
 
           {/* CTA Footer */}
-          <div className="mt-20 text-center">
+          {/* <div className="mt-20 text-center">
             <div className="inline-flex flex-col items-center gap-4 p-8 rounded-3xl bg-slate-50 dark:bg-[#002147]/5 border border-slate-200 dark:border-[#002147]/20">
               <Briefcase size={32} className="text-[#002147]" />
               <div>
@@ -275,7 +275,7 @@ const StaffPage = () => {
                 View Open Positions
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
