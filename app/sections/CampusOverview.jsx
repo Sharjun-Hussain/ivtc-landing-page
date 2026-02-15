@@ -74,7 +74,7 @@ const CampusStats = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
           {stats.map((stat, i) => (
-            <div key={i} className="stat-item flex flex-col group">
+            <div key={i} className="stat-item flex flex-col  group">
               {/* Minimalist Top Indicator */}
               <div className="reveal flex items-center gap-3 mb-8">
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
@@ -86,7 +86,7 @@ const CampusStats = () => {
               {/* Counter Section */}
               <div className="reveal flex items-baseline gap-2 mb-4">
                 <span
-                  className="stat-value text-7xl md:text-8xl font-light tracking-tighter text-slate-900 dark:text-white tabular-nums"
+                  className="stat-value text-7xl md:text-8xl font-light tracking-tighter text-slate-900 dark:text-white tabular-nums text-center"
                   data-target={stat.value}
                 >
                   0

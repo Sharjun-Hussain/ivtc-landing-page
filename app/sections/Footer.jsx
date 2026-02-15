@@ -131,7 +131,7 @@ const Footer = () => {
                 onClick={() =>
                   setTheme(resolvedTheme === "dark" ? "light" : "dark")
                 }
-                className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
+                className="flex items-center hover:cursor-pointer gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
                 aria-label="Toggle theme"
               >
                 {resolvedTheme === "dark" ? (
@@ -156,7 +156,7 @@ const Footer = () => {
 
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
+              className="flex items-center hover:cursor-pointer gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
             >
               Back to Top
               <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white transition-all">
