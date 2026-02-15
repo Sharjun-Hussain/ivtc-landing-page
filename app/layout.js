@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         >
           {/* <SmoothScrollProvider> */}
           <SocialSidebar />
-          <WhatsAppButton />
+          {/* <WhatsAppButton /> */}
           {children}
           {/* </SmoothScrollProvider> */}
 
