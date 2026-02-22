@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback, memo } from "react";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +11,7 @@ const Navbar = memo(() => {
   const [activeMenu, setActiveMenu] = useState(null);
   const pathname = usePathname();
 
-  // Optimized Scroll Listener (Throttled via RequestAnimationFrame)
+  // Optimized Scroll Listener
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -24,26 +25,25 @@ const Navbar = memo(() => {
       }
     };
 
-    // Initial check
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu helper
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
     setActiveMenu(null);
   }, []);
 
+  const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
+
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Programs", href: "/programs", hasMega: true },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "Registration", href: "/#registration" },
     { name: "Verify", href: "/verify" },
+    { name: "Programs", href: "#", hasMega: true },
   ];
 
   const menuData = {
@@ -73,34 +73,37 @@ const Navbar = memo(() => {
 
   return (
     <>
-      {/* --- STICKY NAVBAR --- */}
-      {/* Added pt-6 for mobile to prevent touching top status bar */}
       <header
-        className={`fixed top-0 left-0 w-full z-100 px-4 pt-6 pb-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
-          isScrolled && !isMenuOpen
-            ? "-translate-y-2 md:translate-y-0"
-            : "translate-y-0"
-        }`}
+        className={`fixed top-0 left-0 w-full z-100 p-4 md:p-6 flex justify-center transition-transform duration-500 `}
       >
         <nav
-          className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-all duration-500 ${
+          className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full shadow-lg backdrop-blur-sm px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-all duration-500 ${
             isScrolled
-              ? "bg-white/95 dark:bg-black/95 shadow-lg backdrop-blur-sm"
-              : "bg-white/5 dark:bg-white/5 backdrop-blur-sm border border-slate-200 dark:border-white/5"
+              ? "bg-white/95 dark:bg-black/95 "
+              : "bg-white/5 dark:bg-white/5 "
           }`}
         >
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 z-110"
+            className="flex items-center gap-3 z-110"
             onClick={closeMenu}
           >
-            <div className="w-8 h-8 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center text-white dark:text-black font-black">
-              I
+            <div 
+              className={`relative flex items-center justify-center transition-all duration-500 ease-in-out rounded-full bg-white shadow-xl
+                ${isScrolled && !isMenuOpen 
+                  ? "w-12 h-12 md:w-14 md:h-14" 
+                  : "w-16 h-16 md:w-14 md:h-14"
+                }`}
+            >
+              <Image
+                src="/ivtc_new_logo.png"
+                alt="IVTC Campus Logo"
+                fill
+                className="object-contain p-2 transition-all duration-500"
+                priority
+              />
             </div>
-            <span className="text-lg md:text-xl font-black tracking-tighter transition-colors text-slate-900 dark:text-white">
-              IVTC<span className="text-slate-900 dark:text-white">CAMPUS</span>
-            </span>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -112,7 +115,7 @@ const Navbar = memo(() => {
                   key={link.name}
                   onMouseEnter={() => link.hasMega && setActiveMenu(link.name)}
                   onMouseLeave={() => setActiveMenu(null)}
-                  className="relative py-4" // Increased hit area for smoother hover
+                  className="relative py-4"
                 >
                   <Link
                     href={link.href}
@@ -137,27 +140,26 @@ const Navbar = memo(() => {
                     )}
                   </Link>
 
-                  {/* --- MEGA MENU PANEL --- */}
+                  {/* MEGA MENU PANEL */}
                   {link.hasMega && activeMenu === link.name && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 cursor-default text-left">
-                      {/* Increased width to 800px and matched Dark Mode Color (#0a0a0a) */}
                       <div className="w-[800px] bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/5">
                         <div className="grid grid-cols-2 gap-4">
                           {menuData[link.name].map((item, i) => (
                             <Link
-                              href={item.href}
+                              href={item.href || "#"}
                               key={i}
-                              className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-slate-900 dark:hover:bg-white transition-all duration-200 ease-out border border-transparent hover:border-slate-200 dark:hover:border-transparent"
+                              className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-[#002147] transition-all duration-200 ease-out border border-transparent hover:border-slate-200 dark:hover:border-transparent"
                               onClick={closeMenu}
                             >
-                              <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-2 flex items-center justify-between group-hover/item:text-white dark:group-hover/item:text-black transition-colors">
+                              <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-2 flex items-center justify-between group-hover:text-white transition-colors">
                                 {item.title}
                                 <ArrowRight
                                   size={16}
-                                  className="opacity-0 -translate-x-4 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300"
+                                  className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                                 />
                               </h4>
-                              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover/item:text-slate-300 dark:group-hover/item:text-slate-800 transition-colors">
+                              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover:text-white/80 transition-colors">
                                 {item.desc}
                               </p>
                             </Link>
@@ -175,7 +177,7 @@ const Navbar = memo(() => {
                           </div>
                           <Link
                             href="/programs"
-                            className="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-black text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-slate-800 dark:hover:bg-slate-200 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                            className="px-8 py-3 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] font-bold uppercase tracking-widest rounded-full hover:from-[#003366] hover:to-blue-800 transition-all shadow-lg"
                             onClick={closeMenu}
                           >
                             View All Courses
@@ -189,7 +191,7 @@ const Navbar = memo(() => {
             })}
           </div>
 
-          {/* Mobile Toggle & Actions */}
+          {/* Mobile Actions */}
           <div className="flex items-center gap-3 z-110">
             <Link
               href="/meerza-foundation"
@@ -204,16 +206,19 @@ const Navbar = memo(() => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="hidden lg:block px-6 py-3 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all bg-slate-900 dark:bg-white text-white dark:text-black hover:opacity-90 shadow-md"
+              className="hidden lg:block px-6 py-3 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all bg-linear-to-r from-[#002147] to-blue-900 text-white hover:from-[#003366] hover:to-blue-800 shadow-md"
               onClick={closeMenu}
             >
               Login to LMS
             </Link>
 
-            {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full relative transition-all bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20"
+              onClick={toggleMenu}
+              className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full relative transition-all ${
+                isScrolled
+                  ? "bg-slate-100 dark:bg-[#002147]/20 text-slate-900 dark:text-blue-400"
+                  : "bg-white/10 text-white backdrop-blur-sm"
+              }`}
               aria-label="Toggle Menu"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -270,17 +275,10 @@ const Navbar = memo(() => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
+              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
               onClick={closeMenu}
             >
               Login to LMS
-            </Link>
-            <Link
-              href="/student-portal"
-              className="w-full py-4 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white font-bold uppercase tracking-widest rounded-2xl flex items-center justify-center text-[11px]"
-              onClick={closeMenu}
-            >
-              Student Portal
             </Link>
           </div>
         </div>

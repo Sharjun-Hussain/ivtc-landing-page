@@ -149,7 +149,7 @@ const HighlightText = ({ text, highlight }) => {
     <span>
       {parts.map((part, i) =>
         part.toLowerCase() === highlight.toLowerCase() ? (
-          <span key={i} className="bg-amber-500/30 text-amber-700 dark:text-amber-400 font-bold px-0.5 rounded">
+          <span key={i} className="bg-[#002147]/20 text-[#002147] dark:text-blue-400 font-bold px-0.5 rounded">
             {part}
           </span>
         ) : (
@@ -207,7 +207,7 @@ const CampusPoliciesPage = () => {
     >
       {/* --- FLOATING SUPPORT WIDGET --- */}
       <div className="fixed bottom-6 right-6 z-50">
-        <button className="h-14 w-14 rounded-full bg-slate-900 dark:bg-amber-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group relative">
+        <button className="h-14 w-14 rounded-full bg-[#002147] text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group relative">
           <MessageCircle size={24} />
           {/* Tooltip */}
           <span className="absolute right-full mr-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-bold px-3 py-2 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
@@ -219,13 +219,16 @@ const CampusPoliciesPage = () => {
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-10 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-6">
-            Campus <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">Policies</span>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
+            Campus <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-900">Rules & Policies</span>
           </h1>
+          <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+            Find everything you need to know about our rules and guidelines. We keep things clear so you can focus on learning.
+          </p>
           
           {/* Search Bar */}
           <div className="relative max-w-lg mx-auto mb-8 group">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-amber-600 transition-colors">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#002147] transition-colors">
               <Search size={20} />
             </div>
             <input 
@@ -233,7 +236,7 @@ const CampusPoliciesPage = () => {
               placeholder="Search policies (e.g., 'Exam', 'Refund')..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-14 pl-12 pr-12 rounded-2xl bg-white dark:bg-[#151515] border border-slate-200 dark:border-white/10 shadow-xl shadow-slate-200/50 dark:shadow-black/50 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all text-slate-900 dark:text-white font-medium"
+              className="w-full h-14 pl-12 pr-12 rounded-2xl bg-white dark:bg-[#151515] border border-slate-200 dark:border-white/10 shadow-xl shadow-slate-200/50 dark:shadow-black/50 focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all text-slate-900 dark:text-white font-medium"
             />
             {searchQuery && (
               <button 
@@ -254,7 +257,7 @@ const CampusPoliciesPage = () => {
                 className={cn(
                   "px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 border",
                   selectedCategory === cat
-                    ? "bg-slate-900 dark:bg-amber-600 text-white border-transparent shadow-lg shadow-amber-500/20 scale-105"
+                    ? "bg-[#002147] text-white border-transparent shadow-lg shadow-[#002147]/20 scale-105"
                     : "bg-white dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10"
                 )}
               >
@@ -279,8 +282,8 @@ const CampusPoliciesPage = () => {
                   className={cn(
                     "policy-card group bg-white dark:bg-[#111] border rounded-2xl overflow-hidden transition-all duration-300",
                     isOpen 
-                      ? "border-amber-500 shadow-lg shadow-amber-500/10 ring-1 ring-amber-500/20" 
-                      : "border-slate-200 dark:border-white/5 hover:border-amber-500/30 hover:shadow-md"
+                      ? "border-[#002147] shadow-lg shadow-[#002147]/10 ring-1 ring-[#002147]/20" 
+                      : "border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-md"
                   )}
                 >
                   {/* Header */}
@@ -291,7 +294,7 @@ const CampusPoliciesPage = () => {
                     <div className="flex items-center gap-4 md:gap-6">
                       <div className={cn(
                         "w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-colors duration-300",
-                        isOpen ? "bg-amber-600 text-white" : "bg-slate-50 dark:bg-white/5 text-slate-400 group-hover:text-amber-600"
+                        isOpen ? "bg-[#002147] text-white" : "bg-slate-50 dark:bg-white/5 text-slate-400 group-hover:text-[#002147]"
                       )}>
                         <policy.icon size={20} strokeWidth={2} />
                       </div>
@@ -312,7 +315,7 @@ const CampusPoliciesPage = () => {
                       size={20} 
                       className={cn(
                         "text-slate-400 transition-transform duration-300",
-                        isOpen && "rotate-180 text-amber-600"
+                        isOpen && "rotate-180 text-[#002147]"
                       )} 
                     />
                   </div>
@@ -329,7 +332,7 @@ const CampusPoliciesPage = () => {
                         <ul className="space-y-3 mb-8">
                           {policy.content.map((point, idx) => (
                             <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber-500/50 shrink-0" />
+                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#002147]/50 shrink-0" />
                               <HighlightText text={point} highlight={searchQuery} />
                             </li>
                           ))}
@@ -380,7 +383,7 @@ const CampusPoliciesPage = () => {
               <p className="text-lg font-bold">No policies found for "{searchQuery}"</p>
               <button 
                 onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}
-                className="mt-4 text-amber-600 font-bold text-sm hover:underline"
+                className="mt-4 text-[#002147] dark:text-blue-400 font-bold text-sm hover:underline"
               >
                 Clear Filters
               </button>
@@ -390,7 +393,7 @@ const CampusPoliciesPage = () => {
 
         {/* Download Footer */}
         <div className="mt-16 text-center">
-            <button className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-amber-600 transition-colors border border-slate-200 dark:border-white/10 px-6 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5">
+            <button className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-[#002147] dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-white/10 px-6 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5">
                 <Download size={16} /> Download Policy PDF
             </button>
         </div>

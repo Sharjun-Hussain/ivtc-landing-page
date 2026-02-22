@@ -19,9 +19,9 @@ export const metadata = {
   title: "IVTC Campus",
   description: "Developed by create Inzeedo",
   icons: {
-    icon: "/ivtc_logo.png",
-    shortcut: "/ivtc_logo.png",
-    apple: "/ivtc_logo.png",
+    icon: "/ivtc_favicon_white.png",
+    shortcut: "/ivtc_favicon_white.png",
+    apple: "/ivtc_favicon_white.png",
   },
 };
 
