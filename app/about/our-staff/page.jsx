@@ -174,15 +174,14 @@ const StaffPage = () => {
           </div>
 
           <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] mb-8">
-            The Minds Behind <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
-              The Magic.
+            Meet Your <br />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-900">
+               IT Trainers.
             </span>
           </h1>
 
           <p className="hero-sub text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
-            Meet the industry veterans, experts, and academic professionals dedicated
-            to shaping the next generation of legends.
+            Learn from experts who have real-world experience. Our team is here to help you gain the skills you need for a successful future.
           </p>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-20 hidden md:block">

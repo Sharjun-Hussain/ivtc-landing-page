@@ -81,17 +81,17 @@ const HeroSection = memo(() => {
 
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
           <div className="hero-text opacity-0 translate-y-8 mb-6 flex items-center gap-4">
-            <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-amber-500 to-orange-500"></span>
-            <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-amber-400/90">
+            <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#002147] to-blue-900"></span>
+            <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-slate-200">
               IVTC Campus Sri Lanka
             </span>
           </div>
           <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-[7.5rem] font-black text-white leading-tight md:leading-tight tracking-tighter max-w-4xl">
             Empower Your <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500">Digital</span> Future.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-200">Digital</span> Future.
           </h1>
           <div className="hero-text opacity-0 translate-y-8 mt-8 md:mt-12">
-            <button className="group relative px-10 py-4 md:px-12 md:py-5 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:from-amber-700 hover:to-orange-700 transition-all duration-300 shadow-lg">
+            <button className="group relative px-10 py-4 md:px-12 md:py-5 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:from-[#003366] hover:to-blue-800 transition-all duration-300 shadow-lg">
               Start Learning
             </button>
           </div>
@@ -131,6 +131,7 @@ const HeroWithMegaMenu = () => {
   }, []);
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "Registration", href: "/#registration" },
@@ -179,24 +180,29 @@ const HeroWithMegaMenu = () => {
           }`}
         >
           {/* Brand Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 z-[110]"
-            onClick={closeMenu}
-          >
-            <div className="relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center">
-              <Image
-                src="/ivtc_logo.png"
-                alt="IVTC Campus Logo"
-                width={80}
-                height={80}
-                className={`object-contain transition-all duration-300 ${
-                  !isScrolled && !isMenuOpen ? "brightness-0 invert" : ""
-                }`}
-                priority
-              />
-            </div>
-          </Link>
+         <Link
+  href="/"
+  className="flex items-center gap-3 z-[110]"
+  onClick={closeMenu}
+>
+  {/* The Container: Controls the white circle and overall dimensions */}
+  <div 
+    className={`relative flex items-center justify-center transition-all duration-500 ease-in-out rounded-full bg-white shadow-xl
+      ${isScrolled && !isMenuOpen 
+        ? "w-12 h-12 md:w-14 md:h-14"  // Small size (on scroll)
+        : "w-16 h-16 md:w-20 md:h-20"  // Actual/Large size (initial)
+      }`}
+  >
+    {/* The Logo: Shrinks automatically with the parent div because of 'fill' */}
+    <Image
+      src="/ivtc_new_logo.png"
+      alt="IVTC Campus Logo"
+      fill
+      className="object-contain p-2 transition-all duration-500" // p-2 keeps logo from touching edges
+      priority
+    />
+  </div>
+</Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-10">
@@ -234,7 +240,7 @@ const HeroWithMegaMenu = () => {
                         {menuData[link.name].map((item, i) => (
                           <div
                             key={i}
-                            className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-amber-600 dark:hover:bg-amber-600 transition-colors duration-200"
+                            className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-[#002147] dark:hover:bg-[#002147] transition-colors duration-200"
                           >
                             <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-1 flex items-center justify-between group-hover/item:text-white dark:group-hover/item:text-white transition-colors">
                               {item.title}
@@ -259,7 +265,7 @@ const HeroWithMegaMenu = () => {
                             Spring Semester • March 2026
                           </p>
                         </div>
-                        <button className="px-6 py-3 bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white text-[10px] font-bold uppercase tracking-widest rounded-full transition-all shadow-lg">
+                        <button className="px-6 py-3 bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-full transition-all shadow-lg">
                           View All Courses
                         </button>
                       </div>
@@ -286,8 +292,8 @@ const HeroWithMegaMenu = () => {
              href="https://lms.ivtccampus.lk"
               className={`hidden lg:block px-8 py-3 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all ${
                 isScrolled
-                  ? "bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg"
-                  : "bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-xl"
+                  ? "bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white shadow-lg"
+                  : "bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white shadow-xl"
               }`}
             >
               Login to LMS
@@ -297,8 +303,8 @@ const HeroWithMegaMenu = () => {
               onClick={toggleMenu}
               className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full relative transition-colors ${
                 isScrolled
-                  ? "bg-slate-100 dark:bg-amber-600/20 text-slate-900 dark:text-amber-400"
-                  : "bg-amber-600/20 text-amber-400 backdrop-blur-sm"
+                  ? "bg-slate-100 dark:bg-[#002147]/20 text-slate-900 dark:text-blue-400"
+                  : "bg-[#002147]/20 text-blue-400 backdrop-blur-sm"
               }`}
               aria-label="Toggle Menu"
             >
@@ -347,7 +353,7 @@ const HeroWithMegaMenu = () => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
+              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
               onClick={closeMenu}
             >
               Login to LMS

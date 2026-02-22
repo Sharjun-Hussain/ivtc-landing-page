@@ -60,13 +60,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="mb-6">
+            <div className="mb-6 w-30 h-30 bg-white rounded-full p-4">
               <Image 
-                src="/ivtc_logo.png" 
+                src="/ivtc_new_logo.png" 
                 alt="IVTC Campus Logo" 
                 width={220} 
                 height={90} 
-                className="brightness-0 invert object-contain"
+                className=" object-contain"
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
@@ -120,7 +120,7 @@ const Footer = () => {
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">
             © 2026 IVTC CAMPUS. POWERED BY{" "}
-            <span className="text-white hover:text-amber-500 cursor-pointer">
+            <span className="text-white hover:text-slate-300 cursor-pointer">
               INZEEDO
             </span>
           </p>
