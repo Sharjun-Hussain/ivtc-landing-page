@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 // --- 1. MEMOIZED HERO SECTION ---
 // Separated to prevent re-renders when Navbar state (scroll/menu) changes.
@@ -81,17 +82,17 @@ const HeroSection = memo(() => {
 
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
           <div className="hero-text opacity-0 translate-y-8 mb-6 flex items-center gap-4">
-            <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#002147] to-blue-900"></span>
-            <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-slate-200">
+            <span className="w-8 md:w-12 h-[3px] bg-gradient-to-r from-[#002147] to-blue-900"></span>
+            <span className="text-[10px] md:text-[11px] font-medium uppercase tracking-[0.2em] text-slate-200">
               IVTC Campus Sri Lanka
             </span>
           </div>
-          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-[7.5rem] font-black text-white leading-tight md:leading-tight tracking-tighter max-w-4xl">
+          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-[7.5rem] font-black font-bold text-white leading-tight md:leading-tight tracking-tighter max-w-4xl">
             Empower Your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-200">Digital</span> Future.
           </h1>
           <div className="hero-text opacity-0 translate-y-8 mt-8 md:mt-12">
-            <button className="group relative px-10 py-4 md:px-12 md:py-5 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:from-[#003366] hover:to-blue-800 transition-all duration-300 shadow-lg">
+            <button className="group relative px-10 py-4 md:px-12 md:py-5 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:from-[#003366] hover:to-blue-800 transition-all font-medium cursor-pointer  ease-in-out duration-800  shadow-lg">
               Start Learning
             </button>
           </div>
@@ -108,6 +109,7 @@ const HeroWithMegaMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+  const pathname = usePathname();
 
   // Optimized Scroll Listener
   useEffect(() => {
@@ -133,14 +135,14 @@ const HeroWithMegaMenu = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "A/L ICT", href: "/#registration" },
+    { name: "Certification", href: "/verify" },
+    { name: "Academics", href: "#", hasMega: true },
     { name: "Contact", href: "/contact" },
-    { name: "Registration", href: "/#registration" },
-    { name: "Verify", href: "/verify" },
-    { name: "Programs", href: "#", hasMega: true },
   ];
 
   const menuData = {
-    Programs: [
+    Academics: [
       {
         title: "Software Engineering",
         desc: "Full-stack development & modern architecture.",
@@ -215,13 +217,20 @@ const HeroWithMegaMenu = () => {
               >
                 <Link
                   href={link.href}
-                  className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors flex items-center gap-1.5 ${
+                  className={`group relative text-[14px] uppercase font-medium transition-colors flex items-center gap-1.5 py-1 ${
+                    pathname === link.href ? "font-bold" : ""
+                  } ${
                     isScrolled
                       ? "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                       : "text-white/90 hover:text-white"
                   }`}
                 >
                   {link.name}
+                  {/* Animated Underline */}
+                  <span className={`absolute bottom-0 left-0 h-[2px] bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 transition-all duration-300 ease-out ${
+                    pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`} />
+                  
                   {link.hasMega && (
                     <ChevronDown
                       size={14}
@@ -280,7 +289,7 @@ const HeroWithMegaMenu = () => {
           <div className="flex items-center gap-3 z-[110]">
             <Link
               href="/meerza-foundation"
-              className={`hidden lg:block px-8 py-3 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all border ${
+              className={`hidden lg:block px-8 py-3 text-[11px] font-medium uppercase tracking-widest rounded-full transition-all border ${
                 isScrolled
                   ? "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5"
                   : "border-white/30 text-white hover:bg-white/10"
@@ -290,7 +299,7 @@ const HeroWithMegaMenu = () => {
             </Link>
             <Link
              href="https://lms.ivtccampus.lk"
-              className={`hidden lg:block px-8 py-3 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all ${
+              className={`hidden lg:block px-8 py-3 text-[11px] font-medium uppercase tracking-widest rounded-full transition-all ${
                 isScrolled
                   ? "bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white shadow-lg"
                   : "bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white shadow-xl"
@@ -332,11 +341,19 @@ const HeroWithMegaMenu = () => {
                 key={link.name}
                 href={link.href}
                 onClick={closeMenu}
-                className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 dark:text-white flex items-center justify-between group"
+                className={`text-3xl md:text-4xl font-bold tracking-tighter flex items-center justify-between group ${
+                  pathname === link.href
+                    ? "text-slate-900 dark:text-white"
+                    : "text-slate-400 dark:text-slate-600"
+                }`}
               >
                 {link.name}
                 <ArrowRight
-                  className="text-slate-300 dark:text-slate-700 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
+                  className={`${
+                    pathname === link.href
+                      ? "text-slate-900 dark:text-white"
+                      : "text-slate-300 dark:text-slate-700 group-hover:text-slate-900 dark:group-hover:text-white"
+                  } transition-colors`}
                   size={24}
                 />
               </Link>
@@ -353,7 +370,7 @@ const HeroWithMegaMenu = () => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
+              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white font-bold uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
               onClick={closeMenu}
             >
               Login to LMS
