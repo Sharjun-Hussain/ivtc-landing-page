@@ -72,7 +72,7 @@ const COURSES = {
 // --- Reusable Sub-Components ---
 const InputField = React.memo(({ label, icon: Icon, className, ...props }) => (
   <div className={cn("space-y-1.5", className)}>
-    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
       {label}
     </label>
     <div className="relative group/input">
@@ -91,7 +91,7 @@ InputField.displayName = "InputField";
 
 const SelectField = React.memo(({ label, icon: Icon, options, value, onChange, name, placeholder = "Select Option", className }) => (
   <div className={cn("space-y-1.5", className)}>
-    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+    <label className="text-[10px] font-black font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
       {label}
     </label>
     <div className="relative group/select">
@@ -189,10 +189,10 @@ const StudentRegistration = () => {
           <div className="space-y-8 lg:sticky lg:top-24">
             {/* Header Area */}
             <div className="space-y-4">
-              <div className="anim-stagger inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/5 dark:bg-blue-400/10 border border-[#002147]/10 dark:border-blue-400/20 text-[#002147] dark:text-blue-400 text-[9px] font-black uppercase tracking-[0.2em]">
+              <div className="anim-stagger font-medium inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/5 dark:bg-blue-400/10 border border-[#002147]/10 dark:border-blue-400/20 text-[#002147] dark:text-blue-400 text-[9px] font-black uppercase tracking-[0.2em]">
                 Official Enrollment Portal
               </div>
-              <h2 className="anim-stagger text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tighter leading-[1.1]">
+              <h2 className="anim-stagger text-4xl md:text-5xl font-bold lg:text-6xl font-black text-slate-900 dark:text-white tracking-tighter leading-[1.1]">
                 Build Your <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-[#0055aa] dark:from-blue-400 dark:to-blue-600">Future</span> Today.
               </h2>
               <p className="anim-stagger text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
@@ -212,7 +212,7 @@ const StudentRegistration = () => {
                     <CheckCircle size={16} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">{feature.title}</h4>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white font-semibold">{feature.title}</h4>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{feature.desc}</p>
                   </div>
                 </div>
@@ -225,8 +225,8 @@ const StudentRegistration = () => {
                 <Phone size={20} />
               </div>
               <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Need Assistance?</p>
-                <p className="text-sm font-bold text-slate-900 dark:text-white mt-1">Call us at <a href="tel:+94771234567" className="text-[#002147] dark:text-blue-400 hover:underline">+94 77 123 4567</a></p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">Need Assistance?</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-white mt-1 font-semibold">Call us at <a href="tel:+94771234567" className="text-[#002147] dark:text-blue-400 hover:underline">+94 77 123 4567</a></p>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@ const StudentRegistration = () => {
               {/* Step 1: Registration Path */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-blue-400">
+                  <label className="text-xs font-bold uppercase tracking-widest font-semibold text-[#002147] dark:text-blue-400">
                     Step 01. Select Pathway
                   </label>
                   <span className="text-[10px] font-bold text-slate-400 italic text-right">Target: {activeTypeData.title}</span>
@@ -256,7 +256,7 @@ const StudentRegistration = () => {
                       type="button"
                       onClick={() => handleTypeChange(type.id)}
                       className={cn(
-                        "group/btn relative p-4 rounded-xl border transition-all duration-300 text-left",
+                        "group/btn  relative p-4 rounded-xl border transition-all duration-300 text-left",
                         activeForm === type.id
                           ? "bg-[#002147] border-[#002147] shadow-lg shadow-[#002147]/20"
                           : "bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:border-[#002147]/30"
@@ -271,7 +271,7 @@ const StudentRegistration = () => {
                         </div>
                         <div className="overflow-hidden">
                           <h4 className={cn(
-                            "text-xs font-bold leading-tight truncate",
+                            "text-xs font-medium leading-tight truncate",
                             activeForm === type.id ? "text-white" : "text-slate-900 dark:text-white"
                           )}>
                             {type.title}
@@ -290,12 +290,12 @@ const StudentRegistration = () => {
               </div>
 
               {/* Step 2: Full Information */}
-              <div className="space-y-6 pt-6 border-t border-slate-100 dark:border-white/5">
-                <label className="text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-blue-400">
+              <div className="space-y-6  pt-6 border-t border-slate-100 dark:border-white/5">
+                <label className="text-xs  font-semibold uppercase tracking-widest text-[#002147] dark:text-blue-400">
                   Step 02. Personal & Academic Details
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid md:grid-cols-2 gap-5 mt-3">
                   <InputField
                     label="Full Name"
                     name="fullName"
@@ -318,7 +318,7 @@ const StudentRegistration = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                   <div className="col-span-2 space-y-1.5 flex flex-col">
-                    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                    <label className="text-[11px] font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
                       Date of Birth
                     </label>
                     <Popover>
@@ -417,10 +417,10 @@ const StudentRegistration = () => {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="group relative w-full sm:w-auto min-w-[280px] bg-linear-to-r from-[#002147] to-[#003366] text-white font-bold uppercase tracking-[0.2em] py-4 px-10 rounded-full hover:shadow-[0_20px_40px_rgba(0,33,71,0.3)] transition-all duration-500 flex items-center justify-center gap-3 text-xs xl:text-sm active:scale-[0.98] overflow-hidden"
+                    className="group relative w-full sm:w-auto min-w-[280px] bg-linear-to-r from-[#002147] to-[#003366] text-white font-medium tracking-[0.2em] py-4 px-10 rounded-full hover:shadow-[0_20px_40px_rgba(0,33,71,0.3)] transition-all duration-500 flex items-center justify-center gap-3 text-xs xl:text-sm active:scale-[0.98] overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <span className="relative z-10">Submit Application</span>
+                    <span className="relative z-10 font-medium">Submit Application</span>
                     <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1.5 transition-transform duration-500" />
                   </button>
                 </div>

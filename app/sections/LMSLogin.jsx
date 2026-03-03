@@ -57,14 +57,14 @@ const LMSLogin = () => {
           <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             {/* Main Content Area */}
             <div className="space-y-6 md:space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white/90 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]">
-                <Lock size={12} className="text-blue-400" /> Secure Student Access
+              <div className="inline-flex items-center gap-2 font-medium px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white/90 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]">
+                <Lock size={12} className="text-blue-400 " /> Secure Student Access
               </div>
 
               <div className="space-y-3">
                 <h2 
                   id="lms-heading"
-                  className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tighter"
+                  className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] font-bold tracking-tighter"
                 >
                   Your <br />
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-100 via-white to-blue-200">
@@ -82,7 +82,7 @@ const LMSLogin = () => {
                   aria-label="Login to the Learning Management System"
                   className="group/btn relative flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#002147] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all duration-500 shadow-xl active:scale-95 overflow-hidden text-xs"
                 >
-                  <span className="relative z-10">Login to LMS</span>
+                  <span className="relative z-10 font-semibold">Login to LMS</span>
                   <ArrowRight size={16} className="relative z-10 group-hover/btn:translate-x-1 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-linear-to-r from-blue-50 to-white opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
                 </Link>
@@ -118,10 +118,10 @@ const LMSLogin = () => {
                     <div className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center ${stat.color} mb-4`}>
                       <stat.icon size={20} />
                     </div>
-                    <div className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-1">
+                    <div className="text-white/30 text-[9px] font-medium font-black uppercase tracking-widest mb-1">
                       {stat.label}
                     </div>
-                    <div className="text-white text-base font-black tracking-tight">
+                    <div className="text-white font-semibold text-base font-black tracking-tight">
                       {stat.value}
                     </div>
                   </div>
@@ -136,9 +136,9 @@ const LMSLogin = () => {
                     <div className="absolute inset-0 rounded-full border-4 border-t-white border-r-white border-b-transparent border-l-transparent animate-spin-slow" />
                   </div>
                 </div>
-                <div>
-                  <div className="text-white font-black text-base mb-0.5 tracking-tight">Progress</div>
-                  <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">Growing daily</div>
+                <div className="">
+                  <div className=" font-medium text-white font-black text-base mb-0.5 tracking-tight">Progress</div>
+                  <div className=" font-medium text-white/40 text-[9px] font-bold uppercase tracking-widest">Growing daily</div>
                 </div>
               </div>
             </div>

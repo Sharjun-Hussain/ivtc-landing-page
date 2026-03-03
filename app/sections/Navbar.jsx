@@ -40,14 +40,14 @@ const Navbar = memo(() => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
     { name: "Registration", href: "/#registration" },
-    { name: "Verify", href: "/verify" },
-    { name: "Programs", href: "#", hasMega: true },
+    { name: "Certification", href: "/verify" },
+    { name: "Academics", href: "#", hasMega: true },
+     { name: "Contact", href: "/contact" },
   ];
 
   const menuData = {
-    Programs: [
+    Academics: [
       {
         title: "Software Engineering",
         desc: "Full-stack development & modern architecture.",
@@ -119,17 +119,22 @@ const Navbar = memo(() => {
                 >
                   <Link
                     href={link.href}
-                    className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors flex items-center gap-1.5 ${
+                    className={`group relative text-[14px] uppercase font-medium transition-colors flex items-center gap-1.5 py-1 ${
                       isScrolled
                         ? "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                         : "text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white"
                     } ${
                       isActive
-                        ? "text-slate-900! dark:text-white! font-extrabold"
+                        ? "text-slate-900! dark:text-white! font-bold"
                         : ""
                     }`}
                   >
                     {link.name}
+                    {/* Animated Underline */}
+                    <span className={`absolute bottom-0 left-0 h-[2px] bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 transition-all duration-300 ease-out ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`} />
+                    
                     {link.hasMega && (
                       <ChevronDown
                         size={14}
@@ -152,14 +157,14 @@ const Navbar = memo(() => {
                               className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-[#002147] transition-all duration-200 ease-out border border-transparent hover:border-slate-200 dark:hover:border-transparent"
                               onClick={closeMenu}
                             >
-                              <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-2 flex items-center justify-between group-hover:text-white transition-colors">
+                              <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-2 flex items-center justify-between group-hover/item:text-white transition-colors">
                                 {item.title}
                                 <ArrowRight
                                   size={16}
                                   className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                                 />
                               </h4>
-                              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover:text-white/80 transition-colors">
+                              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover/item:text-white/80 transition-colors">
                                 {item.desc}
                               </p>
                             </Link>
@@ -245,7 +250,7 @@ const Navbar = memo(() => {
                 key={link.name}
                 href={link.href}
                 onClick={closeMenu}
-                className={`text-3xl md:text-4xl font-black tracking-tighter flex items-center justify-between ${
+                className={`text-3xl md:text-4xl font-bold tracking-tighter flex items-center justify-between ${
                   pathname === link.href
                     ? "text-slate-900 dark:text-white"
                     : "text-slate-400 dark:text-slate-600"
@@ -275,7 +280,7 @@ const Navbar = memo(() => {
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
+              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 text-white font-bold uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
               onClick={closeMenu}
             >
               Login to LMS

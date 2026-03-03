@@ -153,7 +153,7 @@ const Footer = () => {
                     <Moon size={12} className="group-hover:-rotate-12 transition-transform duration-500" />
                   )}
                 </div>
-                <span className="hidden sm:block">
+                <span className="hidden sm:block font-medium">
                   {resolvedTheme === "dark" ? "Light Mode" : "Dark Mode"}
                 </span>
               </button>
@@ -165,7 +165,7 @@ const Footer = () => {
               onClick={scrollToTop}
               className="flex items-center hover:cursor-pointer gap-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
             >
-              <span className="hidden sm:block">Back to Top</span>
+              <span className="hidden sm:block font-medium">Back to Top</span>
               <span className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:border-white/30 group-hover:-translate-y-1 transition-all duration-300">
                 ↑
               </span>
