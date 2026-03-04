@@ -121,7 +121,7 @@ const CoursePathways = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <header className="mb-16">
           <h3 className="text-[#002147] dark:text-blue-400 font-mono tracking-widest uppercase text-xs mb-4">

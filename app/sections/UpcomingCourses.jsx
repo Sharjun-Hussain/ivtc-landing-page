@@ -87,7 +87,7 @@ const UpcomingCourses = () => {
   return (
     <section
       ref={containerRef}
-      className="py-24 bg-slate-50 dark:bg-[#050505] transition-colors duration-500 overflow-hidden"
+      className="py-24 bg-transparent overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
         <header className="course-header mb-16 text-center lg:text-left">

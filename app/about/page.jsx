@@ -112,35 +112,31 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <div
+    <main
       ref={pageRef}
-      className="min-h-screen bg-white dark:bg-[#030303] text-slate-900 dark:text-slate-50 selection:bg-[#002147] selection:text-white font-sans overflow-hidden"
+      className="min-h-screen bg-transparent text-slate-900 dark:text-slate-50 selection:bg-[#002147] selection:text-white font-sans overflow-hidden"
     >
       {/* --- 1. HERO SECTION (CINEMATIC) --- */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 pt-24 pb-32">
-        {/* Background Glowing Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-400/20 dark:bg-blue-600/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#002147]/10 dark:bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
-
+      <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 pt-40 pb-32" aria-labelledby="about-hero-title">
         <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 backdrop-blur-md text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-8 shadow-sm">
-            <Sparkles size={16} className="text-[#002147] dark:text-blue-400" />
+          <div className="hero-badge inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 dark:border-white/10 bg-white/5 backdrop-blur-xl text-[11px] font-bold tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400 mb-8 shadow-sm">
+            {/* <Sparkles size={16} className="text-[#002147] dark:text-blue-400" /> */}
             Discover IVTC Campus
           </div>
           
-          <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[0.9] mb-8 overflow-hidden">
-            <div className="hero-title-line pb-2">Build Your</div>
-            <div className="hero-title-line text-transparent bg-clip-text bg-gradient-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-2">
-              Success in IT.
+          <h1 id="about-hero-title" className="text-6xl md:text-8xl lg:text-[7rem] font-bold tracking-tighter leading-[0.9] mb-8 overflow-hidden">
+            <div className="hero-title-line pb-2">Your Career</div>
+            <div className="hero-title-line text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-2">
+              Starts Here.
             </div>
           </h1>
           
           <p className="hero-desc text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed mb-12">
-            Learn the skills you need for a great job. We help you with expert teachers, practical lessons, and a clear path to your future.
+            The best practical IT training in Sri Lanka for school leavers. Gain high-paying skills and start your journey after A/Ls with a campus that cares about your future.
           </p>
           
           <div className="hero-actions flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Button className="h-16 px-10 rounded-full bg-[#002147] text-white hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 font-bold text-lg transition-transform hover:scale-105">
+            <Button className="h-16 px-10 rounded-full bg-[#002147] text-white hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 font-bold text-lg shadow-xl shadow-[#002147]/20 transition-transform hover:scale-105">
               Explore Programs
             </Button>
             <Button variant="outline" className="h-16 px-10 rounded-full border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg">
@@ -149,40 +145,40 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-400 hidden md:block">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-400 hidden md:block" aria-hidden="true">
           <ChevronDown size={32} />
         </div>
       </section>
 
       {/* --- 2. FLOATING STATS PILL --- */}
-      <div className="relative z-20 max-w-6xl mx-auto px-6 -mt-16 md:-mt-24 mb-32">
+      <section className="relative z-20 max-w-6xl mx-auto px-6 -mt-16 md:-mt-24 mb-32" aria-label="Campus Statistics">
         <div className="stats-pill bg-white/80 dark:bg-[#111]/80 backdrop-blur-xl border border-slate-200 dark:border-white/10 p-8 md:p-10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row justify-between items-center gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-white/10">
           {[
-            { label: "Happy Students", val: "12,000+", icon: Users },
-            { label: "Job Success Rate", val: "94%", icon: Target },
-            { label: "Global Partners", val: "45+", icon: Building2 },
-            { label: "Learning Hubs", val: "04", icon: Globe },
+            { label: "Successful Students", val: "5,000+", icon: Users },
+            { label: "Job Placement", val: "High Rate", icon: Target },
+            { label: "Industry Partners", val: "30+", icon: Building2 },
+            { label: "Learning Hub", val: "Modern", icon: Globe },
           ].map((stat, i) => (
             <div key={i} className="flex-1 w-full text-center flex flex-col items-center justify-center pt-6 md:pt-0 first:pt-0">
               <stat.icon size={24} className="text-[#002147] dark:text-blue-400 mb-3 opacity-80" />
-              <div className="text-4xl md:text-5xl font-black tracking-tight mb-1">{stat.val}</div>
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
+              <div className="text-4xl md:text-5xl font-bold tracking-tight mb-1">{stat.val}</div>
+              <div className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* --- 3. MISSION & VISION (STICKY SCROLL STYLE) --- */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20" aria-labelledby="purpose-heading">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           {/* Sticky Left Column */}
           <div className="lg:w-1/3">
             <div className="sticky top-32">
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
+              <h2 id="purpose-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
                 Our Purpose <br /> & Direction.
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                We exist to bridge the gap between academic theory and actual industry demands.
+                We are here to help you move from school to a professional IT career with practical skills.
               </p>
             </div>
           </div>
@@ -192,40 +188,40 @@ const AboutPage = () => {
             <div className="fade-up bg-[#002147] dark:bg-blue-900/20 text-white rounded-[2rem] p-10 md:p-14 border border-transparent dark:border-blue-500/20 shadow-xl relative overflow-hidden">
               <Rocket className="absolute -right-10 -bottom-10 w-64 h-64 text-white/5 dark:text-blue-500/10" />
               <div className="relative z-10">
-                <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 font-bold text-xs uppercase tracking-widest mb-6">
+                <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
                   Our Mission
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                  To provide the best practical IT training to help you get a great job.
+                  To provide practical IT training that helps you get a good job.
                 </h3>
                 <p className="text-blue-100/70 text-lg">
-                  We use modern computer labs and expert teachers to make sure you are ready for the IT industry. we help you learn by doing.
+                  We use modern labs and experienced teachers to make sure you are ready for the IT industry in Sri Lanka and abroad.
                 </p>
               </div>
             </div>
 
             <div className="fade-up bg-slate-100 dark:bg-[#111] rounded-[2rem] p-10 md:p-14 border border-slate-200 dark:border-white/10 shadow-lg">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300 font-bold text-xs uppercase tracking-widest mb-6">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
                 Our Vision
               </div>
               <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-6 text-slate-900 dark:text-white">
-                To be the most trusted IT education center in Sri Lanka.
+                To be the most trusted place for IT education in Sri Lanka.
               </h3>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                We want to help everyone learn IT skills that are used for high-paying jobs around the world.
+                We want to help all students learn the skills needed for high-paying tech careers.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- 4. LEADERSHIP STRUCTURE --- */}
-      <section className="py-24 bg-slate-50 dark:bg-black border-y border-slate-200 dark:border-white/5 mt-12">
+      {/* Leadership Section */}
+      <section className="py-24 bg-white/5 dark:bg-white/5 backdrop-blur-3xl border-y border-slate-200 dark:border-white/10 mt-12" aria-labelledby="leadership-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 fade-up">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Meet The Architects</h2>
+            <h2 id="leadership-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Our Support Team & Faculty</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400">
-              Our campus is guided by veterans from top-tier tech organizations, bringing decades of Silicon Valley and enterprise experience to your curriculum.
+              Our campus is guided by experienced IT professionals and educators who understand the local and global job market.
             </p>
           </div>
           <div className="fade-up">
@@ -234,13 +230,13 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* --- 5. PARTNERS (GLOWING GRID) --- */}
-      <section className="max-w-7xl mx-auto px-6 py-32">
+      {/* Partners Section */}
+      <section className="max-w-7xl mx-auto px-6 py-32" aria-labelledby="partners-heading">
         <div className="text-center mb-16 fade-up">
-          <div className="text-[#002147] dark:text-blue-400 font-bold text-xs uppercase tracking-widest mb-4">
+          <div className="text-[#002147] dark:text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-4">
             Global Recognition
           </div>
-          <h2 className="text-4xl font-black tracking-tight">Accredited by the Best</h2>
+          <h2 id="partners-heading" className="text-4xl font-bold tracking-tight">Accredited by the Best</h2>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-up">
@@ -266,11 +262,11 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* --- 6. POLICIES (HOVER GRID) --- */}
-      <section className="max-w-7xl mx-auto px-6 pb-32">
+      {/* Guidelines Section */}
+      <section className="max-w-7xl mx-auto px-6 pb-32" aria-labelledby="guidelines-heading">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 fade-up gap-6">
           <div>
-            <h2 className="text-4xl font-black tracking-tight mb-4">Campus Guidelines</h2>
+            <h2 id="guidelines-heading" className="text-4xl font-bold tracking-tight mb-4">Campus Guidelines</h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg max-w-xl">
               A structured, safe, and professional environment designed to help you focus entirely on your technical growth.
             </p>
@@ -297,22 +293,22 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* --- 7. BOLD CTA --- */}
-      <section className="fade-up relative mx-6 mb-24 max-w-7xl xl:mx-auto bg-[#002147] dark:bg-black rounded-[3rem] px-6 py-24 text-center overflow-hidden border border-transparent dark:border-white/10">
+      {/* CTA Section */}
+      <section className="fade-up relative mx-6 mb-24 max-w-7xl xl:mx-auto bg-[#002147] dark:bg-black rounded-[3rem] px-6 py-24 text-center overflow-hidden border border-transparent dark:border-white/10" aria-labelledby="cta-heading">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2)_0,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0,transparent_60%)] pointer-events-none" />
         
         <div className="relative z-10">
-          <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-8">
-            Your Code. <br /> Your Career.
+          <h2 id="cta-heading" className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8">
+            Start Your <br /> Journey Today.
           </h2>
-          <Button className="h-16 px-12 rounded-full bg-white text-[#002147] hover:bg-slate-100 font-black text-lg shadow-2xl transition-all hover:scale-105 group">
+          <Button className="h-16 px-12 rounded-full bg-white text-[#002147] hover:bg-slate-100 font-bold text-lg shadow-2xl transition-all hover:scale-105 group uppercase tracking-widest">
             Start Your Journey 
             <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
           </Button>
         </div>
       </section>
 
-    </div>
+    </main>
   );
 };
 

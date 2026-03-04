@@ -21,6 +21,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 // --- Configuration Data ---
 const REGISTRATION_TYPES = [
@@ -64,24 +71,24 @@ const SRI_LANKA_DISTRICTS = [
 
 const COURSES = {
   course: ["Software Engineering", "Data Science", "Cyber Security", "Cloud Computing", "Web Development", "Mobile App Development"],
-  al: ["A/L ICT Regular", "A/L ICT Revision", "Practical Sessions", "Cambridge Syllabus"],
+  al: ["A/L ICT Regular", "A/L ICT Revision", "Practical Sessions"],
   membership: ["General Membership", "Student Membership", "Professional Membership"],
   degree: ["BIT - University of Moratuwa", "BIT - University of Colombo", "Foundation Program", "Diploma Programs"],
 };
 
 // --- Reusable Sub-Components ---
 const InputField = React.memo(({ label, icon: Icon, className, ...props }) => (
-  <div className={cn("space-y-1.5", className)}>
-    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+  <div className={cn("space-y-2", className)}>
+    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
       {label}
     </label>
     <div className="relative group/input">
       <Icon
-        className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/input:text-[#002147] transition-colors"
+        className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/input:text-[#002147] dark:group-focus-within/input:text-blue-400 transition-colors"
         size={14}
       />
       <input
-        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl py-2.5 pl-11 pr-3 text-sm focus:border-[#002147] focus:ring-1 focus:ring-[#002147]/30 outline-none transition-all font-medium"
+        className="w-full h-12 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl pl-11 pr-3 text-sm focus:border-[#002147] dark:focus:border-blue-500 focus:ring-1 focus:ring-[#002147]/30 dark:focus:ring-blue-500/30 outline-none transition-all font-medium"
         {...props}
       />
     </div>
@@ -89,35 +96,32 @@ const InputField = React.memo(({ label, icon: Icon, className, ...props }) => (
 ));
 InputField.displayName = "InputField";
 
-const SelectField = React.memo(({ label, icon: Icon, options, value, onChange, name, placeholder = "Select Option", className }) => (
-  <div className={cn("space-y-1.5", className)}>
-    <label className="text-[10px] font-black font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+const CustomSelect = React.memo(({ label, icon: Icon, options, value, onChange, placeholder = "Select Option", className }) => (
+  <div className={cn("space-y-2", className)}>
+    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
       {label}
     </label>
-    <div className="relative group/select">
-      <Icon
-        className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/select:text-[#002147] transition-colors"
-        size={14}
-      />
-      <select
-        name={name}
-        value={value}
-        onChange={onChange}
-        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl py-2.5 pl-11 pr-8 text-sm focus:border-[#002147] focus:ring-1 focus:ring-[#002147]/30 outline-none transition-all font-medium appearance-none cursor-pointer"
-      >
-        <option value="" className="dark:bg-[#0a0a0a]">{placeholder}</option>
+    <Select value={value} onValueChange={onChange}>
+      <SelectTrigger className="w-full h-12 bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl  pr-3 text-sm focus:border-[#002147] dark:focus:border-blue-500 focus:ring-1 focus:ring-[#002147]/30 dark:focus:ring-blue-500/30 outline-none transition-all font-medium relative text-left">
+        <Icon
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition-colors"
+          size={14}
+        />
+        <div className="pl-8">
+          <SelectValue placeholder={placeholder} />
+        </div>
+      </SelectTrigger>
+      <SelectContent className="bg-white dark:bg-[#0a0a0a] border-slate-200 dark:border-white/10 z-100">
         {options.map((opt) => (
-          <option key={opt} value={opt} className="dark:bg-[#0a0a0a]">{opt}</option>
+          <SelectItem key={opt} value={opt} className="text-sm font-medium focus:bg-slate-100 dark:focus:bg-white/5">
+            {opt}
+          </SelectItem>
         ))}
-      </select>
-      <ChevronDown
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
-        size={16}
-      />
-    </div>
+      </SelectContent>
+    </Select>
   </div>
 ));
-SelectField.displayName = "SelectField";
+CustomSelect.displayName = "CustomSelect";
 
 // --- Main Component ---
 const StudentRegistration = () => {
@@ -171,7 +175,7 @@ const StudentRegistration = () => {
     <section
       id="registration"
       ref={sectionRef}
-      className="py-12 md:py-20 bg-white dark:bg-[#0a0a0a] relative overflow-hidden"
+      className="py-12 md:py-20 bg-transparent relative overflow-hidden"
     >
       {/* Unified Background Highlights */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -182,17 +186,17 @@ const StudentRegistration = () => {
       {/* Increased max-width to accommodate two columns */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Two Column Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        {/* Two Column Grid - Form (Right) is slightly larger than Content (Left) */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* LEFT COLUMN: Content & Information */}
-          <div className="space-y-8 lg:sticky lg:top-24">
+          <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
             {/* Header Area */}
             <div className="space-y-4">
-              <div className="anim-stagger font-medium inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/5 dark:bg-blue-400/10 border border-[#002147]/10 dark:border-blue-400/20 text-[#002147] dark:text-blue-400 text-[9px] font-black uppercase tracking-[0.2em]">
+              <div className="anim-stagger font-medium inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/5 dark:bg-blue-400/10 border border-[#002147]/10 dark:border-blue-400/20 text-[#002147] dark:text-blue-400 text-[9px] uppercase tracking-[0.2em]">
                 Official Enrollment Portal
               </div>
-              <h2 className="anim-stagger text-4xl md:text-5xl font-bold lg:text-6xl font-black text-slate-900 dark:text-white tracking-tighter leading-[1.1]">
+              <h2 className="anim-stagger text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white tracking-tighter leading-[1.1]">
                 Build Your <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-[#0055aa] dark:from-blue-400 dark:to-blue-600">Future</span> Today.
               </h2>
               <p className="anim-stagger text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
@@ -208,11 +212,11 @@ const StudentRegistration = () => {
                 { title: "Flexible Pathways", desc: "Tailored programs matching your career goals." },
               ].map((feature, idx) => (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-[#002147] dark:text-blue-400">
+                  <div className="mt-1 shrink-0 w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-[#002147] dark:text-blue-400">
                     <CheckCircle size={16} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900 dark:text-white font-semibold">{feature.title}</h4>
+                    <h4 className="text-sm text-slate-900 dark:text-white font-semibold">{feature.title}</h4>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{feature.desc}</p>
                   </div>
                 </div>
@@ -225,14 +229,14 @@ const StudentRegistration = () => {
                 <Phone size={20} />
               </div>
               <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">Need Assistance?</p>
-                <p className="text-sm font-bold text-slate-900 dark:text-white mt-1 font-semibold">Call us at <a href="tel:+94771234567" className="text-[#002147] dark:text-blue-400 hover:underline">+94 77 123 4567</a></p>
+                <p className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">Need Assistance?</p>
+                <p className="text-sm text-slate-900 dark:text-white mt-1 font-semibold">Call us at <a href="tel:+94771234567" className="text-[#002147] dark:text-blue-400 hover:underline">+94 77 123 4567</a></p>
               </div>
             </div>
           </div>
 
           {/* RIGHT COLUMN: The Application Form */}
-          <div className="anim-stagger bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden group/form">
+          <div className="lg:col-span-7 anim-stagger bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden group/form">
             {/* Subtle Accent Glow */}
             <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#002147] to-transparent opacity-30" />
             
@@ -243,7 +247,7 @@ const StudentRegistration = () => {
               {/* Step 1: Registration Path */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold uppercase tracking-widest font-semibold text-[#002147] dark:text-blue-400">
+                  <label className="text-xs uppercase tracking-widest font-semibold text-[#002147] dark:text-blue-400">
                     Step 01. Select Pathway
                   </label>
                   <span className="text-[10px] font-bold text-slate-400 italic text-right">Target: {activeTypeData.title}</span>
@@ -290,11 +294,12 @@ const StudentRegistration = () => {
               </div>
 
               {/* Step 2: Full Information */}
-              <div className="space-y-6  pt-6 border-t border-slate-100 dark:border-white/5">
-                <label className="text-xs  font-semibold uppercase tracking-widest text-[#002147] dark:text-blue-400">
+              <div className="space-y-6 pt-6 border-t border-slate-100 dark:border-white/5">
+                <label className="text-xs font-semibold uppercase tracking-widest text-[#002147] dark:text-blue-400">
                   Step 02. Personal & Academic Details
                 </label>
 
+                {/* Personal Info Group */}
                 <div className="grid md:grid-cols-2 gap-5 mt-3">
                   <InputField
                     label="Full Name"
@@ -306,7 +311,7 @@ const StudentRegistration = () => {
                     required
                   />
                   <InputField
-                    label="Identification (NIC / Passport)"
+                    label="NIC / Passport"
                     name="nic"
                     placeholder="ID number"
                     icon={FileText}
@@ -316,9 +321,9 @@ const StudentRegistration = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                  <div className="col-span-2 space-y-1.5 flex flex-col">
-                    <label className="text-[11px] font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="space-y-2 flex flex-col">
+                    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
                       Date of Birth
                     </label>
                     <Popover>
@@ -326,7 +331,7 @@ const StudentRegistration = () => {
                         <Button
                           variant={"outline"}
                           className={cn(
-                            "w-full justify-start text-left font-medium h-[48px] rounded-xl bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 text-sm transition-all",
+                            "w-full justify-start text-left font-medium h-11 rounded-xl bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 text-sm transition-all",
                             !date && "text-slate-400"
                           )}
                         >
@@ -345,19 +350,20 @@ const StudentRegistration = () => {
                       </PopoverContent>
                     </Popover>
                   </div>
-                  <SelectField
-                    className="col-span-1"
+                  <CustomSelect
                     label="Gender"
-                    name="gender"
                     icon={Users}
                     value={formData.gender}
-                    onChange={handleInputChange}
-                    options={["Male", "Female", "N/A"]}
+                    onChange={(val) => setFormData((prev) => ({ ...prev, gender: val }))}
+                    options={["Male", "Female", "Prefer not to say"]}
                     required
                   />
+                </div>
+
+                {/* Contact Info Group */}
+                <div className="grid md:grid-cols-2 gap-5">
                   <InputField
-                    className="col-span-1"
-                    label="WhatsApp"
+                    label="WhatsApp / Phone"
                     name="phone"
                     type="tel"
                     placeholder="+94"
@@ -366,9 +372,6 @@ const StudentRegistration = () => {
                     onChange={handleInputChange}
                     required
                   />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-5">
                   <InputField
                     label="Email Address"
                     name="email"
@@ -379,24 +382,35 @@ const StudentRegistration = () => {
                     onChange={handleInputChange}
                     required
                   />
-                  <SelectField
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-5">
+                  <CustomSelect
                     label="District"
-                    name="district"
                     icon={Globe}
                     value={formData.district}
-                    onChange={handleInputChange}
+                    onChange={(val) => setFormData((prev) => ({ ...prev, district: val }))}
                     options={SRI_LANKA_DISTRICTS}
+                    required
+                  />
+                  <InputField
+                    label="City"
+                    name="city"
+                    placeholder="Your city"
+                    icon={Building}
+                    value={formData.city}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
 
+                {/* Program Selection Group */}
                 <div className="grid md:grid-cols-2 gap-5">
-                  <SelectField
-                    label={`${activeTypeData.title} Selection`}
-                    name="program"
+                  <CustomSelect
+                    label={`${activeTypeData.title} Program`}
                     icon={GraduationCap}
                     value={formData.program}
-                    onChange={handleInputChange}
+                    onChange={(val) => setFormData((prev) => ({ ...prev, program: val }))}
                     options={COURSES[activeForm]}
                     placeholder="Select Program"
                     required
