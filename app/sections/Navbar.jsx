@@ -40,10 +40,11 @@ const Navbar = memo(() => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "A/L ICT", href: "#" },
     { name: "Registration", href: "/#registration" },
     { name: "Certification", href: "/verify" },
     { name: "Academics", href: "#", hasMega: true },
-     { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const menuData = {
@@ -115,7 +116,7 @@ const Navbar = memo(() => {
                   key={link.name}
                   onMouseEnter={() => link.hasMega && setActiveMenu(link.name)}
                   onMouseLeave={() => setActiveMenu(null)}
-                  className="relative py-4"
+                  className="relative py-1"
                 >
                   <Link
                     href={link.href}

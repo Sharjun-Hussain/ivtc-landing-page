@@ -6,18 +6,18 @@ import CampusStats from "./sections/CampusOverview";
 import StudentRegistration from "./sections/StudentRegistration";
 import LMSLogin from "./sections/LMSLogin";
 import UpcomingCourses from "./sections/UpcomingCourses";
+import BackgroundWrapper from "./Components/BackgroundWrapper";
 
 export default function Home() {
   return (
-    <div >
+    <BackgroundWrapper>
       <HeroWithMegaMenu />
       <CampusStats />
       <UpcomingCourses />
       <CoursePathways />
       <LMSLogin />
       <StudentRegistration />
-
       <Footer />
-    </div>
+    </BackgroundWrapper>
   );
 }

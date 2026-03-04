@@ -102,7 +102,7 @@ const Footer = () => {
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 lg:pl-12">
             {footerLinks.map((col, i) => (
               <div key={i}>
-                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/80 mb-8">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80 mb-8">
                   {col.title}
                 </h4>
                 <ul className="space-y-5">
