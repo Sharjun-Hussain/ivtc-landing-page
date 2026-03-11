@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <BackgroundWrapper>
       <HeroWithMegaMenu />
-      <CampusStats />
+      {/* <CampusStats /> */}
       <UpcomingCourses />
       <CoursePathways />
       <LMSLogin />
