@@ -169,11 +169,11 @@ const StaffPage = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#002147]/5 dark:bg-[#002147]/10 blur-[120px] rounded-full" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] text-[10px] font-black uppercase  mb-8">
             <Users size={14} /> World-Class Faculty
           </div>
 
-          <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] mb-8">
+          <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white  leading-[0.9] mb-8">
             Meet Your <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-900">
                IT Trainers.
@@ -195,10 +195,10 @@ const StaffPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h3 className="text-[#002147] dark:text-[#003a6e] font-mono tracking-widest uppercase text-xs mb-4 font-bold">
+              <h3 className="text-[#002147] dark:text-[#003a6e]   uppercase text-xs mb-4 font-bold">
                 / Academics
               </h3>
-              <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white ">
                 Meet Our Expert Faculty
               </h2>
             </div>
@@ -232,7 +232,7 @@ const StaffPage = () => {
                   <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-[#002147] transition-colors">
                     {staff.name}
                   </h4>
-                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-500 dark:group-hover:text-slate-300 mb-3">
+                  <p className="text-xs font-bold uppercase  text-slate-400 group-hover:text-slate-500 dark:group-hover:text-slate-300 mb-3">
                     {staff.role}
                   </p>
                   

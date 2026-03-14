@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ShineBadge from "@/components/ui/ShineBadge";
 import {
   Mail,
   Phone,
@@ -93,11 +94,12 @@ const ContactPage = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#002147]/5 dark:bg-[#002147]/10 blur-[120px] rounded-full" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] dark:text-[#003a6e] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
-            <Sparkles size={14} /> Available for Inquiries
-          </div>
+          <ShineBadge className="mb-8">
+            <Sparkles size={14} className="text-[#002147] dark:text-blue-400" />
+            Available for Inquiries
+          </ShineBadge>
 
-          <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] mb-8">
+          <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white  leading-[0.9] mb-8">
             Let’s Engineer <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Legendary
@@ -128,7 +130,7 @@ const ContactPage = () => {
               <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">
                 Expert Support Team
               </p>
-              <p className="text-[10px] font-black text-[#002147] uppercase tracking-widest">
+              <p className="text-[10px] font-black text-[#002147] uppercase ">
                 Active Now
               </p>
             </div>
@@ -157,7 +159,7 @@ const ContactPage = () => {
                     <Phone size={20} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                    <p className="text-[10px] font-black text-slate-500 uppercase ">
                       Contact Numbers
                     </p>
                     <p className="font-bold text-slate-900 dark:text-white text-lg">
@@ -174,7 +176,7 @@ const ContactPage = () => {
                     <Mail size={20} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                    <p className="text-[10px] font-black text-slate-500 uppercase ">
                       Official Email
                     </p>
                     <p className="font-bold text-slate-900 dark:text-white text-lg">
@@ -191,7 +193,7 @@ const ContactPage = () => {
                     <Globe size={20} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                    <p className="text-[10px] font-black text-slate-500 uppercase ">
                       Digital Presence
                     </p>
                     <p className="font-bold text-slate-900 dark:text-white text-lg">
@@ -207,10 +209,10 @@ const ContactPage = () => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
               <MapPin className="absolute -right-4 -bottom-4 w-40 h-40 opacity-5 group-hover:scale-110 transition-transform duration-700" />
               <div className="relative z-10 space-y-6">
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-300">
+                <h4 className="text-[10px] font-black uppercase  text-slate-300">
                   Main Headquarters
                 </h4>
-                <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tighter">
+                <p className="text-2xl md:text-3xl font-bold leading-tight ">
                   Colombo 07, Level 04,
                   <br />
                   IVTC Campus.
@@ -227,7 +229,7 @@ const ContactPage = () => {
           <div className="lg:col-span-7 anim-form">
             <div className="bg-white dark:bg-[#111] p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-200 dark:border-white/5">
               <div className="mb-8">
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tighter flex items-center gap-4">
+                <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white  flex items-center gap-4">
                   <div className="p-3 bg-[#002147] rounded-xl text-white">
                     <MessageSquare size={24} />
                   </div>
@@ -238,7 +240,7 @@ const ContactPage = () => {
               <form className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
+                    <label className="text-[10px] font-bold uppercase  text-slate-500 ml-1">
                       Full Name
                     </label>
                     <input
@@ -247,7 +249,7 @@ const ContactPage = () => {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
+                    <label className="text-[10px] font-bold uppercase  text-slate-500 ml-1">
                       Email Address
                     </label>
                     <input
@@ -258,7 +260,7 @@ const ContactPage = () => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">
+                  <label className="text-[10px] font-bold uppercase  text-slate-500 ml-1">
                     Your Message
                   </label>
                   <textarea
@@ -268,10 +270,10 @@ const ContactPage = () => {
                   />
                 </div>
 
-                <button className="w-full h-14 md:h-16 rounded-xl bg-[#002147] hover:bg-[#003366] text-white font-black text-sm uppercase tracking-widest shadow-lg shadow-[#002147]/10 transition-all flex items-center justify-center gap-3 group active:scale-[0.98]">
+                <button className="w-full h-12 px-12! rounded-3xl bg-[#002147] hover:bg-[#003366] text-white font-bold text-lg uppercase shadow-lg shadow-[#002147]/10 transition-all flex items-center justify-center gap-3 group active:scale-[0.98]">
                   SEND DISPATCH
                   <Send
-                    size={16}
+                    size={18}
                     className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
                   />
                 </button>

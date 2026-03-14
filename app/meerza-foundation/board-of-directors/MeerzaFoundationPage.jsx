@@ -110,11 +110,11 @@ const MeerzaFoundationPage = () => {
       <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden bg-slate-50 dark:bg-[#0d0d0d]">
 
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] dark:text-[#00529b] text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
+          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] dark:text-[#00529b] text-[10px] font-black uppercase  mb-8 shadow-sm">
             <HandHeart size={14} /> The Charitable Arm of IVTC
           </div>
 
-          <h1 className="hero-title text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter mb-8">
+          <h1 className="hero-title text-5xl md:text-7xl font-black text-slate-900 dark:text-white  mb-8">
             Empowering Lives, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Inspiring Change.
@@ -128,10 +128,10 @@ const MeerzaFoundationPage = () => {
           </p>
 
           <div className="hero-text flex justify-center gap-4">
-            <button className="px-8 py-4 rounded-full bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-xl shadow-[#002147]/20 flex items-center gap-2">
+            <button className="h-12 px-12! rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-lg uppercase hover:scale-105 transition-transform shadow-xl shadow-[#002147]/20 flex items-center gap-2 justify-center">
               <Heart size={18} className="fill-current" /> Support Our Cause
             </button>
-            <button className="px-8 py-4 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-sm uppercase tracking-widest hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
+            <button className="h-12 px-12! rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-lg uppercase hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center">
               Read Reports
             </button>
           </div>
@@ -142,10 +142,10 @@ const MeerzaFoundationPage = () => {
       <section className="py-20 bg-white dark:bg-[#0a0a0a] pillars-section relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h3 className="text-[#002147] dark:text-[#00529b] font-mono tracking-widest uppercase text-xs mb-4 font-bold">
+            <h3 className="text-[#002147] dark:text-[#00529b]   uppercase text-xs mb-4 font-bold">
               / Our Mission
             </h3>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white ">
               What We Do
             </h2>
           </div>
@@ -171,7 +171,7 @@ const MeerzaFoundationPage = () => {
                   {pillar.desc}
                 </p>
 
-                <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-[#00529b] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase  text-[#002147] dark:text-[#00529b] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   Learn More <ArrowRight size={14} />
                 </div>
               </div>
@@ -187,7 +187,7 @@ const MeerzaFoundationPage = () => {
             <div className="inline-flex items-center gap-2 mb-4 opacity-50">
               <Users size={20} />
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-6">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white  mb-6">
               Our Board of Directors
             </h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
@@ -221,7 +221,7 @@ const MeerzaFoundationPage = () => {
                 <h4 className="text-sm md:text-base font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-[#002147] dark:group-hover:text-[#00529b] transition-colors">
                   {director.name}
                 </h4>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
+                <span className="text-[10px] md:text-xs font-bold uppercase  text-slate-400">
                   {director.role}
                 </span>
               </div>
@@ -235,7 +235,7 @@ const MeerzaFoundationPage = () => {
         <div className="absolute inset-0 bg-[#002147]/10 pattern-grid-lg opacity-20" />
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <Globe className="w-12 h-12 mx-auto mb-6 text-[#002147] dark:text-[#00529b] opacity-80" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 ">
             "Together, we can build a world where no one is left behind."
           </h2>
           <div className="flex justify-center gap-8 text-sm font-medium text-slate-400">

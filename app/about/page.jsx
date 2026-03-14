@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CompanyStructure from "../Components/CompanyStructure";
+import ShineBadge from "@/components/ui/ShineBadge";
 
 // --- DATA CONFIGURATION ---
 const POLICIES = [
@@ -45,8 +47,14 @@ const POLICIES = [
 ];
 
 const PARTNERS = [
-  "Microsoft", "AWS Academy", "Cisco", "CompTIA", 
-  "Pearson VUE", "RedHat", "Oracle", "IBM"
+  { name: "Marwadi University", image: "/partners/Marwadi-University.png" },
+  { name: "FOM International University", image: "/partners/FOM-logo2.png" },
+  { name: "International American University", image: "/partners/iau.png" },
+  { name: "WES Approved", image: "/partners/wes-approved.jpeg" },
+  { name: "British Council", image: "/partners/british-council.svg" },
+  { name: "Ofqual", image: "/partners/ofqual.png" },
+  { name: "SQA", image: "/partners/sqa.png" },
+  { name: "OTHM Qualifications", image: "/partners/logo_othm.png" }
 ];
 
 // --- COMPONENT START ---
@@ -93,18 +101,23 @@ const AboutPage = () => {
         });
       });
 
-      // 4. Staggered Policy Cards
-      gsap.from(".policy-card", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".policies-grid",
-          start: "top 80%",
-        },
+      // 4. Staggered Policy Cards (with Individual Triggers for reliability)
+      gsap.utils.toArray(".policy-card").forEach((card, i) => {
+        gsap.from(card, {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 92%",
+            toggleActions: "play none none none",
+          },
+        });
       });
+
+      // 5. Ensure measurements are correct after layout shifts
+      ScrollTrigger.refresh();
 
     }, pageRef);
 
@@ -119,27 +132,27 @@ const AboutPage = () => {
       {/* --- 1. HERO SECTION (CINEMATIC) --- */}
       <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 pt-40 pb-32" aria-labelledby="about-hero-title">
         <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 dark:border-white/10 bg-white/5 backdrop-blur-xl text-[11px] font-bold tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400 mb-8 shadow-sm">
-            {/* <Sparkles size={16} className="text-[#002147] dark:text-blue-400" /> */}
-            Discover IVTC Campus
-          </div>
+          <ShineBadge className="mb-8">
+            <Sparkles size={16} className="text-[#002147] dark:text-blue-400" />
+            Sri Lanka's Leading Tech Campus
+          </ShineBadge>
           
-          <h1 id="about-hero-title" className="text-6xl md:text-8xl lg:text-[7rem] font-bold tracking-tighter leading-[0.9] mb-8 overflow-hidden">
-            <div className="hero-title-line pb-2">Your Career</div>
+          <h1 id="about-hero-title" className="text-6xl md:text-8xl lg:text-7xl font-bold leading-[0.9] mb-4 overflow-hidden">
+            <div className="hero-title-line pb-2">Empower Your Future</div>
             <div className="hero-title-line text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-2">
-              Starts Here.
+              From A/Ls to Beyond.
             </div>
           </h1>
           
-          <p className="hero-desc text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed mb-12">
-            The best practical IT training in Sri Lanka for school leavers. Gain high-paying skills and start your journey after A/Ls with a campus that cares about your future.
+          <p className="hero-desc text-xl md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed mb-7">
+            Providing expert A/L ICT classes in Sri Lanka, specialized After A/L diploma programs, and dedicated pathways to help you achieve your Degree and Post-Graduate dreams.
           </p>
           
           <div className="hero-actions flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Button className="h-16 px-10 rounded-full bg-[#002147] text-white hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 font-bold text-lg shadow-xl shadow-[#002147]/20 transition-transform hover:scale-105">
+            <Button className="h-12 px-12! rounded-3xl bg-[#002147] text-white hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 font-bold text-lg shadow-xl shadow-[#002147]/20 transition-transform hover:scale-105">
               Explore Programs
             </Button>
-            <Button variant="outline" className="h-16 px-10 rounded-full border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg">
+            <Button variant="outline" className="h-12 px-12! rounded-3xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg">
               Meet Our Faculty
             </Button>
           </div>
@@ -161,8 +174,8 @@ const AboutPage = () => {
           ].map((stat, i) => (
             <div key={i} className="flex-1 w-full text-center flex flex-col items-center justify-center pt-6 md:pt-0 first:pt-0">
               <stat.icon size={24} className="text-[#002147] dark:text-blue-400 mb-3 opacity-80" />
-              <div className="text-4xl md:text-5xl font-bold tracking-tight mb-1">{stat.val}</div>
-              <div className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
+              <div className="text-4xl md:text-3xl   mb-1">{stat.val}</div>
+              <div className="text-[11px]  text-slate-500 ">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -174,7 +187,7 @@ const AboutPage = () => {
           {/* Sticky Left Column */}
           <div className="lg:w-1/3">
             <div className="sticky top-32">
-              <h2 id="purpose-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+              <h2 id="purpose-heading" className="text-4xl md:text-5xl font-bold  mb-6">
                 Our Purpose <br /> & Direction.
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -188,7 +201,7 @@ const AboutPage = () => {
             <div className="fade-up bg-[#002147] dark:bg-blue-900/20 text-white rounded-[2rem] p-10 md:p-14 border border-transparent dark:border-blue-500/20 shadow-xl relative overflow-hidden">
               <Rocket className="absolute -right-10 -bottom-10 w-64 h-64 text-white/5 dark:text-blue-500/10" />
               <div className="relative z-10">
-                <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
+                <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-[11px] font-bold  mb-6">
                   Our Mission
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
@@ -201,7 +214,7 @@ const AboutPage = () => {
             </div>
 
             <div className="fade-up bg-slate-100 dark:bg-[#111] rounded-[2rem] p-10 md:p-14 border border-slate-200 dark:border-white/10 shadow-lg">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-[11px] font-bold  mb-6">
                 Our Vision
               </div>
               <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-6 text-slate-900 dark:text-white">
@@ -219,7 +232,7 @@ const AboutPage = () => {
       <section className="py-24 bg-white/5 dark:bg-white/5 backdrop-blur-3xl border-y border-slate-200 dark:border-white/10 mt-12" aria-labelledby="leadership-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 fade-up">
-            <h2 id="leadership-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Our Support Team & Faculty</h2>
+            <h2 id="leadership-heading" className="text-4xl md:text-5xl font-bold  mb-6">Our Support Team & Faculty</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400">
               Our campus is guided by experienced IT professionals and educators who understand the local and global job market.
             </p>
@@ -233,21 +246,31 @@ const AboutPage = () => {
       {/* Partners Section */}
       <section className="max-w-7xl mx-auto px-6 py-32" aria-labelledby="partners-heading">
         <div className="text-center mb-16 fade-up">
-          <div className="text-[#002147] dark:text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-4">
+          <div className="text-[#002147] dark:text-blue-400 text-medium  uppercase  mb-2">
             Global Recognition
           </div>
-          <h2 id="partners-heading" className="text-4xl font-bold tracking-tight">Accredited by the Best</h2>
+          <h2 id="partners-heading" className="text-4xl font-bold mb-4">Our Affiliated Partners</h2>
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
+            IVTC partners with leading institutions and organizations to enhance education, foster innovation, and create opportunities for our students
+          </p>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-up">
           {PARTNERS.map((partner, i) => (
             <div 
               key={i} 
-              className="group aspect-video flex items-center justify-center bg-white dark:bg-[#111] border border-slate-200 dark:border-white/10 rounded-2xl hover:border-[#002147] dark:hover:border-blue-500 hover:shadow-[0_0_30px_rgba(0,33,71,0.1)] dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-300 cursor-default"
+              className="group aspect-video flex items-center justify-center bg-white dark:bg-[#111] border border-slate-200 dark:border-white/10 rounded-2xl hover:border-[#002147] dark:hover:border-blue-500 hover:shadow-[0_0_30px_rgba(0,33,71,0.1)] dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-300 cursor-default p-6 overflow-hidden"
             >
-              <span className="text-xl md:text-2xl font-bold text-slate-400 group-hover:text-[#002147] dark:group-hover:text-white transition-colors">
-                {partner}
-              </span>
+              <div className="relative w-full h-full grayscale group-hover:grayscale-0 transition-all duration-300">
+                <Image
+                  src={partner.image}
+                  alt={`${partner.name} logo - Official Partner of IVTC Campus`}
+                  className="object-contain"
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -266,7 +289,7 @@ const AboutPage = () => {
       <section className="max-w-7xl mx-auto px-6 pb-32" aria-labelledby="guidelines-heading">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 fade-up gap-6">
           <div>
-            <h2 id="guidelines-heading" className="text-4xl font-bold tracking-tight mb-4">Campus Guidelines</h2>
+            <h2 id="guidelines-heading" className="text-4xl font-bold  mb-4">Campus Guidelines</h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg max-w-xl">
               A structured, safe, and professional environment designed to help you focus entirely on your technical growth.
             </p>
@@ -298,10 +321,10 @@ const AboutPage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2)_0,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0,transparent_60%)] pointer-events-none" />
         
         <div className="relative z-10">
-          <h2 id="cta-heading" className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8">
+          <h2 id="cta-heading" className="text-5xl md:text-7xl font-bold text-white  mb-8">
             Start Your <br /> Journey Today.
           </h2>
-          <Button className="h-16 px-12 rounded-full bg-white text-[#002147] hover:bg-slate-100 font-bold text-lg shadow-2xl transition-all hover:scale-105 group uppercase tracking-widest">
+          <Button className="h-12 px-12! rounded-3xl bg-white text-[#002147] hover:bg-slate-100 font-bold text-lg shadow-2xl transition-all hover:scale-105 group">
             Start Your Journey 
             <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
           </Button>

@@ -106,7 +106,7 @@ const SocialSidebar = () => {
             onMouseLeave={(e) => handleHover(e, false)}
           >
             {/* Tooltip */}
-            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-neutral-900 dark:bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-md opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-2xl border border-white/10">
+            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-neutral-900 dark:bg-neutral-800 text-white text-[10px] font-bold uppercase  rounded-md opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-2xl border border-white/10">
               {social.label}
               {/* Tooltip Arrow */}
               <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-neutral-900 dark:bg-neutral-800 rotate-45 transform border-r border-t border-white/10" />

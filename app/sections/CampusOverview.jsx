@@ -77,7 +77,7 @@ const CampusStats = () => {
             <div key={i} className="stat-item flex flex-col  group">
               {/* Minimalist Top Indicator */}
               <div className="reveal flex items-center gap-3 mb-8">
-                <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+                <span className="text-[10px] font-bold  text-slate-400 uppercase">
                   {stat.comment}
                 </span>
                 <div className="h-px w-12 bg-slate-200 dark:bg-white/10 group-hover:w-20 group-hover:bg-amber-600 dark:group-hover:bg-amber-500 transition-all duration-700" />
@@ -86,7 +86,7 @@ const CampusStats = () => {
               {/* Counter Section */}
               <div className="reveal flex items-baseline gap-2 mb-4">
                 <span
-                  className="stat-value text-7xl md:text-8xl font-light tracking-tighter text-slate-900 dark:text-white tabular-nums text-center"
+                  className="stat-value text-7xl md:text-8xl font-light  text-slate-900 dark:text-white tabular-nums text-center"
                   data-target={stat.value}
                 >
                   0
@@ -96,7 +96,7 @@ const CampusStats = () => {
 
               {/* Content Section */}
               <div className="reveal space-y-3">
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white ">
                   {stat.label}
                 </h3>
                 <p className="text-slate-500 dark:text-gray-400 leading-relaxed max-w-[240px] text-[15px]">

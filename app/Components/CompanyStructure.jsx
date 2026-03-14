@@ -56,7 +56,7 @@ const OrgNode = ({ node }) => {
           {node.role}
         </p>
         {node.sub && (
-          <p className="text-[10px] font-medium text-slate-400 uppercase tracking-tighter mt-1">
+          <p className="text-[10px] font-medium text-slate-400 uppercase  mt-1">
             {node.sub}
           </p>
         )}

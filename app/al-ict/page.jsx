@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import ShineBadge from "@/components/ui/ShineBadge";
+import { Sparkles } from "lucide-react";
 
 const ALICTPage = () => {
   const pageRef = useRef(null);
@@ -57,15 +59,16 @@ const ALICTPage = () => {
     : resources.filter(res => res.category === activeTab);
 
   return (
-    <main ref={pageRef} className="min-h-screen bg-transparent pt-32 pb-24 px-6 md:px-12">
+    <main ref={pageRef} className="min-h-screen bg-transparent pt-40 pb-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         
         {/* --- HERO SECTION --- */}
         <section className="text-center mb-24 fade-up">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
+           <ShineBadge className="mb-6">
+            <Sparkles size={16} className="text-[#002147] dark:text-blue-400" />
             Everything for A/L ICT
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-slate-900 dark:text-white">
+          </ShineBadge>
+          <h1 className="text-5xl md:text-7xl font-bold  mb-8 text-slate-900 dark:text-white">
             A/L ICT <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600">Resources Hub</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
@@ -73,35 +76,14 @@ const ALICTPage = () => {
           </p>
         </section>
 
-        {/* --- NEWS & UPDATES --- */}
-        <section className="mb-32 fade-up">
-          <div className="flex items-center gap-3 mb-10">
-            <Newspaper className="text-[#002147] dark:text-blue-400" />
-            <h2 className="text-3xl font-bold tracking-tight">Latest ICT News</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((_, i) => (
-              <div key={i} className="group bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-6 rounded-[2rem] hover:shadow-xl transition-all">
-                <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
-                  <Calendar size={14} />
-                  March {i + 1}, 2026
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">Exam Schedule Update for 2026 Batch</h3>
-                <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Stay informed about the latest changes in the A/L ICT syllabus and exam dates.</p>
-                <Link href="#" className="inline-flex items-center gap-2 text-sm font-bold text-[#002147] dark:text-blue-400 hover:gap-3 transition-all">
-                  Read More <ChevronRight size={16} />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </section>
+      
 
         {/* --- RESOURCE CENTER --- */}
         <section className="fade-up">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
             <div className="flex items-center gap-3">
               <BookOpen className="text-[#002147] dark:text-blue-400" />
-              <h2 className="text-3xl font-bold tracking-tight">Learning Materials</h2>
+              <h2 className="text-3xl font-bold ">Learning Materials</h2>
             </div>
             
             <div className="flex gap-2 p-1 bg-slate-100 dark:bg-white/5 rounded-full">
@@ -109,7 +91,7 @@ const ALICTPage = () => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${
+                  className={`px-6 py-2 rounded-full text-xs font-bold uppercase  transition-all ${
                     activeTab === tab 
                       ? "bg-[#002147] text-white" 
                       : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
@@ -134,10 +116,10 @@ const ALICTPage = () => {
                 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                    <div className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-[10px] font-bold text-slate-500 uppercase ">
                       {res.topic}
                     </div>
-                    <div className="px-3 py-1 rounded-full bg-blue-500/10 text-[10px] font-bold text-blue-600 uppercase tracking-widest">
+                    <div className="px-3 py-1 rounded-full bg-blue-500/10 text-[10px] font-bold text-blue-600 uppercase ">
                       Year {res.year}
                     </div>
                   </div>
@@ -145,12 +127,12 @@ const ALICTPage = () => {
                   <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">{res.title}</h3>
                   
                   {res.category === "notes" ? (
-                    <Button className="w-full h-12 rounded-2xl bg-[#002147] text-white hover:bg-blue-900 font-bold gap-2">
-                      <Download size={18} /> Download PDF
+                    <Button className="w-full h-12 px-12! rounded-3xl bg-[#002147] text-white hover:bg-blue-900 font-bold text-lg gap-2 flex items-center justify-center">
+                      <Download size={20} /> Download PDF
                     </Button>
                   ) : (
-                    <Button className="w-full h-12 rounded-2xl bg-red-600 text-white hover:bg-red-700 font-bold gap-2">
-                      <Video size={18} /> Watch Session
+                    <Button className="w-full h-12 px-12! rounded-3xl bg-[#002147] text-white hover:bg-blue-900 font-bold text-lg gap-2 flex items-center justify-center">
+                      <Video size={20} /> Watch Session
                     </Button>
                   )}
                 </div>
@@ -163,7 +145,7 @@ const ALICTPage = () => {
         <section className="fade-up mt-32">
           <div className="flex items-center gap-3 mb-10">
             <Calendar className="text-[#002147] dark:text-blue-400" />
-            <h2 className="text-3xl font-bold tracking-tight">Yearly Resource Archives</h2>
+            <h2 className="text-3xl font-bold ">Yearly Resource Archives</h2>
           </div>
           
           <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[2.5rem] overflow-hidden">
@@ -171,10 +153,10 @@ const ALICTPage = () => {
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-slate-100 dark:border-white/5">
-                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Target Year</th>
-                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Resources Available</th>
-                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Last Updated</th>
-                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-right">Action</th>
+                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase ">Target Year</th>
+                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase ">Resources Available</th>
+                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase ">Last Updated</th>
+                    <th className="px-8 py-6 text-[10px] font-bold text-slate-400 uppercase  text-right">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-white/5">

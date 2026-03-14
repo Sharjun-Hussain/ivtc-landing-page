@@ -136,17 +136,17 @@ const CourseListingPage = () => {
         {/* Navigation Breadcrumb */}
         <Link
           href="/pathways"
-          className="header-anim inline-flex items-center gap-2 text-slate-500 hover:text-blue-500 transition-colors mb-12 text-sm font-bold uppercase tracking-widest"
+          className="header-anim inline-flex items-center gap-2 text-slate-500 hover:text-blue-500 transition-colors mb-12 text-sm font-bold uppercase "
         >
           <ChevronLeft size={16} /> Back to Pathways
         </Link>
 
         {/* Dynamic Header */}
         <header className="mb-20">
-          <h3 className="header-anim text-blue-500 dark:text-slate-400 font-mono tracking-widest uppercase text-xs mb-4">
+          <h3 className="header-anim text-blue-500 dark:text-slate-400   uppercase text-xs mb-4">
             / Course Catalog
           </h3>
-          <h1 className="header-anim text-5xl md:text-7xl font-bold text-slate-900 dark:text-white tracking-tighter mb-6">
+          <h1 className="header-anim text-5xl md:text-7xl font-bold text-slate-900 dark:text-white  mb-6">
             Explore{" "}
             <span
               className={`text-transparent bg-clip-text bg-gradient-to-r ${data.color}`}
@@ -179,10 +179,10 @@ const CourseListingPage = () => {
               {/* Content */}
               <div className="flex-1">
                 <div className="flex gap-3 mb-4">
-                  <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase  text-slate-400">
                     <Clock size={12} /> {course.duration}
                   </span>
-                  <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase  text-slate-400">
                     <BarChart size={12} /> {course.level}
                   </span>
                 </div>

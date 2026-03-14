@@ -83,16 +83,19 @@ const HeroSection = memo(() => {
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
           <div className="hero-text opacity-0 translate-y-8 mb-6 flex items-center gap-4">
             <span className="w-8 md:w-12 h-[3px] bg-gradient-to-r from-[#002147] to-blue-900"></span>
-            <span className="text-[10px] md:text-[11px] font-medium uppercase tracking-[0.2em] text-slate-200">
+            <span className="text-[10px] md:text-[11px] font-medium  text-slate-200">
               IVTC Campus Sri Lanka
             </span>
           </div>
-          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-[7.5rem] font-black font-bold text-white leading-tight md:leading-tight tracking-tighter max-w-4xl">
+          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-7xl font-black font-bold text-white leading-tight md:leading-tight  max-w-4xl">
             Empower Your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-200">Digital</span> Future.
           </h1>
+          <p className="hero-text opacity-0 translate-y-8 mt-6 text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed">
+            Master the digital landscape with Sri Lanka's leading campus for A/L ICT, Higher National Diplomas, and Global Degree Pathways. Your journey to technical excellence starts here.
+          </p>
           <div className="hero-text opacity-0 translate-y-8 mt-8 md:mt-12">
-            <button className="group relative px-10 py-4 md:px-12 md:py-5 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full hover:from-[#003366] hover:to-blue-800 transition-all font-medium cursor-pointer  ease-in-out duration-800  shadow-lg">
+            <button className="group relative h-12 px-12! bg-[#002147] text-white text-lg font-semibold rounded-3xl hover:bg-[#003366] transition-all shadow-lg flex items-center justify-center">
               Start Learning
             </button>
           </div>
@@ -217,7 +220,7 @@ const HeroWithMegaMenu = () => {
               >
                 <Link
                   href={link.href}
-                  className={`group relative text-[14px] uppercase font-medium transition-colors flex items-center gap-1.5 py-1 ${
+                  className={`group relative text-[14px] font-medium transition-colors flex items-center gap-1.5 py-1 ${
                     pathname === link.href ? "font-bold" : ""
                   } ${
                     isScrolled
@@ -227,7 +230,7 @@ const HeroWithMegaMenu = () => {
                 >
                   {link.name}
                   {/* Animated Underline */}
-                  <span className={`absolute bottom-0 left-0 h-[2px] bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 transition-all duration-300 ease-out ${
+                  <span className={`absolute bottom-0 left-0 h-[2px] bg-[#002147] dark:bg-white transition-all duration-300 ease-out ${
                     pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
                   }`} />
                   
@@ -267,14 +270,14 @@ const HeroWithMegaMenu = () => {
 
                       <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
                         <div>
-                          <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">
+                          <p className="text-[10px] font-black text-slate-900 dark:text-white ">
                             Next Intake
                           </p>
                           <p className="text-[12px] text-slate-600 dark:text-slate-400 font-medium">
                             Spring Semester • March 2026
                           </p>
                         </div>
-                        <button className="px-6 py-3 bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-full transition-all shadow-lg">
+                        <button className="h-12 px-12! bg-[#002147] hover:bg-[#003366] text-white text-lg font-bold rounded-3xl transition-all shadow-lg flex items-center justify-center">
                           View All Courses
                         </button>
                       </div>
@@ -289,7 +292,7 @@ const HeroWithMegaMenu = () => {
           <div className="flex items-center gap-3 z-[110]">
             <Link
               href="/meerza-foundation"
-              className={`hidden lg:block px-8 py-3 text-[11px] font-medium uppercase tracking-widest rounded-full transition-all border ${
+              className={`hidden lg:block  px-6 py-3 text-sm font-bold rounded-3xl transition-all border flex items-center justify-center ${
                 isScrolled
                   ? "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5"
                   : "border-white/30 text-white hover:bg-white/10"
@@ -299,10 +302,10 @@ const HeroWithMegaMenu = () => {
             </Link>
             <Link
              href="https://lms.ivtccampus.lk"
-              className={`hidden lg:block px-8 py-3 text-[11px] font-medium uppercase tracking-widest rounded-full transition-all ${
+              className={`hidden lg:block  px-6 py-3 text-sm font-bold rounded-3xl transition-all flex items-center justify-center ${
                 isScrolled
-                  ? "bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white shadow-lg"
-                  : "bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white shadow-xl"
+                  ? "bg-[#002147] hover:bg-[#003366] text-white shadow-lg"
+                  : "bg-[#002147] hover:bg-[#003366] text-white shadow-xl"
               }`}
             >
               Login to LMS
@@ -332,7 +335,7 @@ const HeroWithMegaMenu = () => {
         }`}
       >
         <div className="h-full flex flex-col justify-center px-10 gap-8">
-          <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase tracking-[0.4em]">
+          <p className="text-slate-900 dark:text-white text-[10px] font-black ">
             Main Menu
           </p>
           <div className="flex flex-col gap-6">
@@ -341,7 +344,7 @@ const HeroWithMegaMenu = () => {
                 key={link.name}
                 href={link.href}
                 onClick={closeMenu}
-                className={`text-3xl md:text-4xl font-bold tracking-tighter flex items-center justify-between group ${
+                className={`text-3xl md:text-4xl font-bold  flex items-center justify-between group ${
                   pathname === link.href
                     ? "text-slate-900 dark:text-white"
                     : "text-slate-400 dark:text-slate-600"
@@ -363,14 +366,14 @@ const HeroWithMegaMenu = () => {
           <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 grid grid-cols-1 gap-3">
             <Link
               href="/meerza-foundation"
-              className="w-full py-4 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold uppercase tracking-widest rounded-2xl flex items-center justify-center gap-2 text-[10px] md:text-xs"
+              className="w-full h-12 px-12! border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold rounded-3xl flex items-center justify-center gap-2 text-lg"
               onClick={closeMenu}
             >
               Meerza Foundation
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 hover:from-[#003366] hover:to-blue-800 text-white font-bold uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[10px] md:text-xs transition-all"
+              className="w-full h-12 px-12! bg-[#002147] hover:bg-[#003366] text-white font-bold rounded-3xl shadow-lg flex items-center justify-center gap-2 text-lg transition-all"
               onClick={closeMenu}
             >
               Login to LMS

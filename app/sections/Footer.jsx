@@ -102,7 +102,7 @@ const Footer = () => {
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 lg:pl-12">
             {footerLinks.map((col, i) => (
               <div key={i}>
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80 mb-8">
+                <h4 className="text-[10px] font-bold uppercase  text-white/80 mb-8">
                   {col.title}
                 </h4>
                 <ul className="space-y-5">
@@ -132,7 +132,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
+          <p className="text-slate-500 text-[10px] uppercase  font-bold flex items-center gap-2">
             © {new Date().getFullYear()} IVTC CAMPUS. POWERED BY{" "}
             <span className="text-white hover:text-slate-300 cursor-pointer transition-colors">
               INZEEDO
@@ -143,7 +143,7 @@ const Footer = () => {
             {mounted && (
               <button
                 onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                className="flex items-center hover:cursor-pointer gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
+                className="flex items-center hover:cursor-pointer gap-2 text-[10px] font-black uppercase  text-slate-400 hover:text-white transition-colors group"
                 aria-label="Toggle theme"
               >
                 <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors">
@@ -163,7 +163,7 @@ const Footer = () => {
 
             <button
               onClick={scrollToTop}
-              className="flex items-center hover:cursor-pointer gap-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors group"
+              className="flex items-center hover:cursor-pointer gap-3 text-[10px] font-black uppercase  text-slate-400 hover:text-white transition-colors group"
             >
               <span className="hidden sm:block font-medium">Back to Top</span>
               <span className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:border-white/30 group-hover:-translate-y-1 transition-all duration-300">

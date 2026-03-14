@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 import {
   User, Mail, Phone, GraduationCap, Send, Users, ShieldCheck,
   BookOpen, Building, Calendar as CalendarIcon, FileText,
-  ChevronDown, CheckCircle, Lock, Globe,
-  ArrowRight
+  ArrowRight,
+  Globe,
+  CheckCircle
 } from "lucide-react";
+import ShineBadge from "@/components/ui/ShineBadge";
 
 // UI Components
 import { Button } from "@/components/ui/button";
@@ -79,7 +81,7 @@ const COURSES = {
 // --- Reusable Sub-Components ---
 const InputField = React.memo(({ label, icon: Icon, className, ...props }) => (
   <div className={cn("space-y-2", className)}>
-    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+    <label className="text-xs font-semibold   text-slate-500 dark:text-slate-400">
       {label}
     </label>
     <div className="relative group/input">
@@ -98,11 +100,11 @@ InputField.displayName = "InputField";
 
 const CustomSelect = React.memo(({ label, icon: Icon, options, value, onChange, placeholder = "Select Option", className }) => (
   <div className={cn("space-y-2", className)}>
-    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+    <label className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
       {label}
     </label>
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-full h-12 bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl  pr-3 text-sm focus:border-[#002147] dark:focus:border-blue-500 focus:ring-1 focus:ring-[#002147]/30 dark:focus:ring-blue-500/30 outline-none transition-all font-medium relative text-left">
+      <SelectTrigger className="w-full h-12! bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl  pr-3 text-sm focus:border-[#002147] dark:focus:border-blue-500 focus:ring-1 focus:ring-[#002147]/30 dark:focus:ring-blue-500/30 outline-none transition-all font-medium relative text-left">
         <Icon
           className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition-colors"
           size={14}
@@ -193,10 +195,10 @@ const StudentRegistration = () => {
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
             {/* Header Area */}
             <div className="space-y-4">
-              <div className="anim-stagger font-medium inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/5 dark:bg-blue-400/10 border border-[#002147]/10 dark:border-blue-400/20 text-[#002147] dark:text-blue-400 text-[9px] uppercase tracking-[0.2em]">
+              <ShineBadge className="anim-stagger">
                 Official Enrollment Portal
-              </div>
-              <h2 className="anim-stagger text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white tracking-tighter leading-[1.1]">
+              </ShineBadge>
+              <h2 className="anim-stagger text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white  leading-[1.1]">
                 Build Your <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-[#0055aa] dark:from-blue-400 dark:to-blue-600">Future</span> Today.
               </h2>
               <p className="anim-stagger text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
@@ -229,7 +231,7 @@ const StudentRegistration = () => {
                 <Phone size={20} />
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">Need Assistance?</p>
+                <p className="text-[10px]   text-slate-500 dark:text-slate-400 font-medium">Need Assistance?</p>
                 <p className="text-sm text-slate-900 dark:text-white mt-1 font-semibold">Call us at <a href="tel:+94771234567" className="text-[#002147] dark:text-blue-400 hover:underline">+94 77 123 4567</a></p>
               </div>
             </div>
@@ -247,7 +249,7 @@ const StudentRegistration = () => {
               {/* Step 1: Registration Path */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs uppercase tracking-widest font-semibold text-[#002147] dark:text-blue-400">
+                  <label className="text-xs font-semibold text-[#002147] dark:text-blue-400 border-b border-[#002147]/20 dark:border-blue-400/20 pb-0.5 w-fit">
                     Step 01. Select Pathway
                   </label>
                   <span className="text-[10px] font-bold text-slate-400 italic text-right">Target: {activeTypeData.title}</span>
@@ -281,7 +283,7 @@ const StudentRegistration = () => {
                             {type.title}
                           </h4>
                           <span className={cn(
-                            "text-[10px] font-medium uppercase tracking-wider truncate block mt-0.5",
+                            "text-[10px] font-medium   truncate block mt-0.5",
                             activeForm === type.id ? "text-white/50" : "text-slate-400"
                           )}>
                             {type.tags[0]}
@@ -295,7 +297,7 @@ const StudentRegistration = () => {
 
               {/* Step 2: Full Information */}
               <div className="space-y-6 pt-6 border-t border-slate-100 dark:border-white/5">
-                <label className="text-xs font-semibold uppercase tracking-widest text-[#002147] dark:text-blue-400">
+                <label className="text-sm font-semibold text-[#002147] dark:text-blue-400 border-b border-[#002147]/20 dark:border-blue-400/20 pb-0.5 w-fit">
                   Step 02. Personal & Academic Details
                 </label>
 
@@ -323,7 +325,7 @@ const StudentRegistration = () => {
 
                 <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-2 flex flex-col">
-                    <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                    <label className="text-[11px] font-bold   text-slate-500 dark:text-slate-400">
                       Date of Birth
                     </label>
                     <Popover>
@@ -331,7 +333,7 @@ const StudentRegistration = () => {
                         <Button
                           variant={"outline"}
                           className={cn(
-                            "w-full justify-start text-left font-medium h-11 rounded-xl bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 text-sm transition-all",
+                            "w-full justify-start text-left font-medium h-12 rounded-xl bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 text-sm transition-all",
                             !date && "text-slate-400"
                           )}
                         >
@@ -431,7 +433,7 @@ const StudentRegistration = () => {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="group relative w-full sm:w-auto min-w-[280px] bg-linear-to-r from-[#002147] to-[#003366] text-white font-medium tracking-[0.2em] py-4 px-10 rounded-full hover:shadow-[0_20px_40px_rgba(0,33,71,0.3)] transition-all duration-500 flex items-center justify-center gap-3 text-xs xl:text-sm active:scale-[0.98] overflow-hidden"
+                    className="group relative w-full sm:w-auto min-w-[280px] bg-linear-to-r from-[#002147] to-[#003366] text-white font-medium  py-4 px-10 rounded-full hover:shadow-[0_20px_40px_rgba(0,33,71,0.3)] transition-all duration-500 flex items-center justify-center gap-3 text-xs xl:text-sm active:scale-[0.98] overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <span className="relative z-10 font-medium">Submit Application</span>
