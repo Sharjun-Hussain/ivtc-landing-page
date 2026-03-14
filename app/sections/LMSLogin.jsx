@@ -1,43 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Lock, GraduationCap, Laptop } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const LMSLogin = () => {
-  const sectionRef = useRef(null);
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        contentRef.current,
-        {
-          y: 30,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const [sectionRef, isVisible] = useScrollReveal();
 
   return (
     <section
@@ -47,8 +16,7 @@ const LMSLogin = () => {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div
-          ref={contentRef}
-          className="relative group overflow-hidden rounded-[2rem] bg-linear-to-br from-[#002147] via-[#003366] to-[#001a35] p-6 md:p-10 lg:p-14 shadow-2xl border border-white/5"
+          className={`relative group overflow-hidden rounded-[2rem] bg-linear-to-br from-[#002147] via-[#003366] to-[#001a35] p-6 md:p-10 lg:p-14 shadow-2xl border border-white/5 opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`}
         >
           {/* Decorative Glows */}
           <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] group-hover:bg-blue-500/20 transition-colors duration-700" />

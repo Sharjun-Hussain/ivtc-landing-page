@@ -1,52 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import React from "react";
+import CountUp from "@/components/ui/CountUp";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const CampusStats = () => {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const stats = gsap.utils.toArray(".stat-item");
-
-      stats.forEach((item) => {
-        const val = item.querySelector(".stat-value");
-        const target = parseInt(val.getAttribute("data-target"));
-
-        // Number count-up animation
-        gsap.to(val, {
-          innerText: target,
-          duration: 2.5,
-          snap: { innerText: 1 },
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 90%",
-          },
-        });
-
-        // Soft fade-in for the text elements
-        gsap.from(item.querySelectorAll(".reveal"), {
-          y: 20,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 90%",
-          },
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const [sectionRef, isVisible] = useScrollReveal();
 
   const stats = [
     {
@@ -74,9 +32,9 @@ const CampusStats = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
           {stats.map((stat, i) => (
-            <div key={i} className="stat-item flex flex-col  group">
+            <div key={i} className={`stat-item flex flex-col group opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`} style={{ animationDelay: `${i * 150}ms` }}>
               {/* Minimalist Top Indicator */}
-              <div className="reveal flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-8">
                 <span className="text-[10px] font-bold  text-slate-400 uppercase">
                   {stat.comment}
                 </span>
@@ -84,18 +42,15 @@ const CampusStats = () => {
               </div>
 
               {/* Counter Section */}
-              <div className="reveal flex items-baseline gap-2 mb-4">
-                <span
-                  className="stat-value text-7xl md:text-8xl font-light  text-slate-900 dark:text-white tabular-nums text-center"
-                  data-target={stat.value}
-                >
-                  0
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="stat-value text-7xl md:text-8xl font-light text-slate-900 dark:text-white tabular-nums text-center">
+                  <CountUp end={stat.value} duration={2500} startOnView={true} />
                 </span>
                 <span className="text-4xl font-light text-amber-600/50 dark:text-gray-600">+</span>
               </div>
 
               {/* Content Section */}
-              <div className="reveal space-y-3">
+              <div className="space-y-3">
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white ">
                   {stat.label}
                 </h3>
