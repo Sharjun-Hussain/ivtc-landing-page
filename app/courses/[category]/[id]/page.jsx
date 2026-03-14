@@ -71,7 +71,7 @@ const CourseDetailsPage = () => {
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* --- 1. BREADCRUMBS --- */}
-        <nav className="anim-fade flex items-center gap-2 mb-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+        <nav className="anim-fade flex items-center gap-2 mb-8 text-xs font-bold uppercase  text-slate-400">
           <Link
             href="/"
             className="hover:text-blue-600 flex items-center gap-1 transition-colors"
@@ -101,14 +101,14 @@ const CourseDetailsPage = () => {
           <div className="lg:col-span-7 space-y-6">
             <div className="anim-fade flex items-center gap-3">
               {/* Category Badge */}
-              <span className="px-4 py-1.5 rounded-xl bg-blue-500/10 text-blue-600 text-[10px] font-black uppercase tracking-widest border border-blue-500/20">
+              <span className="px-4 py-1.5 rounded-xl bg-blue-500/10 text-blue-600 text-[10px] font-black uppercase  border border-blue-500/20">
                 {courseCategory}
               </span>
               <span className="flex items-center gap-1 text-yellow-500 font-bold text-sm">
                 <Star size={14} fill="currentColor" /> 4.9 (2.4k Reviews)
               </span>
             </div>
-            <h1 className="anim-fade text-5xl md:text-7xl font-bold text-slate-900 dark:text-white tracking-tighter leading-[0.9] mb-4">
+            <h1 className="anim-fade text-5xl md:text-7xl font-bold text-slate-900 dark:text-white  leading-[0.9] mb-4">
               Enterprise <br />{" "}
               <span className="text-blue-600">Networking</span>
             </h1>
@@ -159,7 +159,7 @@ const CourseDetailsPage = () => {
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm">
                     {f.title}
                   </h4>
-                  <p className="text-[11px] text-slate-500 leading-relaxed uppercase font-bold tracking-tight">
+                  <p className="text-[11px] text-slate-500 leading-relaxed uppercase font-bold ">
                     {f.desc}
                   </p>
                 </div>
@@ -196,7 +196,7 @@ const CourseDetailsPage = () => {
           <aside className="lg:col-span-4 sticky top-28 anim-fade">
             <div className="bg-white dark:bg-[#111] p-10 rounded-[3rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] dark:shadow-none border border-slate-100 dark:border-white/5 space-y-8">
               <div className="flex justify-between items-center">
-                <span className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+                <span className="text-3xl font-bold text-slate-900 dark:text-white ">
                   LKR 45,000
                 </span>
                 <span className="text-xs font-bold text-green-500 bg-green-500/10 px-3 py-1 rounded-full uppercase">
@@ -228,7 +228,7 @@ const CourseDetailsPage = () => {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest"
+                    className="flex items-center gap-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase "
                   >
                     <item.icon size={16} className="text-blue-600" />
                     {item.text}
@@ -246,10 +246,10 @@ const CourseDetailsPage = () => {
         >
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h3 className="text-blue-500 font-mono tracking-widest uppercase text-xs mb-3 font-bold">
+              <h3 className="text-blue-500   uppercase text-xs mb-3 font-bold">
                 / Similar Programs
               </h3>
-              <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tighter">
+              <h2 className="text-4xl font-bold text-slate-900 dark:text-white ">
                 You might also like
               </h2>
             </div>
@@ -277,7 +277,7 @@ const CourseDetailsPage = () => {
                   Master the fundamentals of cybersecurity and threat
                   management.
                 </p>
-                <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-blue-600 pt-6 border-t border-slate-100 dark:border-white/5">
+                <div className="flex items-center justify-between text-[10px] font-black uppercase  text-blue-600 pt-6 border-t border-slate-100 dark:border-white/5">
                   <span>Explore Course</span>
                   <ArrowRight size={14} />
                 </div>

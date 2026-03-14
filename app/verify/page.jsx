@@ -66,7 +66,7 @@ const CertificateValidator = () => {
               <ShieldCheck size={32} />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white ">
             Verify Your{" "}
             <span className="text-[#002147] dark:text-blue-400">
               Certificate
@@ -88,12 +88,12 @@ const CertificateValidator = () => {
               placeholder="Ex: IVTC-2026-X89"
               value={certId}
               onChange={(e) => setCertId(e.target.value.toUpperCase())}
-              className="w-full h-20 pl-16 pr-40 bg-white dark:bg-[#111] rounded-[2rem] border border-slate-200 dark:border-white/10 text-xl font-bold tracking-widest text-slate-900 dark:text-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] focus:ring-4 focus:ring-[#002147]/10 focus:border-[#002147] outline-none transition-all placeholder:text-slate-300 placeholder:font-normal placeholder:tracking-normal"
+              className="w-full h-20 pl-16 pr-40 bg-white dark:bg-[#111] rounded-[2rem] border border-slate-200 dark:border-white/10 text-xl font-bold  text-slate-900 dark:text-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] focus:ring-4 focus:ring-[#002147]/10 focus:border-[#002147] outline-none transition-all placeholder:text-slate-300 placeholder:font-normal placeholder:"
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="absolute right-3 top-3 bottom-3 px-8 bg-[#002147] hover:bg-[#003366] text-white rounded-[1.25rem] font-bold text-sm transition-all flex items-center gap-2 shadow-lg shadow-[#002147]/20"
+              className="absolute right-3 top-3 bottom-3 h-14 px-12! bg-[#002147] hover:bg-[#003366] text-white rounded-3xl font-bold text-lg transition-all flex items-center gap-2 shadow-lg shadow-[#002147]/20 justify-center"
             >
               {status === "loading" ? (
                 <Loader2 className="animate-spin" size={18} />
@@ -112,10 +112,10 @@ const CertificateValidator = () => {
           >
             {/* Top Banner */}
             <div className="bg-[#002147] py-4 px-8 flex items-center justify-between">
-              <span className="text-white text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2">
+              <span className="text-white text-xs font-black uppercase  flex items-center gap-2">
                 <CheckCircle2 size={16} /> Authenticity Verified
               </span>
-              <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest">
+              <span className="text-white/70 text-[10px] font-bold uppercase ">
                 {result.verificationUrl.split("/").pop()}
               </span>
             </div>
@@ -123,7 +123,7 @@ const CertificateValidator = () => {
             <div className="p-10 space-y-10">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black text-[#002147] dark:text-blue-400 uppercase tracking-widest">
+                  <label className="text-[10px] font-black text-[#002147] dark:text-blue-400 uppercase ">
                     Certificate Holder
                   </label>
                   <h2 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
@@ -134,22 +134,22 @@ const CertificateValidator = () => {
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
-                    className="rounded-xl border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-xs h-11"
+                    className="h-12 px-12! rounded-3xl border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg flex items-center justify-center"
                   >
-                    <Download size={16} className="mr-2" /> PDF
+                    <Download size={20} className="mr-2" /> PDF
                   </Button>
                   <Button
                     variant="outline"
-                    className="rounded-xl border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-xs h-11"
+                    className="h-12 px-12! rounded-3xl border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg flex items-center justify-center"
                   >
-                    <Share2 size={16} />
+                    <Share2 size={20} />
                   </Button>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-slate-100 dark:border-white/5">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <label className="text-[10px] font-black text-slate-400 uppercase ">
                     Course Completed
                   </label>
                   <p className="text-slate-900 dark:text-white font-bold flex items-center gap-2">
@@ -158,7 +158,7 @@ const CertificateValidator = () => {
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <label className="text-[10px] font-black text-slate-400 uppercase ">
                     Issue Date
                   </label>
                   <p className="text-slate-900 dark:text-white font-bold flex items-center gap-2">
@@ -167,7 +167,7 @@ const CertificateValidator = () => {
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <label className="text-[10px] font-black text-slate-400 uppercase ">
                     Academic Standing
                   </label>
                   <p className="text-slate-900 dark:text-white font-bold flex items-center gap-2">
@@ -175,10 +175,10 @@ const CertificateValidator = () => {
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <label className="text-[10px] font-black text-slate-400 uppercase ">
                     Certificate ID
                   </label>
-                  <p className="text-slate-900 dark:text-white font-mono font-bold text-sm">
+                  <p className="text-slate-900 dark:text-white  font-bold text-sm">
                     {certId}
                   </p>
                 </div>
@@ -200,8 +200,8 @@ const CertificateValidator = () => {
             </div>
             <Button
               onClick={() => setStatus("idle")}
-              variant="ghost"
-              className="text-red-600 font-bold text-xs uppercase tracking-widest"
+              variant="outline"
+              className="h-12 px-12! rounded-3xl border-red-500 text-red-600 font-bold text-lg uppercase flex items-center justify-center"
             >
               Try Again
             </Button>
@@ -209,7 +209,7 @@ const CertificateValidator = () => {
         )}
 
         {/* --- 4. INFO TEXT --- */}
-        <p className="mt-12 text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
+        <p className="mt-12 text-center text-sm text-slate-400">
           The IVTC Online Validation System provides secure confirmation of
           academic credentials. <br />
           Unauthorized use of this portal is strictly prohibited.

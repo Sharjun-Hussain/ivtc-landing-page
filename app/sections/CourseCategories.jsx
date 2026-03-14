@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BookOpen, GraduationCap, Zap, Globe, ArrowRight } from "lucide-react";
+import ShineBadge from "@/components/ui/ShineBadge";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -121,13 +122,13 @@ const CoursePathways = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-transparent overflow-hidden">
+    <section ref={sectionRef} className="py-18 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="mb-16">
-          <h3 className="text-[#002147] dark:text-blue-400 font-mono tracking-widest uppercase text-xs mb-4">
-            / Upcoming Intakes — 2026
-          </h3>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
+        <header className="">
+          <ShineBadge className="mb-4">
+            Upcoming Intakes — 2026
+          </ShineBadge>
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white  leading-tight mb-4">
             Find the Right{" "}
             <span className="text-[#002147] dark:text-blue-400">
               IT Course
@@ -159,12 +160,12 @@ const CoursePathways = () => {
                 </div>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {item.tags.map((tag) => (
-                    <span
+                    <ShineBadge
                       key={tag}
-                      className="text-[9px] px-2 py-1 rounded-md border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-slate-400 uppercase font-bold"
+                      className="text-[9px] px-2 py-0.5 font-bold uppercase"
                     >
                       {tag}
-                    </span>
+                    </ShineBadge>
                   ))}
                 </div>
                 <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors duration-300">
@@ -180,7 +181,7 @@ const CoursePathways = () => {
                   EXPLORE PATH{" "}
                   <ArrowRight size={14} className="text-[#002147] dark:text-blue-400" />
                 </span>
-                <span className="text-4xl font-black text-slate-900/5 dark:text-white/5 italic tracking-tighter">
+                <span className="text-4xl font-black text-slate-900/5 dark:text-white/5 italic ">
                   0{i + 1}
                 </span>
               </div>

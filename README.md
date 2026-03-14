@@ -8,7 +8,7 @@ A premium, high-performance landing page for the International Virtual Training 
 The project has been recently updated to align with the new **IVTC Navy & Silver** corporate identity. The design features:
 - **Midnight Navy Blue**: A professional, authoritative primary palette.
 - **Silver & Slate Accents**: Clean, modern highlighting for icons and badges.
-- **Bold Typography**: Heavy-weight tracking-tighter headers for a premium feel.
+- **Bold Typography**: Heavy-weight  headers for a premium feel.
 
 ## ⚡ Key Features
 - **Premium Transitions**: Custom GSAP-powered "Grid Reveal" page transitions for desktop.

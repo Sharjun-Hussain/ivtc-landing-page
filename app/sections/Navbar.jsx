@@ -120,7 +120,7 @@ const Navbar = memo(() => {
                 >
                   <Link
                     href={link.href}
-                    className={`group relative text-[14px] uppercase font-medium transition-colors flex items-center gap-1.5 py-1 ${
+                    className={`group relative text-[14px] font-medium transition-colors flex items-center gap-1.5 py-1 ${
                       isScrolled
                         ? "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                         : "text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white"
@@ -132,7 +132,7 @@ const Navbar = memo(() => {
                   >
                     {link.name}
                     {/* Animated Underline */}
-                    <span className={`absolute bottom-0 left-0 h-[2px] bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 transition-all duration-300 ease-out ${
+                    <span className={`absolute bottom-0 left-0 h-[2px] bg-[#002147] dark:bg-white transition-all duration-300 ease-out ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`} />
                     
@@ -174,7 +174,7 @@ const Navbar = memo(() => {
 
                         <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
                           <div>
-                            <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">
+                            <p className="text-[10px] font-black text-slate-900 dark:text-white ">
                               Next Intake
                             </p>
                             <p className="text-[12px] text-slate-600 dark:text-slate-400 font-medium">
@@ -183,7 +183,7 @@ const Navbar = memo(() => {
                           </div>
                           <Link
                             href="/programs"
-                            className="px-8 py-3 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] font-bold uppercase tracking-widest rounded-full hover:from-[#003366] hover:to-blue-800 transition-all shadow-lg"
+                            className="px-8 py-3 bg-linear-to-r from-[#002147] to-blue-900 text-white text-[10px] font-bold  rounded-full hover:from-[#003366] hover:to-blue-800 transition-all shadow-lg"
                             onClick={closeMenu}
                           >
                             View All Courses
@@ -201,18 +201,18 @@ const Navbar = memo(() => {
           <div className="flex items-center gap-3 z-110">
             <Link
               href="/meerza-foundation"
-              className={`hidden lg:block px-6 py-3 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all border ${
+              className={`hidden lg:block px-6 py-3 text-sm font-bold  rounded-full transition-all border ${
                 isScrolled
-                  ? "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5"
+                  ? "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-white/10 dark:hover:bg-white/5"
                   : "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-white/10 dark:hover:bg-white/5"
               }`}
               onClick={closeMenu}
             >
-              Foundation
+             Meerza Foundation
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="hidden lg:block px-6 py-3 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all bg-linear-to-r from-[#002147] to-blue-900 text-white hover:from-[#003366] hover:to-blue-800 shadow-md"
+              className="hidden lg:block px-6 py-3 text-sm font-bold  rounded-3xl transition-all bg-[#002147] text-white hover:bg-[#003366] shadow-md"
               onClick={closeMenu}
             >
               Login to LMS
@@ -242,7 +242,7 @@ const Navbar = memo(() => {
         }`}
       >
         <div className="h-full flex flex-col justify-center px-8 gap-8">
-          <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase tracking-[0.4em]">
+          <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase ">
             Main Menu
           </p>
           <div className="flex flex-col gap-5">
@@ -251,7 +251,7 @@ const Navbar = memo(() => {
                 key={link.name}
                 href={link.href}
                 onClick={closeMenu}
-                className={`text-3xl md:text-4xl font-bold tracking-tighter flex items-center justify-between ${
+                className={`text-3xl md:text-4xl font-bold  flex items-center justify-between ${
                   pathname === link.href
                     ? "text-slate-900 dark:text-white"
                     : "text-slate-400 dark:text-slate-600"
@@ -274,14 +274,14 @@ const Navbar = memo(() => {
           <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 grid grid-cols-1 gap-3">
             <Link
               href="/meerza-foundation"
-              className="w-full py-4 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold uppercase tracking-widest rounded-2xl flex items-center justify-center gap-2 text-[11px]"
+              className="w-full py-4 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold  rounded-2xl flex items-center justify-center gap-2 text-[11px]"
               onClick={closeMenu}
             >
               Meerza Foundation
             </Link>
             <Link
               href="https://lms.ivtccampus.lk"
-              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 text-white font-bold uppercase tracking-widest rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
+              className="w-full py-4 bg-linear-to-r from-[#002147] to-blue-900 text-white font-bold  rounded-2xl shadow-lg flex items-center justify-center gap-2 text-[11px]"
               onClick={closeMenu}
             >
               Login to LMS

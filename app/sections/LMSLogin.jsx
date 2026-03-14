@@ -42,7 +42,7 @@ const LMSLogin = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-6 md:py-10 bg-transparent overflow-hidden"
+      className="py-6 md:py-18 bg-transparent overflow-hidden"
       aria-labelledby="lms-heading"
     >
       <div className="max-w-6xl mx-auto px-6">
@@ -57,18 +57,18 @@ const LMSLogin = () => {
           <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             {/* Main Content Area */}
             <div className="space-y-6 md:space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white/90 text-[9px] md:text-[10px] uppercase font-medium tracking-[0.2em]">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white/90 text-[9px] md:text-sm  font-medium ">
                 <Lock size={12} className="text-blue-400 " /> Secure Student Access
               </div>
 
               <div className="space-y-3">
                 <h2 
                   id="lms-heading"
-                  className="text-3xl md:text-4xl lg:text-5xl text-white leading-[1.1] font-bold tracking-tighter"
+                  className="text-3xl md:text-4xl lg:text-5xl text-white leading-[1.1] font-bold "
                 >
-                  Your <br />
+                  Your Online<br />
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-100 via-white to-blue-200">
-                    Online Classroom
+                     Classroom
                   </span>
                 </h2>
                 <p className="text-blue-100/60 text-sm md:text-base max-w-sm leading-relaxed font-medium">
@@ -80,7 +80,7 @@ const LMSLogin = () => {
                 <Link
                   href="https://lms.ivtccampus.lk"
                   aria-label="Login to the Learning Management System"
-                  className="group/btn relative flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#002147] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all duration-500 shadow-xl active:scale-95 overflow-hidden text-xs"
+                  className="group/btn relative flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#002147] font-black uppercase  rounded-full hover:scale-105 transition-all duration-500 shadow-xl active:scale-95 overflow-hidden text-xs"
                 >
                   <span className="relative z-10 font-semibold">Login to LMS</span>
                   <ArrowRight size={16} className="relative z-10 group-hover/btn:translate-x-1 transition-transform duration-500" />
@@ -112,7 +112,7 @@ const LMSLogin = () => {
                       <span className="text-white text-sm font-black leading-none">500+</span>
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                     </div>
-                    <span className="text-white/40 text-[9px] font-bold uppercase tracking-wider">Active Students</span>
+                    <span className="text-white/40 text-[9px] font-bold uppercase ">Active Students</span>
                   </div>
                 </div>
               </div>
@@ -132,10 +132,10 @@ const LMSLogin = () => {
                     <div className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center ${stat.color} mb-4`}>
                       <stat.icon size={20} />
                     </div>
-                    <div className="text-white/30 text-[9px] font-medium uppercase tracking-widest mb-1">
+                    <div className="text-white/30 text-[9px] font-medium uppercase  mb-1">
                       {stat.label}
                     </div>
-                    <div className="text-white font-semibold text-base tracking-tight">
+                    <div className="text-white font-semibold text-base ">
                       {stat.value}
                     </div>
                   </div>
@@ -151,8 +151,8 @@ const LMSLogin = () => {
                   </div>
                 </div>
                 <div className="">
-                  <div className="text-white font-medium text-base mb-0.5 tracking-tight">Progress</div>
-                  <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">Growing daily</div>
+                  <div className="text-white font-medium text-base mb-0.5 ">Progress</div>
+                  <div className="text-white/40 text-[9px] font-bold uppercase ">Growing daily</div>
                 </div>
               </div>
             </div>

@@ -219,7 +219,7 @@ const CampusPoliciesPage = () => {
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-10 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white  mb-4">
             Campus <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-900">Rules & Policies</span>
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
@@ -306,7 +306,7 @@ const CampusPoliciesPage = () => {
                           <HighlightText text={policy.title} highlight={searchQuery} />
                         </h3>
                         {/* Mobile Category Tag */}
-                        <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                        <span className="inline-block mt-1 text-[10px] font-bold uppercase  text-slate-400">
                           {policy.category}
                         </span>
                       </div>
@@ -340,7 +340,7 @@ const CampusPoliciesPage = () => {
 
                         {/* Interactive Footer: Was this helpful? */}
                         <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-white/5">
-                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                          <span className="text-xs font-bold text-slate-400 uppercase ">
                             Was this helpful?
                           </span>
                           <div className="flex gap-2">
@@ -393,7 +393,7 @@ const CampusPoliciesPage = () => {
 
         {/* Download Footer */}
         <div className="mt-16 text-center">
-            <button className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-[#002147] dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-white/10 px-6 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5">
+            <button className="inline-flex items-center gap-2 text-xs font-bold uppercase  text-slate-400 hover:text-[#002147] dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-white/10 px-6 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5">
                 <Download size={16} /> Download Policy PDF
             </button>
         </div>
