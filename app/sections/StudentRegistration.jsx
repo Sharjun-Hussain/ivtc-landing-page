@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // Icons
 import {
@@ -129,7 +128,7 @@ CustomSelect.displayName = "CustomSelect";
 const StudentRegistration = () => {
   const [activeForm, setActiveForm] = useState("course");
   const [date, setDate] = useState();
-  const sectionRef = useRef(null);
+  const [sectionRef, isVisible] = useScrollReveal();
 
   const [formData, setFormData] = useState({
     fullName: "", email: "", phone: "", nic: "",
@@ -137,26 +136,6 @@ const StudentRegistration = () => {
     postalCode: "", program: "", school: "",
     registrationType: "course",
   });
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-    const ctx = gsap.context(() => {
-      gsap.from(".anim-stagger", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out",
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -195,19 +174,19 @@ const StudentRegistration = () => {
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
             {/* Header Area */}
             <div className="space-y-4">
-              <ShineBadge className="anim-stagger">
+              <ShineBadge className={`opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`}>
                 Official Enrollment Portal
               </ShineBadge>
-              <h2 className="anim-stagger text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white  leading-[1.1]">
+              <h2 className={`opacity-0 ${isVisible ? 'animate-hero-fade-up [animation-delay:100ms]' : ''} text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white  leading-[1.1]`}>
                 Build Your <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-[#0055aa] dark:from-blue-400 dark:to-blue-600">Future</span> Today.
               </h2>
-              <p className="anim-stagger text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
+              <p className={`opacity-0 ${isVisible ? 'animate-hero-fade-up [animation-delay:200ms]' : ''} text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed`}>
                 Take the first step towards a successful career. Fill out the application form to register for your preferred pathway and gain access to world-class resources.
               </p>
             </div>
 
             {/* Features/Benefits List */}
-            <div className="anim-stagger space-y-5 pt-4">
+            <div className={`opacity-0 ${isVisible ? 'animate-hero-fade-up [animation-delay:300ms]' : ''} space-y-5 pt-4`}>
               {[
                 { title: "Expert Instructors", desc: "Learn from industry-leading professionals." },
                 { title: "Recognized Certifications", desc: "Gain qualifications that stand out globally." },
@@ -226,7 +205,7 @@ const StudentRegistration = () => {
             </div>
 
             {/* Contact / Support Card */}
-            <div className="anim-stagger bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-6 rounded-2xl flex items-center gap-5 mt-8">
+            <div className={`opacity-0 ${isVisible ? 'animate-hero-fade-up [animation-delay:400ms]' : ''} bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-6 rounded-2xl flex items-center gap-5 mt-8`}>
               <div className="w-12 h-12 rounded-full bg-white dark:bg-white/10 flex items-center justify-center text-[#002147] dark:text-white shadow-sm">
                 <Phone size={20} />
               </div>
@@ -238,7 +217,7 @@ const StudentRegistration = () => {
           </div>
 
           {/* RIGHT COLUMN: The Application Form */}
-          <div className="lg:col-span-7 anim-stagger bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden group/form">
+          <div className={`lg:col-span-7 opacity-0 ${isVisible ? 'animate-hero-fade-up [animation-delay:500ms]' : ''} bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden group/form`}>
             {/* Subtle Accent Glow */}
             <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#002147] to-transparent opacity-30" />
             

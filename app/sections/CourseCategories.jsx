@@ -1,94 +1,15 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import { BookOpen, GraduationCap, Zap, Globe, ArrowRight } from "lucide-react";
 import ShineBadge from "@/components/ui/ShineBadge";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+
 
 const CoursePathways = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const [sectionRef, isVisible] = useScrollReveal();
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Entrance Animation
-      gsap.from(".pathway-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".pathway-grid",
-          start: "top 85%",
-        },
-      });
 
-      // Ambient background float
-      gsap.to(".bg-shape", {
-        y: "15px",
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: { amount: 1.5 },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
-  const onMouseEnter = (index) => {
-    const card = cardsRef.current[index];
-    const icon = card.querySelector(".icon-wrapper");
-    const shape = card.querySelector(".bg-shape");
-
-    // "overwrite: auto" stops any running 'leave' animations immediately
-    gsap.to(icon, {
-      rotateY: 180,
-      scale: 1.1,
-      backgroundColor: "#002147", // navy-blue
-      color: "#fff",
-      duration: 0.4,
-      ease: "back.out(2)",
-      overwrite: "auto",
-    });
-
-    gsap.to(shape, {
-      scale: 2,
-      rotate: 45,
-      opacity: 0.3,
-      duration: 0.6,
-      overwrite: "auto",
-    });
-  };
-
-  const onMouseLeave = (index) => {
-    const card = cardsRef.current[index];
-    const icon = card.querySelector(".icon-wrapper");
-    const shape = card.querySelector(".bg-shape");
-
-    gsap.to(icon, {
-      rotateY: 0,
-      scale: 1,
-      backgroundColor: "transparent",
-      color: "#002147", // navy-blue
-      duration: 0.4,
-      ease: "power2.inOut",
-      overwrite: "auto",
-    });
-
-    gsap.to(shape, {
-      scale: 1,
-      rotate: 0,
-      opacity: 0.1,
-      duration: 0.6,
-      overwrite: "auto",
-    });
-  };
 
   const pathways = [
     {
@@ -144,18 +65,17 @@ const CoursePathways = () => {
           {pathways.map((item, i) => (
             <div
               key={i}
-              ref={(el) => (cardsRef.current[i] = el)}
-              onMouseEnter={() => onMouseEnter(i)}
-              onMouseLeave={() => onMouseLeave(i)}
-              className="pathway-card group relative h-[420px] bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/5 rounded-3xl p-8 flex flex-col justify-between overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.02] will-change-transform"
+              className={`pathway-card group relative h-[420px] bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/5 rounded-3xl p-8 flex flex-col justify-between overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.02] will-change-transform opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`}
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               {/* Background Glow */}
               <div
-                className={`bg-shape absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[60px] opacity-10 dark:opacity-20 transition-colors ${item.color}`}
+                className={`bg-shape absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[60px] opacity-10 dark:opacity-20 transition-all duration-500 group-hover:scale-[2] group-hover:rotate-45 group-hover:opacity-30 animate-float ${item.color}`}
+                style={{ animationDelay: `${i * 300}ms` }}
               />
 
               <div className="relative z-10">
-                <div className="icon-wrapper w-14 h-14 rounded-2xl border border-slate-200 dark:border-white/10 flex items-center justify-center text-[#002147] dark:text-blue-400 mb-8 transition-colors">
+                <div className="icon-wrapper w-14 h-14 rounded-2xl border border-slate-200 dark:border-white/10 flex items-center justify-center text-[#002147] dark:text-blue-400 mb-8 transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)_scale(1.1)] group-hover:bg-[#002147] group-hover:text-white">
                   {item.icon}
                 </div>
                 <div className="flex flex-wrap gap-2 mb-4">

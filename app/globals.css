@@ -48,6 +48,59 @@ html {
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  @keyframes video-zoom-out {
+    from {
+      transform: scale(1.1);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-fade-up {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes carousel-entrance {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(15px);
+    }
+  }
+
+  --animate-video-zoom-out: video-zoom-out 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-hero-fade-up: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-carousel-entrance: carousel-entrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-float: float 3s ease-in-out infinite;
 }
 
 :root {

@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Calendar, Clock, ArrowRight, Sparkles } from "lucide-react";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
   Carousel,
   CarouselContent,
@@ -14,9 +13,7 @@ import {
 } from "@/components/ui/carousel";
 import ShineBadge from "@/components/ui/ShineBadge";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+
 
 const UPCOMING_COURSES = [
   {
@@ -54,36 +51,7 @@ const UPCOMING_COURSES = [
 ];
 
 const UpcomingCourses = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".course-header", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-      });
-
-      gsap.from(".carousel-container", {
-        scale: 0.95,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power2.out",
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        },
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const [containerRef, isVisible] = useScrollReveal();
 
   return (
     <section
@@ -91,7 +59,7 @@ const UpcomingCourses = () => {
       className="py-24 bg-transparent overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <header className="course-header mb-16 text-center lg:text-left">
+        <header className={`course-header mb-16 text-center lg:text-left opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`}>
           <ShineBadge className="">
             Starting Soon
           </ShineBadge>
@@ -103,7 +71,7 @@ const UpcomingCourses = () => {
           </p>
         </header>
 
-        <div className="carousel-container relative">
+        <div className={`carousel-container relative opacity-0 ${isVisible ? 'animate-carousel-entrance [animation-delay:200ms]' : ''}`}>
           <Carousel
             opts={{
               align: "start",

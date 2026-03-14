@@ -1,79 +1,26 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback, memo } from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { gsap } from "gsap";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-// --- 1. MEMOIZED HERO SECTION ---
-// Separated to prevent re-renders when Navbar state (scroll/menu) changes.
+
 const HeroSection = memo(() => {
-  const containerRef = useRef(null);
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      // Desktop Animation (Full fidelity)
-      mm.add("(min-width: 768px)", () => {
-        gsap.fromTo(
-          videoRef.current,
-          { scale: 1.2, opacity: 0 }, // Removed blur (expensive)
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 2,
-            ease: "expo.out",
-          }
-        );
-
-        gsap.fromTo(
-          ".hero-text",
-          { y: 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1.2,
-            stagger: 0.1,
-            ease: "power4.out",
-            delay: 0.4,
-          }
-        );
-      });
-
-      // Mobile Animation (Simplified for performance)
-      mm.add("(max-width: 767px)", () => {
-        gsap.to(videoRef.current, { opacity: 1, duration: 1 });
-        gsap.to(".hero-text", {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          delay: 0.2,
-        });
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
-      ref={containerRef}
       className="relative w-full flex justify-center bg-transparent p-0 md:p-6 md:min-h-screen"
     >
       {/* Added transform-gpu to force hardware acceleration */}
-      <div className="relative w-full max-w-[1600px] h-[550px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
+      <div className="relative pt-21 md:pt-0 w-full max-w-[1600px] h-[700px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
         <video
-          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover opacity-0 will-change-transform" // Start opacity 0 for GSAP
+          className="absolute inset-0 w-full h-full object-cover animate-video-zoom-out will-change-transform" 
         >
           <source src="/ivtc_campus.mp4" type="video/mp4" />
         </video>
@@ -81,20 +28,20 @@ const HeroSection = memo(() => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/30 to-transparent pointer-events-none" />
 
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
-          <div className="hero-text opacity-0 translate-y-8 mb-6 flex items-center gap-4">
+          <div className="hero-text opacity-0 animate-hero-fade-up [animation-delay:400ms] mb-6 flex items-center gap-4">
             <span className="w-8 md:w-12 h-[3px] bg-gradient-to-r from-[#002147] to-blue-900"></span>
             <span className="text-[10px] md:text-[11px] font-medium  text-slate-200">
               IVTC Campus Sri Lanka
             </span>
           </div>
-          <h1 className="hero-text opacity-0 translate-y-8 text-5xl md:text-7xl font-black font-bold text-white leading-tight md:leading-tight  max-w-4xl">
+          <h1 className="hero-text opacity-0 animate-hero-fade-up [animation-delay:500ms] text-5xl md:text-7xl font-black font-bold text-white leading-tight md:leading-tight  max-w-4xl">
             Empower Your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-200">Digital</span> Future.
           </h1>
-          <p className="hero-text opacity-0 translate-y-8 mt-6 text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed">
+          <p className="hero-text opacity-0 animate-hero-fade-up [animation-delay:600ms] mt-6 text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed">
             Master the digital landscape with Sri Lanka's leading campus for A/L ICT, Higher National Diplomas, and Global Degree Pathways. Your journey to technical excellence starts here.
           </p>
-          <div className="hero-text opacity-0 translate-y-8 mt-8 md:mt-12">
+          <div className="hero-text opacity-0 animate-hero-fade-up [animation-delay:700ms] mt-8 md:mt-12">
             <button className="group relative h-12 px-12! bg-[#002147] text-white text-lg font-semibold rounded-3xl hover:bg-[#003366] transition-all shadow-lg flex items-center justify-center">
               Start Learning
             </button>
