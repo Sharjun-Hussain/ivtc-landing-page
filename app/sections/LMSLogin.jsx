@@ -70,6 +70,8 @@ const LMSLogin = () => {
                         <img 
                           src={url} 
                           alt="Student Avatar" 
+                          width="28"
+                          height="28"
                           className="w-full h-full object-cover"
                         />
                       </div>

@@ -19,10 +19,12 @@ const HeroSection = memo(() => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
+          poster="/video-poster.webp"
           className="absolute inset-0 w-full h-full object-cover animate-video-zoom-out will-change-transform" 
         >
-          <source src="/ivtc_campus.mp4" type="video/mp4" />
+          <source src="/ivtc_campus.webm" type="video/webm" />
+        
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/30 to-transparent pointer-events-none" />
