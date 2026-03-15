@@ -78,7 +78,7 @@ const Navbar = memo(() => {
         className={`fixed top-0 left-0 w-full z-100 p-4 md:p-6 flex justify-center transition-transform duration-500 `}
       >
         <nav
-          className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full shadow-lg backdrop-blur-sm px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-all duration-500 ${
+          className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full shadow-lg md:backdrop-blur-sm px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-all duration-500 ${
             isScrolled
               ? "bg-white/95 dark:bg-black/95 "
               : "bg-white/5 dark:bg-white/5 "
@@ -92,10 +92,7 @@ const Navbar = memo(() => {
           >
             <div 
               className={`relative flex items-center justify-center transition-all duration-500 ease-in-out rounded-full bg-white shadow-xl
-                ${isScrolled && !isMenuOpen 
-                  ? "w-12 h-12 md:w-14 md:h-14" 
-                  : "w-16 h-16 md:w-14 md:h-14"
-                }`}
+                ${isScrolled && !isMenuOpen ? "scale-75 md:scale-90" : "scale-100"}`}
             >
               <Image
                 src="/ivtc_new_logo.png"
@@ -223,7 +220,7 @@ const Navbar = memo(() => {
               className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full relative transition-all ${
                 isScrolled
                   ? "bg-slate-100 dark:bg-[#002147]/20 text-slate-900 dark:text-blue-400"
-                  : "bg-white/10 text-white backdrop-blur-sm"
+                  : "bg-white/10 text-white md:backdrop-blur-sm"
               }`}
               aria-label="Toggle Menu"
             >
