@@ -14,7 +14,7 @@ const HeroSection = memo(() => {
     >
       {/* Added transform-gpu to force hardware acceleration */}
       <div className="relative pt-21 md:pt-0 w-full max-w-[1600px] h-[700px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
-        <video
+        {/* <video
           autoPlay
           muted
           loop
@@ -25,7 +25,7 @@ const HeroSection = memo(() => {
         >
           <source src="/ivtc_campus.webm" type="video/webm" />
         
-        </video>
+        </video> */}
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/30 to-transparent pointer-events-none" />
 
