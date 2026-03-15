@@ -127,8 +127,8 @@ const HeroWithMegaMenu = () => {
         <nav
           className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-colors duration-500 ${
             isScrolled
-              ? "bg-white/95 dark:bg-black/95 shadow-lg backdrop-blur-sm" // Reduced blur for performance
-              : "bg-transparent"
+             ? "bg-white dark:bg-[#0a0a0a] md:bg-white/95 md:dark:bg-black/95 shadow-md md:shadow-lg md:backdrop-blur-sm" 
+      : "bg-transparent"
           }`}
         >
           {/* Brand Logo */}
