@@ -70,7 +70,7 @@ const CoursePathways = () => {
             >
               {/* Background Glow */}
               <div
-                className={`bg-shape absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[60px] opacity-10 dark:opacity-20 transition-all duration-500 group-hover:scale-[2] group-hover:rotate-45 group-hover:opacity-30 animate-float ${item.color}`}
+                className={`bg-shape absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[60px] mobile-optimize-blur opacity-10 dark:opacity-20 transition-all duration-500 group-hover:scale-[2] group-hover:rotate-45 group-hover:opacity-30 animate-float ${item.color}`}
                 style={{ animationDelay: `${i * 300}ms` }}
               />
 

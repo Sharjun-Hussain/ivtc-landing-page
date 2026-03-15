@@ -97,10 +97,49 @@ html {
     }
   }
 
+  @keyframes blob-float-1 {
+
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(100px, 150px);
+    }
+  }
+
+  @keyframes blob-float-2 {
+
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(-150px, 100px);
+    }
+  }
+
+  @keyframes blob-float-3 {
+
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(120px, -120px);
+    }
+  }
+
   --animate-video-zoom-out: video-zoom-out 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-hero-fade-up: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-carousel-entrance: carousel-entrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-float: float 3s ease-in-out infinite;
+  --animate-blob-1: blob-float-1 15s ease-in-out infinite alternate;
+  --animate-blob-2: blob-float-2 18s ease-in-out infinite alternate;
+  --animate-blob-3: blob-float-3 20s ease-in-out infinite alternate;
 }
 
 :root {
@@ -225,5 +264,26 @@ html {
     width: 10vw;
     height: 10vh;
     border: 0.5px solid rgba(255, 255, 255, 0.02);
+  }
+
+  /* Mobile Performance Overrides */
+  @media (max-width: 768px) {
+    .mobile-optimize-blur {
+      filter: blur(40px) !important;
+      /* Cap blur for mobile GPU */
+    }
+
+    .mobile-hide-blur {
+      filter: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .mobile-no-shadow {
+      box-shadow: none !important;
+    }
+
+    .mobile-low-opacity {
+      opacity: 0.1 !important;
+    }
   }
 }
