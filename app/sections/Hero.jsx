@@ -179,8 +179,10 @@ const HeroWithMegaMenu = () => {
                 >
                   {link.name}
                   {/* Animated Underline */}
-                  <span className={`absolute bottom-0 left-0 h-[2px] bg-[#002147] dark:bg-white transition-all duration-300 ease-out ${
+                  <span className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ease-out ${
                     pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  } ${
+                    isScrolled ? "bg-[#002147] dark:bg-white" : "bg-white"
                   }`} />
                   
                   {link.hasMega && (

@@ -59,8 +59,8 @@ const UpcomingCourses = () => {
       className="py-24 bg-transparent overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <header className={`course-header mb-16 text-center lg:text-left opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`}>
-          <ShineBadge className="">
+        <header className={`course-header mb-16  text-left opacity-0 ${isVisible ? 'animate-hero-fade-up' : ''}`}>
+          <ShineBadge className="mb-2 md:mb-0">
             Starting Soon
           </ShineBadge>
           <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white  leading-tight mb-4">
@@ -83,7 +83,7 @@ const UpcomingCourses = () => {
               {UPCOMING_COURSES.map((course, index) => (
                 <CarouselItem
                   key={index}
-                  className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3"
+                  className="pl-4 md:pl-6 basis-[80%] sm:basis-[70%] md:basis-1/2 lg:basis-1/4"
                 >
                   <div className="group h-full bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] border border-slate-200 dark:border-white/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-[#002147] dark:hover:border-blue-500/50 flex flex-col">
                     {/* Image Area */}
@@ -95,8 +95,8 @@ const UpcomingCourses = () => {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute top-4 left-4">
-                        <ShineBadge className="px-3 py-1 text-[9px] font-bold uppercase">
+                      <div className="absolute top-4 left-4 z-10">
+                        <ShineBadge className="px-3 py-1 text-[9px] font-bold uppercase bg-black/60 text-white dark:text-white border-white/20 backdrop-blur-md">
                           {course.tag}
                         </ShineBadge>
                       </div>
@@ -126,7 +126,7 @@ const UpcomingCourses = () => {
 
                       <Link
                         href="/#registration"
-                        className="inline-flex items-center justify-center w-full py-4 bg-[#002147] hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 text-white rounded-2xl font-bold uppercase  text-[10px] transition-all group/btn"
+                        className="inline-flex items-center justify-center w-full py-4 bg-[#002147] hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 text-white rounded-2xl text-sm transition-all group/btn"
                       >
                         Register Now
                         <ArrowRight size={14} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
