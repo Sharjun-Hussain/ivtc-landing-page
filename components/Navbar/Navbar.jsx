@@ -72,10 +72,10 @@ const Navbar = () => {
         }`}
       >
         <nav
-          className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-colors duration-500 ${
-            isScrolled
-              ? "bg-white dark:bg-[#0a0a0a] md:bg-white/95 md:dark:bg-black/95 shadow-md md:shadow-lg md:backdrop-blur-sm"
-              : "bg-transparent"
+          className={`w-full max-w-[1400px] rounded-[1.5rem] lg:rounded-full px-5 md:px-8 py-3 md:py-4 flex justify-between items-center relative transition-colors duration-500 border ${
+            isScrolled || pathname !== "/"
+              ? "bg-white dark:bg-[#0a0a0a] md:bg-white/95 md:dark:bg-black/95 shadow-md md:shadow-lg md:backdrop-blur-sm border-slate-200 dark:border-white/10"
+              : "bg-transparent border-transparent"
           }`}
         >
           <Link href="/" className="flex items-center gap-3 z-[110]" onClick={closeMenu}>
