@@ -109,7 +109,7 @@ const Navbar = () => {
                   className={`group relative text-[14px] font-medium transition-colors flex items-center gap-1.5 py-1 ${
                     pathname === link.href ? "font-bold text-slate-900 dark:text-white" : ""
                   } ${
-                    isScrolled
+                    isScrolled || pathname !== "/"
                       ? "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                       : "text-white/90 hover:text-white"
                   }`}
@@ -118,7 +118,7 @@ const Navbar = () => {
                   <span
                     className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ease-out ${
                       pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
-                    } ${isScrolled ? "bg-[#002147] dark:bg-white" : "bg-white"}`}
+                    } ${isScrolled || pathname !== "/" ? "bg-[#002147] dark:bg-white" : "bg-white"}`}
                   />
                   {link.hasMega && (
                     <ChevronDown
@@ -176,7 +176,7 @@ const Navbar = () => {
             <Link
               href="/meerza-foundation"
               className={`hidden lg:block px-6 py-3 text-sm font-bold rounded-3xl transition-all border flex items-center justify-center ${
-                isScrolled
+                isScrolled || pathname !== "/"
                   ? "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5"
                   : "border-white/30 text-white hover:bg-white/10"
               }`}
@@ -193,7 +193,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full relative transition-colors ${
-                isScrolled
+                isScrolled || pathname !== "/"
                   ? "bg-slate-100 dark:bg-[#002147]/20 text-slate-900 dark:text-blue-400"
                   : "bg-[#002147]/20 text-blue-400 backdrop-blur-sm"
               }`}
