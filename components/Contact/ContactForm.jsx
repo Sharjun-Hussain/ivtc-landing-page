@@ -37,7 +37,7 @@ const ContactForm = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
               Drop a Message
             </h3>
-            <p className="mt-1 text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">
+            <p className="mt-1 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               We usually respond within 24 business hours.
             </p>
           </div>
@@ -46,7 +46,7 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid md:grid-cols-2 gap-5">
             <div className="space-y-2">
-              <label className="text-[11px] font-bold text-slate-500 ml-1">
+              <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 ml-1">
                 Full Name
               </label>
               <input
@@ -57,7 +57,7 @@ const ContactForm = () => {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[11px] font-bold text-slate-500 ml-1">
+              <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 ml-1">
                 Email Address
               </label>
               <input
@@ -86,10 +86,10 @@ const ContactForm = () => {
           <div className="pt-4">
             <button 
               type="submit"
-              className="w-full h-14 px-12 rounded-full bg-[#002147] hover:bg-[#003366] text-white font-bold text-sm shadow-xl shadow-[#002147]/20 transition-all flex items-center justify-center gap-3 group active:scale-[0.98] relative overflow-hidden"
+              className="w-full h-14 px-12 rounded-full bg-[#002147] hover:bg-[#003366] text-white font-bold text-base transition-all flex items-center justify-center gap-3 group active:scale-[0.98] relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="relative z-10">Send Dispatch</span>
+              <span className="relative z-10">Send Message</span>
               <Send
                 size={18}
                 className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500"

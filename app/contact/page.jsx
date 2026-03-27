@@ -102,10 +102,10 @@ const ContactPage = () => {
                     <info.icon size={20} />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-slate-500 leading-none mb-1.5">
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 leading-none mb-1.5">
                       {info.label}
                     </p>
-                    <p className="font-bold text-slate-900 dark:text-white text-lg leading-tight">
+                    <p className="font-bold text-slate-900 dark:text-white text-xl leading-tight">
                       {info.val}
                     </p>
                   </div>
@@ -118,19 +118,19 @@ const ContactPage = () => {
               <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 blur-3xl rounded-full pointer-events-none" />
               <MapPin className="absolute -right-4 -bottom-4 w-36 h-36 opacity-[0.06] group-hover/hq:scale-110 transition-transform duration-700" />
               <div className="relative z-10 space-y-5">
-                <h4 className="text-[11px] font-bold text-blue-200">Main Headquarters</h4>
+                <h4 className="text-sm font-semibold text-blue-200">Main Office</h4>
                 <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                   Colombo 07, Level 04,
                   <br />
                   IVTC Campus Building.
                 </p>
-                <div className="flex items-center gap-3 text-xs font-bold text-blue-100/70">
+                <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                    <Clock size={14} />
+                    <Clock size={14} className="text-blue-200" />
                   </div>
                   <div>
-                    <p className="text-white/90">Open Mon – Sat</p>
-                    <p className="text-[10px] text-white/50 mt-0.5">8:30 AM – 5:30 PM</p>
+                    <p className="text-sm font-semibold text-white/90">Open Mon – Sat</p>
+                    <p className="text-xs text-white/50 mt-0.5">8:30 AM – 5:30 PM</p>
                   </div>
                 </div>
               </div>
