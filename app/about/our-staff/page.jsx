@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import {
   Linkedin,
   Mail,
@@ -12,6 +10,7 @@ import {
   ArrowUpRight,
   MoveDown,
 } from "lucide-react";
+import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 // --- REAL STAFF DATA FROM PDF ---
 const FACULTY_DATA = [
@@ -102,65 +101,8 @@ const FACULTY_DATA = [
 ];
 
 const StaffPage = () => {
-  const pageRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-
-    const ctx = gsap.context(() => {
-      // 1. Hero Animation
-      const tl = gsap.timeline();
-
-      tl.from(".hero-badge", {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      })
-        .from(
-          ".hero-title",
-          {
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            ease: "power4.out",
-          },
-          "-=0.6"
-        )
-        .from(
-          ".hero-sub",
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.6"
-        );
-
-      // 2. Faculty Grid Animation (Robust Stagger)
-      gsap.from(".faculty-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1, // Smooth ripple effect
-        ease: "power2.out",
-        clearProps: "all", // Ensures visibility after animation
-        scrollTrigger: {
-          trigger: ".faculty-grid",
-          start: "top 85%",
-        },
-      });
-    }, pageRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <div
-      ref={pageRef}
       className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors"
     >
       {/* --- 1. HERO SECTION --- */}
@@ -168,37 +110,37 @@ const StaffPage = () => {
         {/* Background Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#002147]/5 dark:bg-[#002147]/10 blur-[120px] rounded-full" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] text-[10px] font-black uppercase  mb-8">
+        <ScrollReveal className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] text-[10px] font-black uppercase mb-8">
             <Users size={14} /> World-Class Faculty
           </div>
 
-          <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white  leading-[0.9] mb-8">
+          <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] mb-8">
             Meet Your <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-900">
                IT Trainers.
             </span>
           </h1>
 
-          <p className="hero-sub text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
+          <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
             Learn from experts who have real-world experience. Our team is here to help you gain the skills you need for a successful future.
           </p>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-20 hidden md:block">
             <MoveDown size={24} />
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* --- 2. ACADEMIC FACULTY GRID --- */}
       <section className="py-20 bg-slate-50 dark:bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <ScrollReveal className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h3 className="text-[#002147] dark:text-[#003a6e]   uppercase text-xs mb-4 font-bold">
+              <h3 className="text-[#002147] dark:text-[#003a6e] uppercase text-xs mb-4 font-bold">
                 / Academics
               </h3>
-              <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white ">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
                 Meet Our Expert Faculty
               </h2>
             </div>
@@ -206,75 +148,58 @@ const StaffPage = () => {
               A diverse team of industry experts committed to delivering practical
               knowledge and academic rigor.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 faculty-grid">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {FACULTY_DATA.map((staff, idx) => (
-              <div
-                key={idx}
-                className="faculty-card group bg-white dark:bg-[#151515] p-6 rounded-3xl border border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-xl hover:shadow-[#002147]/5 transition-all duration-300 flex flex-col h-full"
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-100 dark:border-white/10">
-                    <img
-                      src={staff.image}
-                      alt={staff.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
+              <ScrollReveal key={idx} animationClass="animate-fade-in" options={{ threshold: 0.1 }}>
+                <div
+                  className="group bg-white dark:bg-[#151515] p-6 rounded-3xl border border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-xl hover:shadow-[#002147]/5 transition-all duration-300 flex flex-col h-full"
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-100 dark:border-white/10">
+                      <img
+                        src={staff.image}
+                        alt={staff.name}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      />
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#002147] group-hover:text-white transition-colors duration-300">
+                      <ArrowUpRight size={18} />
+                    </div>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#002147] group-hover:text-white transition-colors duration-300">
-                    <ArrowUpRight size={18} />
-                  </div>
-                </div>
 
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-[#002147] transition-colors">
-                    {staff.name}
-                  </h4>
-                  <p className="text-xs font-bold uppercase  text-slate-400 group-hover:text-slate-500 dark:group-hover:text-slate-300 mb-3">
-                    {staff.role}
-                  </p>
-                  
-                  {/* Qualification Tag */}
-                  <div className="inline-flex items-start gap-2 p-2 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 w-full">
-                     <GraduationCap size={14} className="text-[#002147] shrink-0 mt-0.5" />
-                     <p className="text-[10px] leading-tight font-medium text-slate-500 dark:text-slate-400">
-                        {staff.qual}
-                     </p>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-[#002147] transition-colors">
+                      {staff.name}
+                    </h4>
+                    <p className="text-xs font-bold uppercase text-slate-400 group-hover:text-slate-500 dark:group-hover:text-slate-300 mb-3">
+                      {staff.role}
+                    </p>
+                    
+                    {/* Qualification Tag */}
+                    <div className="inline-flex items-start gap-2 p-2 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 w-full">
+                       <GraduationCap size={14} className="text-[#002147] shrink-0 mt-0.5" />
+                       <p className="text-[10px] leading-tight font-medium text-slate-500 dark:text-slate-400">
+                          {staff.qual}
+                       </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-6 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-slate-400 text-xs font-medium">
-                  <span className="flex items-center gap-2">
-                    <Users size={14} /> Expert
-                  </span>
-                  <div className="flex gap-3">
-                    <Linkedin size={16} className="hover:text-[#002147] cursor-pointer" />
-                    <Mail size={16} className="hover:text-[#002147] cursor-pointer" />
+                  <div className="mt-6 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-slate-400 text-xs font-medium">
+                    <span className="flex items-center gap-2">
+                      <Users size={14} /> Expert
+                    </span>
+                    <div className="flex gap-3">
+                      <Linkedin size={16} className="hover:text-[#002147] cursor-pointer" />
+                      <Mail size={16} className="hover:text-[#002147] cursor-pointer" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
-
-          {/* CTA Footer */}
-          {/* <div className="mt-20 text-center">
-            <div className="inline-flex flex-col items-center gap-4 p-8 rounded-3xl bg-slate-50 dark:bg-[#002147]/5 border border-slate-200 dark:border-[#002147]/20">
-              <Briefcase size={32} className="text-[#002147]" />
-              <div>
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white">
-                  Want to join our team?
-                </h4>
-                <p className="text-sm text-slate-500 mt-1">
-                  We are always looking for passionate educators.
-                </p>
-              </div>
-              <button className="px-6 py-3 rounded-xl bg-[#002147] text-white font-bold text-sm hover:bg-[#003366] transition-colors">
-                View Open Positions
-              </button>
-            </div>
-          </div> */}
         </div>
       </section>
     </div>

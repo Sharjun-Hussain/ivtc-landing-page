@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useState, useMemo } from "react";
 import {
   BookOpen,
   UserCheck,
@@ -16,7 +14,6 @@ import {
   AlertTriangle,
   Search,
   ChevronDown,
-  FileText,
   Download,
   ThumbsUp,
   ThumbsDown,
@@ -24,6 +21,7 @@ import {
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 // --- ENHANCED DATA WITH CATEGORIES ---
 const POLICIES = [
@@ -165,7 +163,6 @@ const CampusPoliciesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [openPolicy, setOpenPolicy] = useState(null);
   const [helpfulState, setHelpfulState] = useState({}); // Stores feedback status
-  const pageRef = useRef(null);
 
   // Filter Logic
   const filteredPolicies = useMemo(() => {
@@ -184,25 +181,8 @@ const CampusPoliciesPage = () => {
     setHelpfulState((prev) => ({ ...prev, [id]: type }));
   };
 
-  // Animation
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-    const ctx = gsap.context(() => {
-      // Animate list items when category changes
-      gsap.fromTo(
-        ".policy-card",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, clearProps: "all" }
-      );
-    }, pageRef);
-    return () => ctx.revert();
-  }, [selectedCategory, searchQuery]); // Re-run on filter change
-
   return (
     <div
-      ref={pageRef}
       className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors relative"
     >
       {/* --- FLOATING SUPPORT WIDGET --- */}
@@ -218,8 +198,8 @@ const CampusPoliciesPage = () => {
 
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-10 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white  mb-4">
+        <ScrollReveal className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-4">
             Campus <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-900">Rules & Policies</span>
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
@@ -265,7 +245,7 @@ const CampusPoliciesPage = () => {
               </button>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* --- POLICIES LIST --- */}
@@ -277,101 +257,102 @@ const CampusPoliciesPage = () => {
               const feedback = helpfulState[policy.id]; // 'yes' or 'no'
 
               return (
-                <div
-                  key={policy.id}
-                  className={cn(
-                    "policy-card group bg-white dark:bg-[#111] border rounded-2xl overflow-hidden transition-all duration-300",
-                    isOpen 
-                      ? "border-[#002147] shadow-lg shadow-[#002147]/10 ring-1 ring-[#002147]/20" 
-                      : "border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-md"
-                  )}
-                >
-                  {/* Header */}
-                  <div 
-                    onClick={() => setOpenPolicy(isOpen ? null : policy.id)}
-                    className="p-5 md:p-6 flex items-center justify-between cursor-pointer select-none"
-                  >
-                    <div className="flex items-center gap-4 md:gap-6">
-                      <div className={cn(
-                        "w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-colors duration-300",
-                        isOpen ? "bg-[#002147] text-white" : "bg-slate-50 dark:bg-white/5 text-slate-400 group-hover:text-[#002147]"
-                      )}>
-                        <policy.icon size={20} strokeWidth={2} />
-                      </div>
-                      <div>
-                        <h3 className={cn(
-                          "text-lg md:text-xl font-bold transition-colors",
-                          isOpen ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-300"
-                        )}>
-                          <HighlightText text={policy.title} highlight={searchQuery} />
-                        </h3>
-                        {/* Mobile Category Tag */}
-                        <span className="inline-block mt-1 text-[10px] font-bold uppercase  text-slate-400">
-                          {policy.category}
-                        </span>
-                      </div>
-                    </div>
-                    <ChevronDown 
-                      size={20} 
-                      className={cn(
-                        "text-slate-400 transition-transform duration-300",
-                        isOpen && "rotate-180 text-[#002147]"
-                      )} 
-                    />
-                  </div>
-
-                  {/* Content (Accordion Body) */}
-                  <div 
+                <ScrollReveal key={policy.id} animationClass="animate-fade-in" options={{ threshold: 0.1 }}>
+                  <div
                     className={cn(
-                      "grid transition-[grid-template-rows] duration-300 ease-in-out",
-                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      "group bg-white dark:bg-[#111] border rounded-2xl overflow-hidden transition-all duration-300",
+                      isOpen 
+                        ? "border-[#002147] shadow-lg shadow-[#002147]/10 ring-1 ring-[#002147]/20" 
+                        : "border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-md"
                     )}
                   >
-                    <div className="overflow-hidden">
-                      <div className="px-6 pb-6 md:px-20 md:pb-8 pt-0">
-                        <ul className="space-y-3 mb-8">
-                          {policy.content.map((point, idx) => (
-                            <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#002147]/50 shrink-0" />
-                              <HighlightText text={point} highlight={searchQuery} />
-                            </li>
-                          ))}
-                        </ul>
-
-                        {/* Interactive Footer: Was this helpful? */}
-                        <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-white/5">
-                          <span className="text-xs font-bold text-slate-400 uppercase ">
-                            Was this helpful?
+                    {/* Header */}
+                    <div 
+                      onClick={() => setOpenPolicy(isOpen ? null : policy.id)}
+                      className="p-5 md:p-6 flex items-center justify-between cursor-pointer select-none"
+                    >
+                      <div className="flex items-center gap-4 md:gap-6">
+                        <div className={cn(
+                          "w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-colors duration-300",
+                          isOpen ? "bg-[#002147] text-white" : "bg-slate-50 dark:bg-white/5 text-slate-400 group-hover:text-[#002147]"
+                        )}>
+                          <policy.icon size={20} strokeWidth={2} />
+                        </div>
+                        <div>
+                          <h3 className={cn(
+                            "text-lg md:text-xl font-bold transition-colors",
+                            isOpen ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-300"
+                          )}>
+                            <HighlightText text={policy.title} highlight={searchQuery} />
+                          </h3>
+                          {/* Mobile Category Tag */}
+                          <span className="inline-block mt-1 text-[10px] font-bold uppercase text-slate-400">
+                            {policy.category}
                           </span>
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => handleFeedback(policy.id, "yes")}
-                              className={cn(
-                                "p-2 rounded-lg transition-all flex items-center gap-2 text-xs font-bold",
-                                feedback === "yes" 
-                                  ? "bg-green-100 dark:bg-green-900/20 text-green-600" 
-                                  : "hover:bg-slate-50 dark:hover:bg-white/5 text-slate-400"
-                              )}
-                            >
-                              <ThumbsUp size={16} /> Yes
-                            </button>
-                            <button
-                              onClick={() => handleFeedback(policy.id, "no")}
-                              className={cn(
-                                "p-2 rounded-lg transition-all flex items-center gap-2 text-xs font-bold",
-                                feedback === "no" 
-                                  ? "bg-red-100 dark:bg-red-900/20 text-red-600" 
-                                  : "hover:bg-slate-50 dark:hover:bg-white/5 text-slate-400"
-                              )}
-                            >
-                              <ThumbsDown size={16} /> No
-                            </button>
+                        </div>
+                      </div>
+                      <ChevronDown 
+                        size={20} 
+                        className={cn(
+                          "text-slate-400 transition-transform duration-300",
+                          isOpen && "rotate-180 text-[#002147]"
+                        )} 
+                      />
+                    </div>
+
+                    {/* Content (Accordion Body) */}
+                    <div 
+                      className={cn(
+                        "grid transition-[grid-template-rows] duration-300 ease-in-out",
+                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      )}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-6 pb-6 md:px-20 md:pb-8 pt-0">
+                          <ul className="space-y-3 mb-8">
+                            {policy.content.map((point, idx) => (
+                              <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
+                                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#002147]/50 shrink-0" />
+                                <HighlightText text={point} highlight={searchQuery} />
+                              </li>
+                            ))}
+                          </ul>
+
+                          {/* Interactive Footer: Was this helpful? */}
+                          <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-white/5">
+                            <span className="text-xs font-bold text-slate-400 uppercase">
+                              Was this helpful?
+                            </span>
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => handleFeedback(policy.id, "yes")}
+                                className={cn(
+                                  "p-2 rounded-lg transition-all flex items-center gap-2 text-xs font-bold",
+                                  feedback === "yes" 
+                                    ? "bg-green-100 dark:bg-green-900/20 text-green-600" 
+                                    : "hover:bg-slate-50 dark:hover:bg-white/5 text-slate-400"
+                                )}
+                              >
+                                <ThumbsUp size={16} /> Yes
+                              </button>
+                              <button
+                                onClick={() => handleFeedback(policy.id, "no")}
+                                className={cn(
+                                  "p-2 rounded-lg transition-all flex items-center gap-2 text-xs font-bold",
+                                  feedback === "no" 
+                                    ? "bg-red-100 dark:bg-red-900/20 text-red-600" 
+                                    : "hover:bg-slate-50 dark:hover:bg-white/5 text-slate-400"
+                                )}
+                              >
+                                <ThumbsDown size={16} /> No
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })
           ) : (
@@ -393,7 +374,7 @@ const CampusPoliciesPage = () => {
 
         {/* Download Footer */}
         <div className="mt-16 text-center">
-            <button className="inline-flex items-center gap-2 text-xs font-bold uppercase  text-slate-400 hover:text-[#002147] dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-white/10 px-6 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5">
+            <button className="inline-flex items-center gap-2 text-xs font-bold uppercase text-slate-400 hover:text-[#002147] dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-white/10 px-6 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5">
                 <Download size={16} /> Download Policy PDF
             </button>
         </div>

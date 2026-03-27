@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useState, useRef } from "react";
 import {
   BookOpen,
   GraduationCap,
@@ -18,6 +16,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 // --- DATA: ACADEMIC AID ---
 const ACADEMIC_OFFERS = [
@@ -99,33 +98,19 @@ const InitiativesPage = () => {
     supportType: ""
   });
   
-  const pageRef = useRef(null);
   const formRef = useRef(null);
-
-  // Animation when tab changes
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".tab-content",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out", clearProps: "all" }
-      );
-    }, pageRef);
-    return () => ctx.revert();
-  }, [activeTab]);
 
   return (
     <div
-      ref={pageRef}
       className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors"
     >
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-16 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-black uppercase  mb-6 shadow-sm">
+        <ScrollReveal className="max-w-4xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-black uppercase mb-6 shadow-sm">
             <HeartHandshake size={14} /> Meerza Foundation Initiatives
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white  mb-6">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6">
             Knowledge is a Right, <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Not a Privilege.
@@ -137,7 +122,8 @@ const InitiativesPage = () => {
           </p>
 
           {/* TAB NAVIGATION */}
-          <div className="flex flex-wrap justify-center gap-2 p-2 bg-white dark:bg-white/5 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-white/5 inline-flex">
+          {/* TAB NAVIGATION */}
+          <div className="flex flex-wrap justify-center gap-2 p-2 bg-white dark:bg-white/5 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-white/5">
             {[
               { id: "academic", label: "Student Aid", icon: GraduationCap },
               { id: "academy", label: "Quran Academy", icon: BookOpen },
@@ -157,7 +143,7 @@ const InitiativesPage = () => {
               </button>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* --- DYNAMIC CONTENT AREA --- */}
@@ -165,7 +151,7 @@ const InitiativesPage = () => {
         
         {/* TAB 1: ACADEMIC AID */}
         {activeTab === "academic" && (
-          <div className="tab-content grid md:grid-cols-2 gap-12 items-start">
+          <div className="animate-fade-in grid md:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                 Supporting Your Education
@@ -190,7 +176,7 @@ const InitiativesPage = () => {
                             setFormData({...formData, supportType: offer.title});
                             formRef.current?.scrollIntoView({ behavior: 'smooth' });
                           }}
-                          className="text-xs font-bold uppercase  text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all"
+                          className="text-xs font-bold uppercase text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all"
                         >
                           {offer.action} <ArrowRight size={14} />
                         </button>
@@ -303,7 +289,7 @@ const InitiativesPage = () => {
                     </div>
                 </div>
 
-                <button className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-sm uppercase  hover:shadow-lg transition-all mt-4">
+                <button className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-sm uppercase hover:shadow-lg transition-all mt-4">
                   Submit Application
                 </button>
               </form>
@@ -313,7 +299,7 @@ const InitiativesPage = () => {
 
         {/* TAB 2: QURAN ACADEMY */}
         {activeTab === "academy" && (
-          <div className="tab-content">
+          <div className="animate-fade-in">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
                 Free Online Quran Classes
@@ -341,7 +327,7 @@ const InitiativesPage = () => {
                     ))}
                   </ul>
 
-                  <button className="w-full py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-xs uppercase  group-hover:bg-[#002147] dark:group-hover:bg-[#003a6e] group-hover:text-white transition-all">
+                  <button className="w-full py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-xs uppercase group-hover:bg-[#002147] dark:group-hover:bg-[#003a6e] group-hover:text-white transition-all">
                     Register Now
                   </button>
                 </div>
@@ -383,13 +369,13 @@ const InitiativesPage = () => {
 
         {/* TAB 3: DIGITAL LIBRARY */}
         {activeTab === "library" && (
-          <div className="tab-content">
+          <div className="animate-fade-in">
             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
               <div>
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Exclusive eBook Collection</h2>
                 <p className="text-slate-500">Authentic Islamic knowledge, accessible to everyone.</p>
               </div>
-              <button className="text-xs font-bold uppercase  text-[#002147] dark:text-[#00529b] border-b border-[#002147] dark:border-[#00529b] pb-1 hover:text-[#003366]">
+              <button className="text-xs font-bold uppercase text-[#002147] dark:text-[#00529b] border-b border-[#002147] dark:border-[#00529b] pb-1 hover:text-[#003366]">
                 View All Categories
               </button>
             </div>
@@ -397,7 +383,7 @@ const InitiativesPage = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {BOOKS.map((book, i) => (
                 <div key={i} className="group bg-white dark:bg-[#111] p-6 rounded-2xl border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all">
-                  <div className="aspect-[3/4] bg-slate-100 dark:bg-black rounded-xl mb-6 overflow-hidden relative">
+                  <div className="aspect-3/4 bg-slate-100 dark:bg-black rounded-xl mb-6 overflow-hidden relative">
                     {/* Placeholder for Book Cover */}
                     <div className="absolute inset-0 flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400 font-bold text-xl opacity-50">
                        COVER
@@ -409,7 +395,7 @@ const InitiativesPage = () => {
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{book.title}</h3>
-                  <p className="text-xs text-slate-500 uppercase  mb-4">{book.author}</p>
+                  <p className="text-xs text-slate-500 uppercase mb-4">{book.author}</p>
                   
                   <button className="w-full py-3 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                     <Download size={16} /> Download PDF ({book.size})
