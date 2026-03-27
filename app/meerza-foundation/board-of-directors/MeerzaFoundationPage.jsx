@@ -116,7 +116,7 @@ const MeerzaFoundationPage = () => {
 
           <h1 className="hero-title text-5xl md:text-7xl font-black text-slate-900 dark:text-white  mb-8">
             Empowering Lives, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Inspiring Change.
             </span>
           </h1>
