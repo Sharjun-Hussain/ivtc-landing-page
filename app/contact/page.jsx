@@ -114,7 +114,7 @@ const ContactPage = () => {
                     <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 leading-none mb-1.5">
                       {info.label}
                     </p>
-                    <p className="font-bold text-slate-900 dark:text-white text-xl leading-tight">
+                    <p className="font-medium text-slate-900 dark:text-white text-xl leading-tight">
                       {info.val}
                     </p>
                   </div>
