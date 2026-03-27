@@ -239,9 +239,9 @@ const Navbar = memo(() => {
         }`}
       >
         <div className="h-full flex flex-col justify-center px-8 gap-8">
-          <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase ">
+          {/* <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase ">
             Main Menu
-          </p>
+          </p> */}
           <div className="flex flex-col gap-5">
             {navLinks.map((link, i) => (
               <Link

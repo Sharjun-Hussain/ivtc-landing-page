@@ -212,9 +212,9 @@ const Navbar = () => {
         }`}
       >
         <div className="h-full flex flex-col justify-center px-10 gap-8">
-          <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase tracking-wider">
+          {/* <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase tracking-wider">
             Main Menu
-          </p>
+          </p> */}
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
               <Link
