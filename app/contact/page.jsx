@@ -1,128 +1,67 @@
-"use client";
-
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import ShineBadge from "@/components/ui/ShineBadge";
 import {
   Mail,
   Phone,
-  Send,
-  MessageSquare,
   Globe,
-  ShieldCheck,
-  Clock,
   MapPin,
   Sparkles,
-  MoveDown,
-  Lock,
+  Clock,
+  ChevronDown,
 } from "lucide-react";
+import ContactForm from "../../components/Contact/ContactForm";
 
 const ContactPage = () => {
-  const pageRef = useRef(null);
-
-  useEffect(() => {
-    // Register ScrollTrigger to be safe
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-
-    const ctx = gsap.context(() => {
-      // 1. Hero Animation
-      const tl = gsap.timeline();
-      
-      tl.from(".hero-badge", {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      })
-      .from(".hero-title", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-      }, "-=0.6")
-      .from(".hero-sub", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }, "-=0.6");
-
-      // 2. Main Content Animation (The Fix is here)
-      gsap.from(".anim-card", {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15, // Increased stagger slightly for better flow
-        ease: "power2.out",
-        clearProps: "all", // CRITICAL: Removes opacity:0 after animation
-        scrollTrigger: {
-          trigger: ".content-grid",
-          start: "top 85%", // Trigger slightly earlier
-        },
-      });
-
-      // 3. Form Animation
-      gsap.from(".anim-form", {
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: "power3.out",
-        clearProps: "all",
-        scrollTrigger: {
-          trigger: ".content-grid",
-          start: "top 85%",
-        },
-      });
-
-    }, pageRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div
-      ref={pageRef}
-      className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors"
-    >
-      {/* --- 1. THE HERO SECTION --- */}
-      <section className="relative pt-32 md:pt-48 pb-16 md:pb-24 overflow-hidden border-b border-slate-100 dark:border-white/5 bg-white dark:bg-[#0a0a0a]">
-        {/* Subtle Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#002147]/5 dark:bg-[#002147]/10 blur-[120px] rounded-full" />
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors relative overflow-hidden">
+      {/* Static subtle gradient blob — no animation, no GPU cost */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#002147]/5 dark:bg-[#002147]/10 blur-[120px] rounded-full"
+      />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <ShineBadge className="mb-8">
-            <Sparkles size={14} className="text-[#002147] dark:text-blue-400" />
-            Available for Inquiries
-          </ShineBadge>
+      {/* --- 1. HERO SECTION --- */}
+      <section className="relative min-h-[80vh] flex flex-col justify-center items-center text-center px-6 lg:pt-50 pt-36 pb-24">
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
 
-          <h1 className="hero-title text-5xl md:text-8xl font-black text-slate-900 dark:text-white  leading-[0.9] mb-8">
-            Let’s Engineer <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
-              Legendary
-            </span>{" "}
-            results.
+          {/* Badge */}
+          {/* <div className="animate-hero-fade-up mb-6">
+            <ShineBadge>
+              <Sparkles size={14} className="text-[#002147] dark:text-blue-400" />
+              Available for Inquiries
+            </ShineBadge>
+          </div> */}
+
+          {/* Hero Title — matches About page exactly */}
+          <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight mb-6 overflow-hidden">
+            <div className="pb-1 opacity-0 animate-hero-fade-up [animation-delay:150ms]">
+              Let's Engineer
+            </div>
+            <div className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-1 opacity-0 animate-hero-fade-up [animation-delay:300ms]">
+              Legendary Results.
+            </div>
           </h1>
 
-          <p className="hero-sub text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
-            Whether you’re looking for course details, technical support, or
+          {/* Subtitle */}
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed mb-10 opacity-0 animate-hero-fade-up [animation-delay:450ms]">
+            Whether you're looking for course details, technical support, or
             corporate partnerships, our team is standing by to assist you.
           </p>
 
-          <div className="hero-sub flex justify-center items-center gap-4">
+          {/* Social proof — static avatars, no external fetch */}
+          <div className="flex items-center gap-4 opacity-0 animate-hero-fade-up [animation-delay:600ms]">
             <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
+              {[
+                "bg-blue-400",
+                "bg-indigo-500",
+                "bg-sky-400",
+                "bg-blue-600",
+              ].map((color, i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-white dark:border-[#0d0d0d] bg-slate-200 overflow-hidden"
+                  className={`w-10 h-10 md:w-11 md:h-11 rounded-full border-4 border-white dark:border-[#0a0a0a] ${color} flex items-center justify-center text-white text-xs font-bold shadow-md`}
                 >
-                  <img
-                    src={`https://i.pravatar.cc/150?img=${i + 20}`}
-                    alt="Support Team"
-                  />
+                  {String.fromCharCode(65 + i)}
                 </div>
               ))}
             </div>
@@ -130,162 +69,76 @@ const ContactPage = () => {
               <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">
                 Expert Support Team
               </p>
-              <p className="text-[10px] font-black text-[#002147] uppercase ">
+              <p className="text-[11px] font-bold text-[#002147] dark:text-blue-400 mt-0.5">
                 Active Now
               </p>
             </div>
           </div>
+        </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-20 hidden md:block">
-            <MoveDown size={24} />
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-slate-400 hidden md:block" aria-hidden="true">
+          <ChevronDown size={28} />
         </div>
       </section>
 
-      {/* --- 2. THE CONTENT GRID --- */}
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 content-grid">
+      {/* --- 2. CONTENT GRID --- */}
+      <div className="max-w-7xl mx-auto px-6 pb-24 relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-start">
-          
-          {/* --- LEFT SIDE: THE INFO HUB --- */}
-          <div className="lg:col-span-5 space-y-4 md:space-y-6">
-            
-            {/* CONTAINER FOR SMALL CARDS */}
-            <div className="grid grid-cols-1 gap-4">
-              
-              {/* Phone Card */}
-              <div className="anim-card group p-5 md:p-6 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm hover:border-[#002147]/30 transition-all">
+
+          {/* --- LEFT SIDE: INFO HUB --- */}
+          <div className="lg:col-span-5 space-y-4">
+            {[
+              { label: "Contact Numbers", val: "+94 11 234 5678", icon: Phone },
+              { label: "Official Email", val: "hello@ivtccampus.lk", icon: Mail },
+              { label: "Digital Presence", val: "www.ivtccampus.lk", icon: Globe },
+            ].map((info, idx) => (
+              <div
+                key={idx}
+                className="group p-7 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/5 hover:border-[#002147]/30 dark:hover:border-blue-500/30 transition-all duration-300 shadow-sm"
+              >
                 <div className="flex items-center gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#002147] text-white flex items-center justify-center">
-                    <Phone size={20} />
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-[#002147] dark:bg-[#002147] text-white flex items-center justify-center shadow-md">
+                    <info.icon size={20} />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase ">
-                      Contact Numbers
+                  <div>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 leading-none mb-1.5">
+                      {info.label}
                     </p>
-                    <p className="font-bold text-slate-900 dark:text-white text-lg">
-                      +94 11 234 5678
+                    <p className="font-bold text-slate-900 dark:text-white text-xl leading-tight">
+                      {info.val}
                     </p>
                   </div>
                 </div>
               </div>
+            ))}
 
-              {/* Email Card */}
-              <div className="anim-card group p-5 md:p-6 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm hover:border-[#002147]/30 transition-all">
-                <div className="flex items-center gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#002147] text-white flex items-center justify-center">
-                    <Mail size={20} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase ">
-                      Official Email
-                    </p>
-                    <p className="font-bold text-slate-900 dark:text-white text-lg">
-                      hello@ivtccampus.lk
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Website Card */}
-              <div className="anim-card group p-5 md:p-6 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm hover:border-[#002147]/30 transition-all">
-                <div className="flex items-center gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#002147] text-white flex items-center justify-center">
-                    <Globe size={20} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase ">
-                      Digital Presence
-                    </p>
-                    <p className="font-bold text-slate-900 dark:text-white text-lg">
-                      www.ivtccampus.lk
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* HQ Visual Card (Separate from the grid above) */}
-            <div className="anim-card p-8 md:p-10 bg-[#002147] dark:bg-[#002147]/20 border border-white/5 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
-              <MapPin className="absolute -right-4 -bottom-4 w-40 h-40 opacity-5 group-hover:scale-110 transition-transform duration-700" />
-              <div className="relative z-10 space-y-6">
-                <h4 className="text-[10px] font-black uppercase  text-slate-300">
-                  Main Headquarters
-                </h4>
-                <p className="text-2xl md:text-3xl font-bold leading-tight ">
+            {/* HQ Card */}
+            <div className="p-8 md:p-10 bg-[#002147] rounded-[2rem] text-white shadow-2xl relative overflow-hidden group/hq">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 blur-3xl rounded-full pointer-events-none" />
+              <MapPin className="absolute -right-4 -bottom-4 w-36 h-36 opacity-[0.06] group-hover/hq:scale-110 transition-transform duration-700" />
+              <div className="relative z-10 space-y-5">
+                <h4 className="text-sm font-semibold text-blue-200">Main Office</h4>
+                <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                   Colombo 07, Level 04,
                   <br />
-                  IVTC Campus.
+                  IVTC Campus Building.
                 </p>
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
-                  <Clock size={14} className="text-slate-400" /> Open Mon-Sat:
-                  8:30 AM - 5:30 PM
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <Clock size={14} className="text-blue-200" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white/90">Open Mon – Sat</p>
+                    <p className="text-xs text-white/50 mt-0.5">8:30 AM – 5:30 PM</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* --- RIGHT SIDE: THE MESSAGE FORM --- */}
-          <div className="lg:col-span-7 anim-form">
-            <div className="bg-white dark:bg-[#111] p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-200 dark:border-white/5">
-              <div className="mb-8">
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white  flex items-center gap-4">
-                  <div className="p-3 bg-[#002147] rounded-xl text-white">
-                    <MessageSquare size={24} />
-                  </div>
-                  Drop a Message
-                </h3>
-              </div>
-
-              <form className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase  text-slate-500 ml-1">
-                      Full Name
-                    </label>
-                    <input
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all font-medium dark:text-white text-sm"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold uppercase  text-slate-500 ml-1">
-                      Email Address
-                    </label>
-                    <input
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all font-medium dark:text-white text-sm"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase  text-slate-500 ml-1">
-                    Your Message
-                  </label>
-                  <textarea
-                    rows={5}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all font-medium dark:text-white resize-none text-sm"
-                    placeholder="How can we help you today?"
-                  />
-                </div>
-
-                <button className="w-full h-12 px-12! rounded-3xl bg-[#002147] hover:bg-[#003366] text-white font-bold text-lg uppercase shadow-lg shadow-[#002147]/10 transition-all flex items-center justify-center gap-3 group active:scale-[0.98]">
-                  SEND DISPATCH
-                  <Send
-                    size={18}
-                    className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                  />
-                </button>
-
-                <div className="flex items-center justify-center gap-6 pt-6 opacity-30 mt-4">
-                  <ShieldCheck size={18} />
-                  <Clock size={18} />
-                  <Lock size={18} />
-                </div>
-              </form>
-            </div>
-          </div>
+          {/* --- RIGHT SIDE: FORM --- */}
+          <ContactForm />
         </div>
       </div>
     </div>
