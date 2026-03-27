@@ -1,6 +1,7 @@
 import React from "react";
 import ShineBadge from "@/components/ui/ShineBadge";
 import CourseCarousel from "../../components/UpcomingCourses/CourseCarousel";
+import ScrollReveal from "../../components/Animations/ScrollReveal";
 
 const UPCOMING_COURSES = [
   {
@@ -42,7 +43,7 @@ const UpcomingCourses = () => {
 
   return (
     <section className="py-24 bg-transparent overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <ScrollReveal className="max-w-7xl mx-auto px-6">
         <header className="course-header mb-16 text-left">
           <ShineBadge className="mb-2 md:mb-0">
             Starting Soon
@@ -56,7 +57,7 @@ const UpcomingCourses = () => {
         </header>
 
         <CourseCarousel courses={UPCOMING_COURSES} isVisible={isVisible} />
-      </div>
+      </ScrollReveal>
     </section>
   );
 };

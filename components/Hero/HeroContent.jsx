@@ -1,10 +1,10 @@
-import React from "react";
+import ScrollReveal from "../Animations/ScrollReveal";
 
 const HeroContent = () => {
-  return (
-    <section className="relative w-full flex justify-center bg-transparent p-0 md:p-6 md:min-h-screen">
-      <div className="relative pt-21 md:pt-0 w-full max-w-[1600px] h-[700px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
-        <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/30 to-transparent pointer-events-none" />
+    return (
+        <section className="relative w-full flex justify-center bg-transparent p-0 md:p-6 md:min-h-screen">
+            <ScrollReveal className="relative pt-21 md:pt-0 w-full max-w-[1600px] h-[700px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
+                <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/30 to-transparent pointer-events-none" />
 
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
           <div className="hero-text mb-6 flex items-center gap-4">
@@ -26,9 +26,9 @@ const HeroContent = () => {
             </button>
           </div>
         </div>
-      </div>
-    </section>
-  );
+            </ScrollReveal>
+        </section>
+    );
 };
 
 export default HeroContent;

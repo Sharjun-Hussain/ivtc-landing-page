@@ -1,24 +1,27 @@
 "use client";
 
 import React from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 /**
- * Temporarily disabled ScrollReveal. 
- * Renders children immediately without scroll triggers or opacity-0 states.
+ * ScrollReveal: Basic Fade-In
+ * Renders children with a smooth fade-in effect when they enter the viewport.
  */
 const ScrollReveal = ({ 
   children, 
   className = "", 
-  animationClass = "animate-hero-fade-up",
+  animationClass = "animate-fade-in",
   options = { threshold: 0.1 } 
 }) => {
+  const [ref, isVisible] = useScrollReveal(options);
+
   return (
-    <div className={className}>
+    <div ref={ref} className={className}>
       {React.Children.map(children, (child) => {
         if (!React.isValidElement(child)) return child;
         
         return React.cloneElement(child, {
-          className: `${child.props.className || ""}`.trim(),
+          className: `${child.props.className || ""} ${isVisible ? animationClass : "opacity-0"}`.trim(),
         });
       })}
     </div>

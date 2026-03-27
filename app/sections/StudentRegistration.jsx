@@ -2,6 +2,7 @@ import React from "react";
 import { Phone, CheckCircle, ArrowRight } from "lucide-react";
 import ShineBadge from "@/components/ui/ShineBadge";
 import RegistrationForm from "../../components/Registration/RegistrationForm";
+import ScrollReveal from "../../components/Animations/ScrollReveal";
 
 const StudentRegistration = () => {
   // Since we want this to be a Server Component, we can't use useScrollReveal here directly for the whole section
@@ -20,7 +21,7 @@ const StudentRegistration = () => {
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-500/5 dark:bg-indigo-500/10 blur-[120px] mobile-optimize-blur" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <ScrollReveal className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* LEFT COLUMN: Content & Information */}
@@ -69,7 +70,7 @@ const StudentRegistration = () => {
           {/* RIGHT COLUMN: The Application Form */}
           <RegistrationForm isVisible={isVisible} />
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };
