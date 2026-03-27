@@ -1,4 +1,13 @@
 import React from "react";
+
+export const metadata = {
+  title: "Contact Us | IVTC Campus Sri Lanka",
+  description: "Get in touch with IVTC Campus for inquiries regarding A/L ICT, HND programs, and degree pathways. Our team is here to help you engineer your digital future.",
+  openGraph: {
+    title: "Contact Us | IVTC Campus Sri Lanka",
+    description: "Contact Sri Lanka's leading tech campus for course details and support.",
+  },
+};
 import ShineBadge from "@/components/ui/ShineBadge";
 import {
   Mail,

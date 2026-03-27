@@ -3,7 +3,12 @@
 import React from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const ScrollReveal = ({ children, className = "", options = {} }) => {
+const ScrollReveal = ({ 
+  children, 
+  className = "", 
+  animationClass = "animate-hero-fade-up",
+  options = { threshold: 0.1 } 
+}) => {
   const [ref, isVisible] = useScrollReveal(options);
 
   return (
@@ -12,11 +17,7 @@ const ScrollReveal = ({ children, className = "", options = {} }) => {
         if (!React.isValidElement(child)) return child;
         
         return React.cloneElement(child, {
-          className: `${child.props.className || ""} ${isVisible ? "animate-isVisible" : "opacity-0"}`.trim(),
-          style: {
-            ...child.props.style,
-            visibility: isVisible ? "visible" : "hidden",
-          }
+          className: `${child.props.className || ""} ${isVisible ? animationClass : "opacity-0"}`.trim(),
         });
       })}
     </div>
