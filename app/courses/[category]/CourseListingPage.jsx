@@ -129,7 +129,7 @@ const CourseListingPage = () => {
     >
       {/* Background Decorative Element */}
       <div
-        className={`fixed top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-10 dark:opacity-20 pointer-events-none bg-gradient-to-br ${data.color}`}
+        className={`fixed top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-10 dark:opacity-20 pointer-events-none bg-linear-to-br ${data.color}`}
       />
 
       <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 relative z-10">
@@ -149,7 +149,7 @@ const CourseListingPage = () => {
           <h1 className="header-anim text-5xl md:text-7xl font-bold text-slate-900 dark:text-white  mb-6">
             Explore{" "}
             <span
-              className={`text-transparent bg-clip-text bg-gradient-to-r ${data.color}`}
+              className={`text-transparent bg-clip-text bg-linear-to-r ${data.color}`}
             >
               {data.title}
             </span>

@@ -65,7 +65,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[100] p-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
+        className={`fixed top-0 left-0 w-full z-10002 p-4 md:p-6 flex justify-center transition-transform duration-500 will-change-transform ${
           isScrolled && !isMenuOpen
             ? "-translate-y-2 md:translate-y-0"
             : "translate-y-0"
@@ -207,7 +207,7 @@ const Navbar = () => {
 
       {/* MOBILE OVERLAY */}
       <div
-        className={`fixed inset-0 z-50 bg-white dark:bg-[#080808] transition-all duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-0 z-10001 bg-white dark:bg-[#080808] transition-all duration-300 ease-in-out lg:hidden ${
           isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-5"
         }`}
       >

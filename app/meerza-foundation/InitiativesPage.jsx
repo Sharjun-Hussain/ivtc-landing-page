@@ -127,7 +127,7 @@ const InitiativesPage = () => {
           </div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white  mb-6">
             Knowledge is a Right, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Not a Privilege.
             </span>
           </h1>
