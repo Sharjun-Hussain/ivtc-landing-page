@@ -6,7 +6,6 @@ import SocialSidebar from "./Components/SocialSidebar";
 import WhatsAppButton from "./Components/WhatsAppButton";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "./sections/Footer";
-import BackgroundWrapper from "./Components/BackgroundWrapper";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -53,15 +52,13 @@ export default function RootLayout({ children }) {
           defaultTheme="light"
           disableTransitionOnChange
         >
-          <BackgroundWrapper>
-            <Navbar />
-            <SocialSidebar />
-            {/* <WhatsAppButton /> */}
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <Footer />
-          </BackgroundWrapper>
+          <Navbar />
+          <SocialSidebar />
+          {/* <WhatsAppButton /> */}
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
 
         </ThemeProvider>
       </body>
