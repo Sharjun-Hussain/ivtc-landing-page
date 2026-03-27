@@ -3,6 +3,7 @@
 import React, { useMemo } from "react";
 import { HeartHandshake } from "lucide-react";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
+import Link from "next/link";
 
 const InitiativesHero = () => {
   const content = useMemo(() => ({
@@ -24,9 +25,20 @@ const InitiativesHero = () => {
             {content.highlight}
           </span>
         </h1>
-        <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-          {content.description}
-        </p>
+        <div className="flex justify-center gap-4 mt-10">
+          <button 
+            onClick={() => document.getElementById('academic-aid')?.scrollIntoView({ behavior: 'smooth' })}
+            className="h-12 px-8 rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm uppercase hover:scale-105 transition-transform flex items-center justify-center gap-2 outline-none"
+          >
+            Explore Initiatives
+          </button>
+          <Link 
+            href="/meerza-foundation/board-of-directors"
+            className="h-12 px-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm uppercase hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center outline-none"
+          >
+            Meet the Board
+          </Link>
+        </div>
       </ScrollReveal>
     </section>
   );

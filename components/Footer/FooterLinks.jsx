@@ -23,6 +23,8 @@ const footerLinks = [
     title: "Institute",
     links: [
       { name: "About IVTC", path: "/about" },
+      { name: "Meerza Initiatives", path: "/meerza-foundation" },
+      { name: "Board of Directors", path: "/meerza-foundation/board-of-directors" },
       { name: "Our Staff", path: "/about/our-staff" },
       { name: "Campus Policy", path: "/about/campus-policy" },
       { name: "Contact Us", path: "/contact" },
@@ -48,7 +50,7 @@ const FooterLinks = () => {
                 >
                   <span className="relative overflow-hidden pb-1">
                     {link.name}
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                    <span className="absolute bottom-0 left-0 w-full h-px bg-white transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                   </span>
                   <ArrowUpRight
                     size={14}

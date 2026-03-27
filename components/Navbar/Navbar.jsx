@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "A/L ICT", href: "/#registration" },
+  { name: "Foundation", href: "/meerza-foundation", hasMega: true },
   { name: "Certification", href: "/verify" },
   { name: "Academics", href: "#", hasMega: true },
   { name: "Contact", href: "/contact" },
@@ -32,6 +32,18 @@ const menuData = {
     {
       title: "Cloud Computing",
       desc: "AWS, Azure, and high-scale DevOps workflows.",
+    },
+  ],
+  Foundation: [
+    {
+      title: "Our Initiatives",
+      desc: "Student aid, Quran academy, and digital library.",
+      href: "/meerza-foundation"
+    },
+    {
+      title: "Board of Directors",
+      desc: "Meet the leadership behind our mission.",
+      href: "/meerza-foundation/board-of-directors"
     },
   ],
 };
@@ -130,13 +142,15 @@ const Navbar = () => {
                   )}
                 </Link>
 
-                {link.hasMega && activeMenu === link.name && (
+                {link.hasMega && activeMenu === link.name && !isMenuOpen && (
                   <div className="absolute top-full -left-20 pt-6 cursor-default">
                     <div className="w-[600px] bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] p-8 shadow-2xl border border-slate-200 dark:border-white/10 text-left">
                       <div className="grid grid-cols-2 gap-4">
-                        {menuData[link.name].map((item, i) => (
-                          <div
+                        {menuData[link.name]?.map((item, i) => (
+                          <Link
                             key={i}
+                            href={item.href || "#"}
+                            onClick={closeMenu}
                             className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-[#002147] dark:hover:bg-[#002147] transition-colors duration-200"
                           >
                             <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-1 flex items-center justify-between group-hover/item:text-white dark:group-hover/item:text-white transition-colors">
@@ -149,7 +163,7 @@ const Navbar = () => {
                             <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed group-hover/item:text-white dark:group-hover/item:text-white/90 transition-colors">
                               {item.desc}
                             </p>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                       <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
@@ -162,7 +176,7 @@ const Navbar = () => {
                           </p>
                         </div>
                         <button className="h-10 px-8 bg-[#002147] hover:bg-[#003366] text-white text-sm font-bold rounded-2xl transition-all shadow-lg flex items-center justify-center">
-                          View All Courses
+                          {link.name === "Foundation" ? "Support Foundation" : "View All Courses"}
                         </button>
                       </div>
                     </div>
@@ -173,16 +187,6 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3 z-[110]">
-            <Link
-              href="/meerza-foundation"
-              className={`hidden lg:block px-6 py-3 text-sm font-bold rounded-3xl transition-all border flex items-center justify-center ${
-                isScrolled || pathname !== "/"
-                  ? "border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5"
-                  : "border-white/30 text-white hover:bg-white/10"
-              }`}
-            >
-              Meerza Foundation
-            </Link>
             <Link
               href="https://lms.ivtccampus.lk"
               className={`hidden lg:block px-6 py-3 text-sm font-bold rounded-3xl transition-all flex items-center justify-center bg-[#002147] hover:bg-[#003366] text-white shadow-lg`}
@@ -212,40 +216,48 @@ const Navbar = () => {
         }`}
       >
         <div className="h-full flex flex-col justify-center px-10 gap-8">
-          {/* <p className="text-slate-900 dark:text-white text-[10px] font-black uppercase tracking-wider">
-            Main Menu
-          </p> */}
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={closeMenu}
-                className={`text-3xl md:text-4xl font-bold flex items-center justify-between group ${
-                  pathname === link.href ? "text-slate-900 dark:text-white" : "text-slate-400 dark:text-slate-600"
-                }`}
-              >
-                {link.name}
-                <ArrowRight
-                  className={`${
-                    pathname === link.href
-                      ? "text-slate-900 dark:text-white"
-                      : "text-slate-300 dark:text-slate-700 group-hover:text-slate-900 dark:group-hover:text-white"
-                  } transition-colors`}
-                  size={24}
-                />
-              </Link>
+              <div key={link.name} className="space-y-4">
+                <Link
+                  href={link.href}
+                  onClick={link.hasMega ? undefined : closeMenu}
+                  className={`text-3xl md:text-4xl font-bold flex items-center justify-between group ${
+                    pathname === link.href ? "text-slate-900 dark:text-white" : "text-slate-400 dark:text-slate-600"
+                  }`}
+                >
+                  {link.name}
+                  {!link.hasMega && (
+                    <ArrowRight
+                      className={`${
+                        pathname === link.href
+                          ? "text-slate-900 dark:text-white"
+                          : "text-slate-300 dark:text-slate-700 group-hover:text-slate-900 dark:group-hover:text-white"
+                      } transition-colors`}
+                      size={24}
+                    />
+                  )}
+                </Link>
+                {link.hasMega && menuData[link.name] && (
+                  <div className="flex flex-col gap-3 pl-4">
+                    {menuData[link.name].map((item, i) => (
+                      <Link
+                        key={i}
+                        href={item.href || "#"}
+                        onClick={closeMenu}
+                        className="text-lg font-semibold text-slate-500 hover:text-[#002147] dark:hover:text-[#00529b] flex items-center justify-between transition-colors"
+                      >
+                        {item.title}
+                        <ArrowRight size={18} />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
           <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 grid grid-cols-1 gap-3">
-            <Link
-              href="/meerza-foundation"
-              className="w-full h-12 px-6 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold rounded-3xl flex items-center justify-center gap-2 text-lg"
-              onClick={closeMenu}
-            >
-              Meerza Foundation
-            </Link>
             <Link
               href="https://lms.ivtccampus.lk"
               className="w-full h-12 px-6 bg-[#002147] hover:bg-[#003366] text-white font-bold rounded-3xl shadow-lg flex items-center justify-center gap-2 text-lg transition-all"

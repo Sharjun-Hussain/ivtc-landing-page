@@ -3,6 +3,7 @@
 import React, { useMemo } from "react";
 import { Heart, HandHeart } from "lucide-react";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
+import Link from "next/link";
 
 const BoardHero = () => {
   const content = useMemo(() => ({
@@ -30,11 +31,14 @@ const BoardHero = () => {
           {content.description}
         </p>
 
-        <div className="flex justify-center gap-4">
-          <button className="h-12 px-12! rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-lg uppercase hover:scale-105 transition-transform shadow-xl shadow-[#002147]/20 flex items-center gap-2 justify-center outline-none">
-            <Heart size={18} className="fill-current" /> Support Our Cause
-          </button>
-          <button className="h-12 px-12! rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-lg uppercase hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center outline-none">
+        <div className="flex justify-center gap-4 mt-6">
+          <Link
+            href="/meerza-foundation"
+            className="h-12 px-8 rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm uppercase hover:scale-105 transition-transform flex items-center justify-center gap-2 outline-none"
+          >
+            View Initiatives
+          </Link>
+          <button className="h-12 px-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm uppercase hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center outline-none">
             Read Reports
           </button>
         </div>

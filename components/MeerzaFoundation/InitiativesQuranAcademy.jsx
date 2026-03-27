@@ -60,7 +60,7 @@ const InitiativesQuranAcademy = () => {
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">{course.title}</h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 min-h-[40px]">{course.desc}</p>
               
-              <ul className="space-y-3 mb-8 flex-grow">
+              <ul className="space-y-3 mb-8 grow">
                 {course.features.map((feat) => (
                   <li key={feat} className="flex items-center gap-2 text-xs font-semibold text-slate-500">
                     <CheckCircle size={14} className="text-green-500" /> {feat}
