@@ -13,7 +13,7 @@ const HeroContent = () => {
               IVTC Campus Sri Lanka
             </span>
           </div>
-          <h1 className="hero-text text-5xl md:text-7xl font-black text-white leading-tight md:leading-tight max-w-4xl tracking-tight">
+          <h1 className="hero-text text-5xl md:text-7xl font-bold text-white leading-tight md:leading-tight max-w-4xl tracking-tight">
             Empower Your <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-slate-200 via-white to-slate-200">Digital</span> Future.
           </h1>

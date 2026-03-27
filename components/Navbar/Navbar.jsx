@@ -9,9 +9,9 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Foundation", href: "/meerza-foundation", hasMega: true },
-  { name: "Certification", href: "/verify" },
   { name: "Academics", href: "#", hasMega: true },
+  { name: "Certification", href: "/verify" },
+  { name: "Meerza Foundation", href: "/meerza-foundation", hasMega: true },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -34,7 +34,7 @@ const menuData = {
       desc: "AWS, Azure, and high-scale DevOps workflows.",
     },
   ],
-  Foundation: [
+  "Meerza Foundation": [
     {
       title: "Our Initiatives",
       desc: "Student aid, Quran academy, and digital library.",
@@ -143,15 +143,15 @@ const Navbar = () => {
                 </Link>
 
                 {link.hasMega && activeMenu === link.name && !isMenuOpen && (
-                  <div className="absolute top-full -left-20 pt-6 cursor-default">
-                    <div className="w-[600px] bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] p-8 shadow-2xl border border-slate-200 dark:border-white/10 text-left">
-                      <div className="grid grid-cols-2 gap-4">
+                  <div className={`absolute top-full pt-6 cursor-default ${link.name === "Meerza Foundation" ? "-left-4" : "-left-20"}`}>
+                    <div className={`${link.name === "Meerza Foundation" ? "w-[400px]" : "w-[600px]"} bg-white dark:bg-[#0a0a0a] rounded-[2.5rem] p-8 shadow-2xl border border-slate-200 dark:border-white/10 text-left`}>
+                      <div className={`grid ${link.name === "Meerza Foundation" ? "grid-cols-1 gap-2" : "grid-cols-2 gap-4"}`}>
                         {menuData[link.name]?.map((item, i) => (
                           <Link
                             key={i}
                             href={item.href || "#"}
                             onClick={closeMenu}
-                            className="group/item cursor-pointer p-5 rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-[#002147] dark:hover:bg-[#002147] transition-colors duration-200"
+                            className={`group/item cursor-pointer rounded-3xl bg-slate-50 dark:bg-white/5 hover:bg-[#002147] dark:hover:bg-[#002147] transition-colors duration-200 ${link.name === "Meerza Foundation" ? "p-4" : "p-5"}`}
                           >
                             <h4 className="text-slate-900 dark:text-white font-bold text-[14px] mb-1 flex items-center justify-between group-hover/item:text-white dark:group-hover/item:text-white transition-colors">
                               {item.title}
@@ -166,19 +166,22 @@ const Navbar = () => {
                           </Link>
                         ))}
                       </div>
-                      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
-                        <div>
-                          <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-wider">
-                            Next Intake
-                          </p>
-                          <p className="text-[12px] text-slate-600 dark:text-slate-400 font-medium">
-                            Spring Semester • March 2026
-                          </p>
+                      
+                      {link.name !== "Meerza Foundation" && (
+                        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
+                          <div>
+                            <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-wider">
+                              Next Intake
+                            </p>
+                            <p className="text-[12px] text-slate-600 dark:text-slate-400 font-medium">
+                              Spring Semester • March 2026
+                            </p>
+                          </div>
+                          <button className="h-10 px-8 bg-[#002147] hover:bg-[#003366] text-white text-sm font-bold rounded-2xl transition-all shadow-lg flex items-center justify-center">
+                            View All Courses
+                          </button>
                         </div>
-                        <button className="h-10 px-8 bg-[#002147] hover:bg-[#003366] text-white text-sm font-bold rounded-2xl transition-all shadow-lg flex items-center justify-center">
-                          {link.name === "Foundation" ? "Support Foundation" : "View All Courses"}
-                        </button>
-                      </div>
+                      )}
                     </div>
                   </div>
                 )}
