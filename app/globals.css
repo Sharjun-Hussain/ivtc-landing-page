@@ -73,6 +73,16 @@ html {
     }
   }
 
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
   @keyframes carousel-entrance {
     from {
       transform: scale(0.95);
@@ -140,6 +150,7 @@ html {
   --animate-blob-1: blob-float-1 15s ease-in-out infinite alternate;
   --animate-blob-2: blob-float-2 18s ease-in-out infinite alternate;
   --animate-blob-3: blob-float-3 20s ease-in-out infinite alternate;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
 }
 
 :root {

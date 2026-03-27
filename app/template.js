@@ -9,8 +9,8 @@ import React from "react";
 export default function Template({ children }) {
     return (
         <div className="relative min-h-screen w-full bg-neutral-50 dark:bg-[#0a0a0a]">
-            {/* PAGE CONTENT: No animations, no opacity-0 */}
-            <div className="page-content w-full h-full">
+            {/* PAGE CONTENT: Basic fade-in on mount */}
+            <div className="page-content w-full h-full animate-fade-in">
                 {children}
             </div>
         </div>
