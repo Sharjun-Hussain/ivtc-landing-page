@@ -3,7 +3,6 @@
 import React, { useState, useRef } from "react";
 import {
   BookOpen,
-  GraduationCap,
   Download,
   HeartHandshake,
   Users,
@@ -14,6 +13,7 @@ import {
   PenTool,
   ArrowRight,
   ShieldCheck,
+  Globe,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
@@ -84,7 +84,6 @@ const BOOKS = [
 ];
 
 const InitiativesPage = () => {
-  const [activeTab, setActiveTab] = useState("academy"); // 'academic', 'academy', 'library'
   const [formData, setFormData] = useState({
     firstName: "", 
     lastName: "", 
@@ -101,244 +100,184 @@ const InitiativesPage = () => {
   const formRef = useRef(null);
 
   return (
-    <div
-      className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors"
-    >
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors">
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-16 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
+      <section className="relative pt-32 pb-20 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
         <ScrollReveal className="max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-black uppercase mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-semibold uppercase mb-6 shadow-sm">
             <HeartHandshake size={14} /> Meerza Foundation Initiatives
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-semibold text-slate-900 dark:text-white mb-6">
             Knowledge is a Right, <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Not a Privilege.
             </span>
           </h1>
-          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             From free academic supplies to comprehensive Quranic education, we are dedicated to 
             empowering our community through accessible resources.
           </p>
-
-          {/* TAB NAVIGATION */}
-          {/* TAB NAVIGATION */}
-          <div className="flex flex-wrap justify-center gap-2 p-2 bg-white dark:bg-white/5 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-white/5">
-            {[
-              { id: "academic", label: "Student Aid", icon: GraduationCap },
-              { id: "academy", label: "Quran Academy", icon: BookOpen },
-              { id: "library", label: "Digital Library", icon: Library },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "px-6 py-3 rounded-xl text-sm font-bold flex items-center gap-2 transition-all duration-300",
-                  activeTab === tab.id
-                    ? "bg-[#002147] dark:bg-[#003a6e] text-white shadow-lg"
-                    : "text-slate-500 hover:bg-slate-50 dark:hover:bg-white/10"
-                )}
-              >
-                <tab.icon size={16} /> {tab.label}
-              </button>
-            ))}
-          </div>
         </ScrollReveal>
       </section>
 
-      {/* --- DYNAMIC CONTENT AREA --- */}
-      <section className="py-20 max-w-7xl mx-auto px-6 min-h-[600px]">
+      {/* --- CONTENT AREA --- */}
+      <div className="max-w-7xl mx-auto px-6">
         
-        {/* TAB 1: ACADEMIC AID */}
-        {activeTab === "academic" && (
-          <div className="animate-fade-in grid md:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
-                Supporting Your Education
-              </h2>
-              <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-                We believe financial barriers should never stop a student from learning. 
-                Apply below for free textbooks, stationery, or a personal copy of the Holy Quran.
-              </p>
+        {/* SECTION 1: ACADEMIC AID */}
+        <section id="academic-aid" className="py-24 border-b border-slate-100 dark:border-white/5">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div className="space-y-8">
+              <ScrollReveal>
+                <h2 className="text-3xl font-semibold text-slate-900 dark:text-white mb-4">
+                  Student Academic Aid
+                </h2>
+                <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+                  We believe financial barriers should never stop a student from learning. 
+                  Apply below for free textbooks, stationery, or a personal copy of the Holy Quran.
+                </p>
+              </ScrollReveal>
               
-              <div className="grid gap-4">
-                {ACADEMIC_OFFERS.map((offer) => (
-                  <div key={offer.id} className="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:border-[#002147]/30 transition-colors">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-white dark:bg-white/5 flex items-center justify-center text-[#002147] dark:text-[#00529b] shadow-sm">
-                        <offer.icon size={24} />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{offer.title}</h3>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{offer.desc}</p>
-                        <button 
-                          onClick={() => {
-                            setFormData({...formData, supportType: offer.title});
-                            formRef.current?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="text-xs font-bold uppercase text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all"
-                        >
-                          {offer.action} <ArrowRight size={14} />
-                        </button>
+              <div className="grid gap-6">
+                {ACADEMIC_OFFERS.map((offer, idx) => (
+                  <ScrollReveal key={offer.id} animationClass="animate-fade-in" options={{ delay: idx * 0.1 }}>
+                    <div className="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:border-[#002147]/30 transition-colors">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-white/5 flex items-center justify-center text-[#002147] dark:text-[#00529b] shadow-sm">
+                          <offer.icon size={24} />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">{offer.title}</h3>
+                          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{offer.desc}</p>
+                          <button 
+                            onClick={() => {
+                              setFormData({...formData, supportType: offer.title});
+                              formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }}
+                            className="text-xs font-bold uppercase text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all"
+                          >
+                            {offer.action} <ArrowRight size={14} />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
 
             {/* APPLICATION FORM */}
-            <div ref={formRef} className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-2xl">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                <FileText size={20} className="text-[#002147] dark:text-[#00529b]" /> Application Form
-              </h3>
-              <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">First Name</label>
-                    <input 
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                      placeholder="Abdullah" 
-                    />
+            <ScrollReveal animationClass="animate-slide-up">
+              <div ref={formRef} className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-2xl">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                  <FileText size={20} className="text-[#002147] dark:text-[#00529b]" /> Application Form
+                </h3>
+                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-[10px] uppercase font-semibold text-slate-500">First Name</label>
+                      <input 
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all"
+                        placeholder="Abdullah" 
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] uppercase font-semibold text-slate-500">Last Name</label>
+                      <input 
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all" 
+                        placeholder="Ahmed" 
+                      />
+                    </div>
                   </div>
+                  
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">Last Name</label>
-                    <input 
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                      placeholder="Ahmed" 
-                    />
+                    <label className="text-[10px] uppercase font-semibold text-slate-500">Support Needed</label>
+                    <select 
+                      value={formData.supportType}
+                      onChange={(e) => setFormData({...formData, supportType: e.target.value})}
+                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all"
+                    >
+                      <option value="">Select Option...</option>
+                      <option value="Free Books & Stationery">Free Books & Stationery</option>
+                      <option value="Free Quran Request">Free Quran Request</option>
+                    </select>
                   </div>
-                </div>
-                
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-slate-500">Support Needed</label>
-                  <select 
-                    value={formData.supportType}
-                    onChange={(e) => setFormData({...formData, supportType: e.target.value})}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none"
-                  >
-                    <option value="">Select Option...</option>
-                    <option value="Free Books & Stationery">Free Books & Stationery</option>
-                    <option value="Free Quran Request">Free Quran Request</option>
-                  </select>
-                </div>
 
-                <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">Address Line 1</label>
-                    <input 
-                      value={formData.address}
-                      onChange={(e) => setFormData({...formData, address: e.target.value})}
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                      placeholder="House No, Street Name" 
-                    />
-                </div>
+                  <div className="space-y-1">
+                      <label className="text-[10px] uppercase font-semibold text-slate-500">District / City</label>
+                      <input 
+                        value={formData.district}
+                        onChange={(e) => setFormData({...formData, district: e.target.value})}
+                        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all" 
+                        placeholder="Colombo" 
+                      />
+                  </div>
 
-                <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">Address Line 2 (Optional)</label>
-                    <input 
-                      value={formData.addressLine2}
-                      onChange={(e) => setFormData({...formData, addressLine2: e.target.value})}
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                      placeholder="Apartment, suite, etc." 
-                    />
-                </div>
+                  <div className="space-y-1">
+                      <label className="text-[10px] uppercase font-semibold text-slate-500">WhatsApp Number</label>
+                      <input 
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all" 
+                        placeholder="+94 7..." 
+                      />
+                  </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">District / City</label>
-                        <input 
-                          value={formData.district}
-                          onChange={(e) => setFormData({...formData, district: e.target.value})}
-                          className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                          placeholder="Colombo" 
-                        />
-                    </div>
-                    <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">State / Province</label>
-                        <input 
-                          value={formData.state}
-                          onChange={(e) => setFormData({...formData, state: e.target.value})}
-                          className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                          placeholder="Western Province" 
-                        />
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">Postal Code</label>
-                        <input 
-                          value={formData.postalCode}
-                          onChange={(e) => setFormData({...formData, postalCode: e.target.value})}
-                          className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                          placeholder="10100" 
-                        />
-                    </div>
-                    <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">WhatsApp Number</label>
-                        <input 
-                          value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none" 
-                          placeholder="+94 7..." 
-                        />
-                    </div>
-                </div>
-
-                <button className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-sm uppercase hover:shadow-lg transition-all mt-4">
-                  Submit Application
-                </button>
-              </form>
-            </div>
+                  <button className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm uppercase hover:shadow-lg transition-all mt-4">
+                    Submit Application
+                  </button>
+                </form>
+              </div>
+            </ScrollReveal>
           </div>
-        )}
+        </section>
 
-        {/* TAB 2: QURAN ACADEMY */}
-        {activeTab === "academy" && (
-          <div className="animate-fade-in">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-                Free Online Quran Classes
-              </h2>
-              <p className="text-slate-500 dark:text-slate-400">
-                "The best of you are those who learn the Quran and teach it." <br/>
-                Join our expert-led classes, completely free of charge. tailored for all ages and genders.
-              </p>
-            </div>
+        {/* SECTION 2: QURAN ACADEMY */}
+        <section id="quran-academy" className="py-24 border-b border-slate-100 dark:border-white/5">
+          <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-semibold text-slate-900 dark:text-white mb-4">
+              Free Online Quran Classes
+            </h2>
+            <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+              "The best of you are those who learn the Quran and teach it." <br/>
+              Join our expert-led classes, completely free of charge, tailored for all ages and genders.
+            </p>
+          </ScrollReveal>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
-              {COURSES.map((course) => (
-                <div key={course.id} className="group relative p-8 rounded-[2rem] bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-xl transition-all">
-                  <div className={`inline-flex p-3 rounded-xl mb-6 ${course.color}`}>
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {COURSES.map((course, idx) => (
+              <ScrollReveal key={course.id} animationClass="animate-fade-in" options={{ delay: idx * 0.1 }}>
+                <div className="group relative p-8 rounded-[2rem] bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 hover:border-[#002147]/30 hover:shadow-xl transition-all h-full flex flex-col">
+                  <div className={`inline-flex p-3 rounded-xl mb-6 ${course.color} w-fit`}>
                     <BookOpen size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{course.title}</h3>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">{course.title}</h3>
                   <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 min-h-[40px]">{course.desc}</p>
                   
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-8 flex-grow">
                     {course.features.map((feat) => (
-                      <li key={feat} className="flex items-center gap-2 text-xs font-bold text-slate-500">
+                      <li key={feat} className="flex items-center gap-2 text-xs font-semibold text-slate-500">
                         <CheckCircle size={14} className="text-green-500" /> {feat}
                       </li>
                     ))}
                   </ul>
 
-                  <button className="w-full py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-xs uppercase group-hover:bg-[#002147] dark:group-hover:bg-[#003a6e] group-hover:text-white transition-all">
+                  <button className="w-full py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-xs uppercase group-hover:bg-[#002147] dark:group-hover:bg-[#003a6e] group-hover:text-white transition-all">
                     Register Now
                   </button>
                 </div>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
+          </div>
 
-            {/* CONDITIONS / INFO */}
+          <ScrollReveal>
             <div className="bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 rounded-2xl p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
                      Commitment to Learning
                    </h3>
                    <ul className="space-y-3">
@@ -355,58 +294,62 @@ const InitiativesPage = () => {
                    </ul>
                 </div>
                 <div className="text-center md:text-right">
-                   <p className="text-lg font-bold text-slate-900 dark:text-white mb-2">Have Questions?</p>
+                   <p className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Have Questions?</p>
                    <p className="text-slate-500 mb-6">Contact our coordinator directly.</p>
-                   <div className="inline-flex items-center gap-3 px-6 py-3 bg-white dark:bg-black rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+                   <div className="inline-flex items-center gap-3 px-6 py-3 bg-white dark:bg-black rounded-xl border border-slate-200 dark:border-white/10 shadow-sm shadow-[#002147]/5">
                       <MessageCircle size={20} className="text-green-500" />
-                      <span className=" font-bold text-slate-900 dark:text-white">+94 71 541 9807</span>
+                      <span className=" font-semibold text-slate-900 dark:text-white">+94 71 541 9807</span>
                    </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </ScrollReveal>
+        </section>
 
-        {/* TAB 3: DIGITAL LIBRARY */}
-        {activeTab === "library" && (
-          <div className="animate-fade-in">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Exclusive eBook Collection</h2>
-                <p className="text-slate-500">Authentic Islamic knowledge, accessible to everyone.</p>
-              </div>
-              <button className="text-xs font-bold uppercase text-[#002147] dark:text-[#00529b] border-b border-[#002147] dark:border-[#00529b] pb-1 hover:text-[#003366]">
-                View All Categories
-              </button>
+        {/* SECTION 3: DIGITAL LIBRARY */}
+        <section id="digital-library" className="py-24">
+          <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+              <h2 className="text-3xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                <Globe size={28} className="text-[#002147] dark:text-[#00529b]" />
+                Exclusive eBook Collection
+              </h2>
+              <p className="text-slate-500">Authentic Islamic knowledge, accessible to everyone, everywhere.</p>
             </div>
+            <button className="text-xs font-semibold uppercase text-[#002147] dark:text-[#00529b] border-b border-[#002147]/30 dark:border-[#00529b]/30 pb-1 hover:border-current transition-all">
+              View All Categories
+            </button>
+          </ScrollReveal>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {BOOKS.map((book, i) => (
-                <div key={i} className="group bg-white dark:bg-[#111] p-6 rounded-2xl border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all">
+          <div className="grid md:grid-cols-3 gap-10">
+            {BOOKS.map((book, i) => (
+              <ScrollReveal key={i} animationClass="animate-fade-in" options={{ delay: i * 0.1 }}>
+                <div className="group bg-white dark:bg-[#111] p-6 rounded-2xl border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all h-full flex flex-col">
                   <div className="aspect-3/4 bg-slate-100 dark:bg-black rounded-xl mb-6 overflow-hidden relative">
-                    {/* Placeholder for Book Cover */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400 font-bold text-xl opacity-50">
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400 font-semibold text-xl opacity-50">
                        COVER
                     </div>
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <button className="h-10 px-8 bg-[#002147] dark:bg-[#003a6e] text-white rounded-3xl font-bold text-xs uppercase transform translate-y-4 group-hover:translate-y-0 transition-all flex items-center justify-center">
+                        <button className="h-10 px-8 bg-[#002147] dark:bg-[#003a6e] text-white rounded-3xl font-semibold text-xs uppercase transform translate-y-4 group-hover:translate-y-0 transition-all">
                             Preview
                         </button>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{book.title}</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">{book.title}</h3>
                   <p className="text-xs text-slate-500 uppercase mb-4">{book.author}</p>
                   
-                  <button className="w-full py-3 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                    <Download size={16} /> Download PDF ({book.size})
-                  </button>
+                  <div className="mt-auto">
+                    <button className="w-full py-3 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                      <Download size={16} /> Download PDF ({book.size})
+                    </button>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
-        )}
+        </section>
 
-      </section>
+      </div>
     </div>
   );
 };
