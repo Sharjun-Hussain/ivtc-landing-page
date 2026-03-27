@@ -1,6 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import React, { useState, useRef, useCallback } from "react";
 import {
   ShieldCheck,
   Search,
@@ -17,201 +16,193 @@ import {
 import { Button } from "@/components/ui/button";
 
 const CertificateValidator = () => {
-  const [certId, setCertId] = useState("");
+  const inputRef = useRef(null);
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [result, setResult] = useState(null);
-  const resultRef = useRef(null);
+  const [certId, setCertId] = useState("");
 
-  const handleValidate = (e) => {
-    e.preventDefault();
-    if (!certId) return;
+  const handleValidate = useCallback(
+    (e) => {
+      e.preventDefault();
+      const id = inputRef.current?.value?.trim().toUpperCase();
+      if (!id) return;
 
-    setStatus("loading");
+      setCertId(id);
+      setStatus("loading");
 
-    // Mock Validation Logic
-    setTimeout(() => {
-      if (certId === "IVTC-2026-X89") {
-        setResult({
-          studentName: "Dulaj Nimansha",
-          course: "CCNA 200-301 Enterprise Networking",
-          issueDate: "January 15, 2026",
-          grade: "Distinction",
-          verificationUrl: "https://ivtc.lk/verify/IVTC-2026-X89",
-        });
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    }, 1500);
-  };
+      setTimeout(() => {
+        if (id === "IVTC-2026-X89") {
+          setResult({
+            studentName: "Dulaj Nimansha",
+            course: "CCNA 200-301 Enterprise Networking",
+            issueDate: "January 15, 2026",
+            grade: "Distinction",
+          });
+          setStatus("success");
+        } else {
+          setResult(null);
+          setStatus("error");
+        }
+      }, 1500);
+    },
+    []
+  );
 
-  useEffect(() => {
-    if (status === "success") {
-      gsap.fromTo(
-        resultRef.current,
-        { y: 40, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.2)" },
-      );
-    }
-  }, [status]);
+  const handleReset = useCallback(() => {
+    setStatus("idle");
+    setResult(null);
+    if (inputRef.current) inputRef.current.value = "";
+  }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-[#0a0a0a] pt-32 pb-20 px-6 transition-colors">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-slate-50/50 dark:bg-[#0a0a0a] transition-colors">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-28 md:pt-40 pb-20">
 
-        {/* --- 1. HEADER --- */}
-        <header className="text-center mb-16 space-y-4">
+        {/* --- HEADER --- */}
+        <header className="text-center mb-10 md:mb-14 space-y-4">
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-[#002147] rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-[#002147]/30">
-              <ShieldCheck size={32} />
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-[#002147] rounded-2xl flex items-center justify-center text-white shadow-xl shadow-[#002147]/20">
+              <ShieldCheck size={28} />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white ">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
             Verify Your{" "}
             <span className="text-[#002147] dark:text-blue-400">
               Certificate
             </span>
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 font-medium text-base max-w-md mx-auto">
-            Enter your unique Certificate ID to instantly confirm the authenticity of your IVTC qualification.
+          <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed max-w-md mx-auto">
+            Enter your unique Certificate ID to instantly confirm the
+            authenticity of your IVTC qualification.
           </p>
         </header>
 
-        {/* --- 2. SEARCH INPUT --- */}
-        <div className="mb-12">
-          <form onSubmit={handleValidate} className="relative group">
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#002147] transition-colors">
-              <Search size={22} />
+        {/* --- SEARCH FORM --- */}
+        <form onSubmit={handleValidate} className="mb-10 space-y-3">
+          {/* Input row */}
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+              <Search size={20} />
             </div>
             <input
+              ref={inputRef}
               type="text"
-              placeholder="Ex: IVTC-2026-X89"
-              value={certId}
-              onChange={(e) => setCertId(e.target.value.toUpperCase())}
-              className="w-full h-20 pl-16 pr-40 bg-white dark:bg-[#111] rounded-[2rem] border border-slate-200 dark:border-white/10 text-xl font-bold  text-slate-900 dark:text-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] focus:ring-4 focus:ring-[#002147]/10 focus:border-[#002147] outline-none transition-all placeholder:text-slate-300 placeholder:font-normal placeholder:"
+              placeholder="e.g. IVTC-2026-X89"
+              className="w-full h-14 pl-12 pr-4 bg-white dark:bg-[#111] rounded-2xl border border-slate-200 dark:border-white/10 text-base font-semibold text-slate-900 dark:text-white shadow-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] dark:focus:border-blue-500 outline-none transition-all placeholder:text-slate-300 placeholder:font-normal"
             />
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="absolute right-3 top-3 bottom-3 h-14 px-12! bg-[#002147] hover:bg-[#003366] text-white rounded-3xl font-bold text-lg transition-all flex items-center gap-2 shadow-lg shadow-[#002147]/20 justify-center"
-            >
-              {status === "loading" ? (
-                <Loader2 className="animate-spin" size={18} />
-              ) : (
-                "VALIDATE"
-              )}
-            </button>
-          </form>
-        </div>
-
-        {/* --- 3. RESULTS AREA --- */}
-        {status === "success" && result && (
-          <div
-            ref={resultRef}
-            className="bg-white dark:bg-[#111] rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] overflow-hidden"
+          </div>
+          {/* Button — full-width on mobile */}
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="w-full h-14 bg-[#002147] hover:bg-[#003366] text-white rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#002147]/20 active:scale-[0.98] disabled:opacity-60"
           >
+            {status === "loading" ? (
+              <Loader2 className="animate-spin" size={18} />
+            ) : (
+              <>
+                <Search size={16} />
+                Validate Certificate
+              </>
+            )}
+          </button>
+        </form>
+
+        {/* --- SUCCESS RESULT --- */}
+        {status === "success" && result && (
+          <div className="bg-white dark:bg-[#111] rounded-3xl border border-slate-100 dark:border-white/5 shadow-xl overflow-hidden animate-hero-fade-up">
+
             {/* Top Banner */}
-            <div className="bg-[#002147] py-4 px-8 flex items-center justify-between">
-              <span className="text-white text-xs font-black uppercase  flex items-center gap-2">
-                <CheckCircle2 size={16} /> Authenticity Verified
+            <div className="bg-[#002147] py-3 px-6 flex flex-wrap items-center justify-between gap-2">
+              <span className="text-white text-xs font-bold flex items-center gap-2">
+                <CheckCircle2 size={14} />
+                Authenticity Verified
               </span>
-              <span className="text-white/70 text-[10px] font-bold uppercase ">
-                {result.verificationUrl.split("/").pop()}
+              <span className="text-white/60 text-[10px] font-semibold">
+                {certId}
               </span>
             </div>
 
-            <div className="p-10 space-y-10">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-[#002147] dark:text-blue-400 uppercase ">
+            <div className="p-6 md:p-10 space-y-8">
+              {/* Student name + actions */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold text-[#002147] dark:text-blue-400 mb-1">
                     Certificate Holder
-                  </label>
-                  <h2 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                    <User className="text-slate-300" size={24} />{" "}
+                  </p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                    <User className="text-slate-300 shrink-0" size={22} />
                     {result.studentName}
                   </h2>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 shrink-0">
                   <Button
                     variant="outline"
-                    className="h-12 px-12! rounded-3xl border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg flex items-center justify-center"
+                    size="sm"
+                    className="rounded-xl border-slate-200 dark:border-white/10 font-bold flex items-center gap-1.5"
                   >
-                    <Download size={20} className="mr-2" /> PDF
+                    <Download size={15} /> PDF
                   </Button>
                   <Button
                     variant="outline"
-                    className="h-12 px-12! rounded-3xl border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 font-bold text-lg flex items-center justify-center"
+                    size="sm"
+                    className="rounded-xl border-slate-200 dark:border-white/10 font-bold"
                   >
-                    <Share2 size={20} />
+                    <Share2 size={15} />
                   </Button>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-slate-100 dark:border-white/5">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase ">
-                    Course Completed
-                  </label>
-                  <p className="text-slate-900 dark:text-white font-bold flex items-center gap-2">
-                    <BookOpen size={16} className="text-[#002147] dark:text-blue-400" />{" "}
-                    {result.course}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase ">
-                    Issue Date
-                  </label>
-                  <p className="text-slate-900 dark:text-white font-bold flex items-center gap-2">
-                    <Calendar size={16} className="text-[#002147] dark:text-blue-400" />{" "}
-                    {result.issueDate}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase ">
-                    Academic Standing
-                  </label>
-                  <p className="text-slate-900 dark:text-white font-bold flex items-center gap-2">
-                    <Award size={16} className="text-[#002147] dark:text-blue-400" /> {result.grade}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-black text-slate-400 uppercase ">
-                    Certificate ID
-                  </label>
-                  <p className="text-slate-900 dark:text-white  font-bold text-sm">
-                    {certId}
-                  </p>
-                </div>
+              {/* Details grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-slate-100 dark:border-white/5">
+                {[
+                  { label: "Course Completed", value: result.course, Icon: BookOpen },
+                  { label: "Issue Date", value: result.issueDate, Icon: Calendar },
+                  { label: "Academic Standing", value: result.grade, Icon: Award },
+                  { label: "Certificate ID", value: certId, Icon: ShieldCheck },
+                ].map(({ label, value, Icon }) => (
+                  <div key={label} className="space-y-1">
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      {label}
+                    </p>
+                    <p className="text-slate-900 dark:text-white font-bold text-sm flex items-center gap-2">
+                      <Icon size={14} className="text-[#002147] dark:text-blue-400 shrink-0" />
+                      {value}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         )}
 
+        {/* --- ERROR STATE --- */}
         {status === "error" && (
-          <div className="bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/20 p-8 rounded-3xl flex flex-col items-center text-center space-y-4">
-            <XCircle className="text-red-500" size={48} />
+          <div className="bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/20 p-8 rounded-3xl flex flex-col items-center text-center space-y-4 animate-hero-fade-up">
+            <XCircle className="text-red-500" size={44} />
             <div>
-              <h3 className="text-red-900 dark:text-red-400 font-bold text-xl">
+              <h3 className="text-red-900 dark:text-red-400 font-bold text-lg">
                 Certificate Not Found
               </h3>
-              <p className="text-red-700/60 dark:text-red-400/60 text-sm mt-1">
-                The ID you entered could not be found. Please check the certificate ID and try again.
+              <p className="text-red-700/60 dark:text-red-400/60 text-sm mt-1 leading-relaxed">
+                The ID you entered could not be found. Please check the
+                certificate ID and try again.
               </p>
             </div>
-            <Button
-              onClick={() => setStatus("idle")}
-              variant="outline"
-              className="h-12 px-12! rounded-3xl border-red-500 text-red-600 font-bold text-lg uppercase flex items-center justify-center"
+            <button
+              onClick={handleReset}
+              className="h-11 px-8 rounded-2xl border border-red-400 text-red-600 font-bold text-sm transition-all hover:bg-red-50 dark:hover:bg-red-500/10"
             >
               Try Again
-            </Button>
+            </button>
           </div>
         )}
 
-        {/* --- 4. INFO TEXT --- */}
-        <p className="mt-12 text-center text-sm text-slate-400">
+        {/* --- FOOTER NOTE --- */}
+        <p className="mt-10 text-center text-xs text-slate-400 leading-relaxed">
           The IVTC Online Validation System provides secure confirmation of
-          academic credentials. <br />
+          academic credentials.
+          <br className="hidden sm:block" />
           Unauthorized use of this portal is strictly prohibited.
         </p>
       </div>
