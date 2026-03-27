@@ -43,16 +43,16 @@ const ContactPage = () => {
 
           {/* Hero Title — matches About page exactly */}
           <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight mb-6 overflow-hidden">
-            <div className="pb-1 opacity-0 animate-hero-fade-up [animation-delay:150ms]">
+            <div className="pb-1">
               Let's Engineer
             </div>
-            <div className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-1 opacity-0 animate-hero-fade-up [animation-delay:300ms]">
+            <div className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-1">
               Legendary Results.
             </div>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed mb-10 opacity-0 animate-hero-fade-up [animation-delay:450ms]">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed mb-10">
             Whether you're looking for course details, technical support, or
             corporate partnerships, our team is standing by to assist you.
           </p>

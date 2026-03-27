@@ -43,7 +43,7 @@ const UpcomingCourses = () => {
   return (
     <section className="py-24 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="course-header mb-16 text-left animate-hero-fade-up">
+        <header className="course-header mb-16 text-left">
           <ShineBadge className="mb-2 md:mb-0">
             Starting Soon
           </ShineBadge>

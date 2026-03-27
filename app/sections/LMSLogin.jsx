@@ -12,7 +12,7 @@ const LMSLogin = () => {
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <div
-            className="relative group overflow-hidden rounded-[2rem] bg-linear-to-br from-[#002147] via-[#003366] to-[#001a35] p-6 md:p-10 lg:p-14 shadow-2xl mobile-no-shadow border border-white/5 opacity-0"
+            className="relative group overflow-hidden rounded-[2rem] bg-linear-to-br from-[#002147] via-[#003366] to-[#001a35] p-6 md:p-10 lg:p-14 shadow-2xl mobile-no-shadow border border-white/5"
           >
             {/* Decorative Glows */}
             <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] mobile-optimize-blur group-hover:bg-blue-500/20 transition-colors duration-700" />

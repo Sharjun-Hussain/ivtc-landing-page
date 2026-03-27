@@ -26,18 +26,18 @@ const StudentRegistration = () => {
           {/* LEFT COLUMN: Content & Information */}
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
             <div className="space-y-4">
-              <ShineBadge className="animate-hero-fade-up">
+              <ShineBadge>
                 Official Enrollment Portal
               </ShineBadge>
-              <h2 className="animate-hero-fade-up [animation-delay:100ms] text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white leading-[1.1] tracking-tight">
                 Build Your <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-[#0055aa] dark:from-blue-400 dark:to-blue-600">Future</span> Today.
               </h2>
-              <p className="animate-hero-fade-up [animation-delay:200ms] text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
+              <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
                 Take the first step towards a successful career. Fill out the application form to register for your preferred pathway and gain access to world-class resources.
               </p>
             </div>
 
-            <div className="animate-hero-fade-up [animation-delay:300ms] space-y-5 pt-4">
+            <div className="space-y-5 pt-4">
               {[
                 { title: "Expert Instructors", desc: "Learn from industry-leading professionals." },
                 { title: "Recognized Certifications", desc: "Gain qualifications that stand out globally." },
@@ -55,7 +55,7 @@ const StudentRegistration = () => {
               ))}
             </div>
 
-            <div className="animate-hero-fade-up [animation-delay:400ms] bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-6 rounded-2xl flex items-center gap-5 mt-8">
+            <div className="bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-6 rounded-2xl flex items-center gap-5 mt-8">
               <div className="w-12 h-12 rounded-full bg-white dark:bg-white/10 flex items-center justify-center text-[#002147] dark:text-white shadow-sm">
                 <Phone size={20} />
               </div>
