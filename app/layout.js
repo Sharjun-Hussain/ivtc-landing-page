@@ -54,13 +54,13 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <BackgroundWrapper>
-            <Navbar />
+            {/* <Navbar /> */}
             <SocialSidebar />
             {/* <WhatsAppButton /> */}
             <main className="min-h-screen">
               {children}
             </main>
-            {/* <Footer /> */}
+            <Footer />
           </BackgroundWrapper>
 
         </ThemeProvider>
