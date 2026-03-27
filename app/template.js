@@ -11,33 +11,24 @@ export default function Template({ children }) {
 
     useGSAP(() => {
         const tl = gsap.timeline({
-            defaults: { ease: "power4.inOut" }, // "power4" is the industry standard for premium feel
+            defaults: { ease: "power4.inOut" },
         });
 
-        // 1. Initial State
+        // Animate curtain and page content — skip global fixed Navbar header
         tl.set(".overlay", { yPercent: 0 })
-            // Content is pushed down by 100px and slightly transparent
-            .set(".page-content > *:not(header)", { y: 100, opacity: 0 })
-            .set("header", { opacity: 0 });
+            .set(".page-content > *", { y: 100, opacity: 0 });
 
-        // 2. The Animation
         tl.to(".overlay", {
-            yPercent: -100, // Slide curtain UP
+            yPercent: -100,
             duration: 0.8,
         })
-            .to(".page-content > *:not(header)", {
+            .to(".page-content > *", {
                 y: 0,
                 opacity: 1,
                 duration: 0.8,
                 ease: "power3.out",
                 clearProps: "all"
-            }, "-=0.8")
-            .to("header", {
-                opacity: 1,
-                duration: 0.5,
-                ease: "power2.out",
-                clearProps: "all"
-            }, "-=0.6"); // Fade header in slightly after curtain starts
+            }, "-=0.8");
 
     }, { scope: containerRef, dependencies: [pathname] });
 
