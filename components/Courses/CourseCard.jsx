@@ -1,5 +1,6 @@
 import React from "react";
 import { Clock, Users, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 const CourseCard = ({ course }) => {
@@ -45,9 +46,12 @@ const CourseCard = ({ course }) => {
         </div>
 
         {/* Action */}
-        <button className="relative z-10 w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-2xl font-bold text-sm flex items-center justify-center gap-3 transition-all duration-300 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white group-hover:shadow-lg hover:scale-[1.02] active:scale-95">
+        <Link 
+          href={`/course/${course.id}`}
+          className="relative z-10 w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-2xl font-bold text-sm flex items-center justify-center gap-3 transition-all duration-300 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white group-hover:shadow-lg hover:scale-[1.02] active:scale-95"
+        >
           Enroll Now <ArrowRight size={16} />
-        </button>
+        </Link>
 
         {/* Background Glow */}
         <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 via-transparent to-blue-500/0 group-hover:to-blue-500/5 transition-all duration-700 rounded-[2.5rem] pointer-events-none" />
