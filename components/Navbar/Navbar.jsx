@@ -203,8 +203,15 @@ const Navbar = () => {
 
           <div className="flex items-center gap-3 z-[110]">
             <Link
+              href="/al-ict"
+              className={`hidden lg:flex px-6 py-3 text-sm font-bold rounded-3xl transition-all items-center justify-center border border-[#002147] dark:border-blue-400 text-[#002147] dark:text-blue-400 hover:bg-[#002147] hover:text-white dark:hover:bg-blue-600 dark:hover:text-white`}
+            >
+              A/L ICT
+            </Link>
+
+            <Link
               href="https://lms.ivtccampus.lk"
-              className={`hidden lg:block px-6 py-3 text-sm font-bold rounded-3xl transition-all flex items-center justify-center bg-[#002147] hover:bg-[#003366] text-white shadow-lg`}
+              className={`hidden lg:flex px-6 py-3 text-sm font-bold rounded-3xl transition-all items-center justify-center bg-[#002147] hover:bg-[#003366] text-white shadow-lg`}
             >
               Login to LMS
             </Link>
@@ -287,13 +294,20 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="p-8 border-t border-slate-100 dark:border-white/5 bg-white/50 dark:bg-black/50 backdrop-blur-md">
+        <div className="p-8 border-t border-slate-100 dark:border-white/5 bg-white/50 dark:bg-black/50 backdrop-blur-md grid grid-cols-2 gap-4">
           <Link
-            href="https://lms.ivtccampus.lk"
-            className="w-full h-14 bg-[#002147] dark:bg-blue-600 hover:bg-[#003366] text-white font-bold rounded-2xl shadow-xl flex items-center justify-center gap-2 text-base transition-all active:scale-[0.98]"
+            href="/al-ict"
+            className="h-14 bg-slate-100 dark:bg-white/5 text-[#002147] dark:text-white font-bold rounded-2xl flex items-center justify-center text-base transition-all active:scale-[0.98]"
             onClick={closeMenu}
           >
-            Login to LMS
+            A/L ICT
+          </Link>
+          <Link
+            href="https://lms.ivtccampus.lk"
+            className="h-14 bg-[#002147] dark:bg-blue-600 hover:bg-[#003366] text-white font-bold rounded-2xl shadow-xl flex items-center justify-center text-base transition-all active:scale-[0.98]"
+            onClick={closeMenu}
+          >
+            Login
           </Link>
         </div>
       </div>
