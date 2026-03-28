@@ -5,12 +5,12 @@ import { Users, Briefcase, GraduationCap } from "lucide-react";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 const DIRECTORS = [
-  { name: "Athambawa Mohamed Sulfikar", role: "Board Director", image: "https://i.pravatar.cc/400?u=sulfikar" },
-  { name: "Athambawa Jaleel", role: "Board Director", image: "https://i.pravatar.cc/400?u=jaleel" },
-  { name: "Athambawa Jarees", role: "Board Director", image: "https://i.pravatar.cc/400?u=jarees" },
-  { name: "Athambawa Rameez", role: "Board Director", image: "https://i.pravatar.cc/400?u=rameez" },
-  { name: "Athambawa Mohamed Jahan", role: "Board Director", image: "https://i.pravatar.cc/400?u=jahan" },
-  { name: "Athambawa Fathima Inan", role: "Board Director", image: "https://i.pravatar.cc/400?u=inan" },
+  { name: "Athambawa Mohamed Sulfikar", role: "Board Director" },
+  { name: "Athambawa Jaleel", role: "Board Director" },
+  { name: "Athambawa Jarees", role: "Board Director" },
+  { name: "Athambawa Rameez", role: "Board Director" },
+  { name: "Athambawa Mohamed Jahan", role: "Board Director" },
+  { name: "Athambawa Fathima Inan", role: "Board Director" },
 ];
 
 const BoardDirectors = () => {
@@ -42,7 +42,7 @@ const BoardDirectors = () => {
                     <div className="w-full aspect-square rounded-[2rem] bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 p-2 mb-6 group-hover:border-[#002147] dark:group-hover:border-blue-500 transition-all duration-500 relative overflow-hidden shadow-sm group-hover:shadow-xl">
                       <div className="w-full h-full rounded-[1.75rem] overflow-hidden bg-slate-50 dark:bg-black relative">
                          <img 
-                           src={director.image} 
+                           src={`https://ui-avatars.com/api/?name=${director.name.replace(/\s+/g, "+")}&background=002147&color=fff&bold=true`} 
                            alt={director.name}
                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
                          />
