@@ -14,7 +14,7 @@ export default function Page() {
       <BoardHero />
       <BoardWhatWeDo />
       <BoardDirectors />
-      <BoardImpact />
+    
     </main>
   );
 }

@@ -121,11 +121,11 @@ const InitiativesPage = () => {
     >
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-16 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-sm">
+        <div className="max-w-4xl mx-auto px-5 md:px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-xs font-bold tracking-wider mb-6 shadow-sm">
             <HeartHandshake size={14} /> Meerza Foundation Initiatives
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-6">
             Knowledge is a Right, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Not a Privilege.
@@ -161,7 +161,7 @@ const InitiativesPage = () => {
       </section>
 
       {/* --- DYNAMIC CONTENT AREA --- */}
-      <section className="py-20 max-w-7xl mx-auto px-6 min-h-[600px]">
+      <section className="py-20 max-w-7xl mx-auto px-5 md:px-6 min-h-[600px]">
         
         {/* TAB 1: ACADEMIC AID */}
         {activeTab === "academic" && (
@@ -190,7 +190,7 @@ const InitiativesPage = () => {
                             setFormData({...formData, supportType: offer.title});
                             formRef.current?.scrollIntoView({ behavior: 'smooth' });
                           }}
-                          className="text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all"
+                          className="text-sm font-bold tracking-wide text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all"
                         >
                           {offer.action} <ArrowRight size={14} />
                         </button>
@@ -209,7 +209,7 @@ const InitiativesPage = () => {
               <form className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">First Name</label>
+                    <label className="text-xs font-semibold tracking-wide text-slate-500">First Name</label>
                     <input 
                       value={formData.firstName}
                       onChange={(e) => setFormData({...formData, firstName: e.target.value})}
@@ -218,7 +218,7 @@ const InitiativesPage = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">Last Name</label>
+                    <label className="text-xs font-semibold tracking-wide text-slate-500">Last Name</label>
                     <input 
                       value={formData.lastName}
                       onChange={(e) => setFormData({...formData, lastName: e.target.value})}
@@ -229,7 +229,7 @@ const InitiativesPage = () => {
                 </div>
                 
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-slate-500">Support Needed</label>
+                  <label className="text-xs font-semibold tracking-wide text-slate-500">Support Needed</label>
                   <select 
                     value={formData.supportType}
                     onChange={(e) => setFormData({...formData, supportType: e.target.value})}
@@ -242,7 +242,7 @@ const InitiativesPage = () => {
                 </div>
 
                 <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">Address Line 1</label>
+                    <label className="text-xs font-semibold tracking-wide text-slate-500">Address Line 1</label>
                     <input 
                       value={formData.address}
                       onChange={(e) => setFormData({...formData, address: e.target.value})}
@@ -252,7 +252,7 @@ const InitiativesPage = () => {
                 </div>
 
                 <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-slate-500">Address Line 2 (Optional)</label>
+                    <label className="text-xs font-semibold tracking-wide text-slate-500">Address Line 2 (Optional)</label>
                     <input 
                       value={formData.addressLine2}
                       onChange={(e) => setFormData({...formData, addressLine2: e.target.value})}
@@ -263,7 +263,7 @@ const InitiativesPage = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">District / City</label>
+                        <label className="text-xs font-semibold tracking-wide text-slate-500">District / City</label>
                         <input 
                           value={formData.district}
                           onChange={(e) => setFormData({...formData, district: e.target.value})}
@@ -272,7 +272,7 @@ const InitiativesPage = () => {
                         />
                     </div>
                     <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">State / Province</label>
+                        <label className="text-xs font-semibold tracking-wide text-slate-500">State / Province</label>
                         <input 
                           value={formData.state}
                           onChange={(e) => setFormData({...formData, state: e.target.value})}
@@ -284,7 +284,7 @@ const InitiativesPage = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">Postal Code</label>
+                        <label className="text-xs font-semibold tracking-wide text-slate-500">Postal Code</label>
                         <input 
                           value={formData.postalCode}
                           onChange={(e) => setFormData({...formData, postalCode: e.target.value})}
@@ -293,7 +293,7 @@ const InitiativesPage = () => {
                         />
                     </div>
                     <div className="space-y-1">
-                        <label className="text-[10px] uppercase font-bold text-slate-500">WhatsApp Number</label>
+                        <label className="text-xs font-semibold tracking-wide text-slate-500">WhatsApp Number</label>
                         <input 
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -303,7 +303,7 @@ const InitiativesPage = () => {
                     </div>
                 </div>
 
-                <button className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-sm uppercase tracking-widest hover:shadow-lg transition-all mt-4">
+                <button className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-bold text-sm tracking-wide hover:shadow-lg transition-all mt-4">
                   Submit Application
                 </button>
               </form>
@@ -341,7 +341,7 @@ const InitiativesPage = () => {
                     ))}
                   </ul>
 
-                  <button className="w-full py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-xs uppercase tracking-widest group-hover:bg-[#002147] dark:group-hover:bg-[#003a6e] group-hover:text-white transition-all">
+                  <button className="w-full py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-sm tracking-wide group-hover:bg-[#002147] dark:group-hover:bg-[#003a6e] group-hover:text-white transition-all">
                     Register Now
                   </button>
                 </div>
@@ -389,7 +389,7 @@ const InitiativesPage = () => {
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Exclusive eBook Collection</h2>
                 <p className="text-slate-500">Authentic Islamic knowledge, accessible to everyone.</p>
               </div>
-              <button className="text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-[#00529b] border-b border-[#002147] dark:border-[#00529b] pb-1 hover:text-[#003366]">
+              <button className="text-sm font-bold tracking-wide text-[#002147] dark:text-[#00529b] border-b border-[#002147] dark:border-[#00529b] pb-1 hover:text-[#003366]">
                 View All Categories
               </button>
             </div>
@@ -403,15 +403,15 @@ const InitiativesPage = () => {
                        COVER
                     </div>
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <button className="px-6 py-2 bg-[#002147] dark:bg-[#003a6e] text-white rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-all">
+                        <button className="px-6 py-2 bg-[#002147] dark:bg-[#003a6e] text-white rounded-full font-bold text-sm tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all">
                             Preview
                         </button>
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{book.title}</h3>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">{book.author}</p>
+                  <p className="text-sm font-medium text-slate-500 tracking-wide mb-4">{book.author}</p>
                   
-                  <button className="w-full py-3 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <button className="w-full py-3 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                     <Download size={16} /> Download PDF ({book.size})
                   </button>
                 </div>

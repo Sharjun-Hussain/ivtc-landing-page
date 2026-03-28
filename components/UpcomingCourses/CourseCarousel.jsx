@@ -39,8 +39,8 @@ const CourseCarousel = ({ courses }) => {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div className="absolute top-4 left-4 z-10">
-                    <ShineBadge className="px-3 py-1 text-[11px] font-bold bg-black/50 text-white dark:text-white border-white/20 backdrop-blur-md">
-                      {course.tag}
+                    <ShineBadge className="px-3 py-1.5 text-[11px] font-bold bg-black/60 text-white dark:text-white border-white/20 backdrop-blur-md rounded-xl">
+                      {course.category}
                     </ShineBadge>
                   </div>
                 </div>
@@ -48,13 +48,13 @@ const CourseCarousel = ({ courses }) => {
                 {/* Content Area */}
                 <div className="p-6 md:p-8 flex flex-col flex-1 text-left">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 tracking-wide">
-                      <Calendar size={14} className="text-[#002147] dark:text-blue-400" />
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 tracking-wide">
+                      <Calendar size={14} className="text-[#002147] dark:text-blue-400 opacity-70" />
                       {course.date}
                     </div>
                     <div className="w-1 h-1 rounded-full bg-slate-200 dark:bg-white/10" />
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 tracking-wide">
-                      <Clock size={14} className="text-[#002147] dark:text-blue-400" />
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 tracking-wide">
+                      <Clock size={14} className="text-[#002147] dark:text-blue-400 opacity-70" />
                       {course.duration}
                     </div>
                   </div>

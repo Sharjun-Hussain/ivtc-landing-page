@@ -39,7 +39,7 @@ const InitiativesQuranAcademy = () => {
   ], []);
 
   return (
-    <section id="quran-academy" className="bg-white dark:bg-[#0a0a0a] border-b border-slate-100 dark:border-white/5 overflow-hidden" aria-labelledby="quran-academy-heading">
+    <section id="quran-academy" className="bg-white dark:bg-[#0a0a0a] border-b border-slate-100 dark:border-white/5" aria-labelledby="quran-academy-heading">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
           

@@ -53,7 +53,7 @@ const InitiativesAcademicAid = () => {
   }, []);
 
   return (
-    <section id="academic-aid" className="bg-white dark:bg-[#0a0a0a] border-b border-slate-100 dark:border-white/5 overflow-hidden" aria-labelledby="academic-aid-heading">
+    <section id="academic-aid" className="bg-white dark:bg-[#0a0a0a] border-b border-slate-100 dark:border-white/5" aria-labelledby="academic-aid-heading">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
           

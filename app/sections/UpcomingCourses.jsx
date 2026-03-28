@@ -10,7 +10,7 @@ const UPCOMING_COURSES = [
     duration: "6 Months",
     desc: "Master modern web technologies from frontend to backend with hands-on projects.",
     image: "/courses/web-dev.png",
-    tag: "Most Popular",
+    category: "Software Engineering",
   },
   {
     title: "Data Science & AI",
@@ -18,7 +18,7 @@ const UPCOMING_COURSES = [
     duration: "8 Months",
     desc: "Unlock the power of data. Learn Python, Machine Learning, and Neural Networks.",
     image: "/courses/data-science.png",
-    tag: "Trending",
+    category: "Data Science",
   },
   {
     title: "Cyber Security Professional",
@@ -26,7 +26,7 @@ const UPCOMING_COURSES = [
     duration: "5 Months",
     desc: "Protect digital assets. Become an expert in network security and ethical hacking.",
     image: "/courses/cyber-security.png",
-    tag: "Critical Skill",
+    category: "Cyber Security",
   },
   {
     title: "Cloud Solutions Architect",
@@ -34,9 +34,10 @@ const UPCOMING_COURSES = [
     duration: "4 Months",
     desc: "Design scalable cloud infrastructures using AWS, Azure, and Google Cloud.",
     image: "/courses/cloud-computing.png",
-    tag: "High Demand",
+    category: "Cloud Computing",
   },
 ];
+
 
 const UpcomingCourses = () => {
   return (
