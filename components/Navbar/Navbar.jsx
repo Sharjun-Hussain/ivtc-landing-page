@@ -237,15 +237,15 @@ const Navbar = () => {
                 {link.hasMega ? (
                   <button
                     onClick={() => toggleMobileSubMenu(link.name)}
-                    className={`w-full py-5 text-xl font-bold flex items-center justify-between text-left transition-colors ${
-                      mobileSubMenu === link.name ? "text-[#002147] dark:text-blue-400" : "text-slate-900 dark:text-white"
+                    className={`w-full py-5 text-xl font-bold flex items-center justify-between text-left transition-colors group ${
+                      mobileSubMenu === link.name ? "text-[#002147] dark:text-blue-400" : "text-slate-900 dark:text-white hover:text-[#002147] dark:hover:text-blue-400"
                     }`}
                   >
                     {link.name}
                     <ChevronDown
                       size={20}
-                      className={`transition-transform duration-300 ${
-                        mobileSubMenu === link.name ? "rotate-180" : ""
+                      className={`transition-all duration-300 ${
+                        mobileSubMenu === link.name ? "rotate-180 text-[#002147] dark:text-blue-400 scale-110" : "text-slate-400 dark:text-slate-600 group-hover:text-[#002147] dark:group-hover:text-blue-400 group-hover:scale-110"
                       }`}
                     />
                   </button>
@@ -253,11 +253,14 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     onClick={closeMenu}
-                    className={`block py-5 text-xl font-bold transition-colors ${
-                      pathname === link.href ? "text-[#002147] dark:text-blue-400" : "text-slate-900 dark:text-white"
+                    className={`block py-5 text-xl font-bold transition-colors group ${
+                      pathname === link.href ? "text-[#002147] dark:text-blue-400" : "text-slate-900 dark:text-white hover:text-[#002147] dark:hover:text-blue-400"
                     }`}
                   >
-                    {link.name}
+                    <div className="flex items-center justify-between">
+                      {link.name}
+                      <ArrowRight size={18} className={`transition-all duration-300 transform ${pathname === link.href ? "text-current translate-x-0" : "text-slate-300 dark:text-slate-700 group-hover:translate-x-1 group-hover:text-[#002147] dark:group-hover:text-blue-400"}`} />
+                    </div>
                   </Link>
                 )}
                 
