@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/Animations/ScrollReveal";
 const ALICTHero = () => {
   const content = useMemo(() => ({
     badge: "Everything for A/L ICT",
-    title: "A/L ICT",
+    title: "Advanced Level(A/L) - ICT",
     highlight: "Resources Hub.",
     description: "Free high-quality notes, video sessions, and past paper updates. Simple and clear resources designed for Sri Lankan A/L students to score an 'A'."
   }), []);
