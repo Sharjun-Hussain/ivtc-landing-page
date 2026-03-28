@@ -92,10 +92,6 @@ const BoardWhatWeDo = () => {
                     <p className={`${pillar.descColor} text-lg font-medium leading-relaxed max-w-xl`}>
                       {pillar.desc}
                     </p>
-
-                    <div className={`mt-10 flex items-center gap-2 text-xs font-bold uppercase tracking-widest ${pillar.textColor === 'text-white' ? 'text-blue-300' : 'text-[#002147] dark:text-blue-400'} group-hover:gap-4 transition-all duration-300 cursor-pointer`}>
-                      Detailed Report <ArrowRight size={14} />
-                    </div>
                   </div>
                 </div>
               </ScrollReveal>
