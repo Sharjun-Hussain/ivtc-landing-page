@@ -14,16 +14,18 @@ const InitiativesHero = () => {
   }), []);
 
   return (
-    <section className="relative pt-46 pb-20 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
+    <section className="relative lg:pt-50 pt-36 pb-20 bg-slate-50 dark:bg-[#0d0d0d] border-b border-slate-200 dark:border-white/5">
       <ScrollReveal className="max-w-4xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-semibold  mb-6 shadow-sm">
+        {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-semibold  mb-6 shadow-sm">
           <HeartHandshake size={14} /> {content.badge}
-        </div>
-        <h1 className="text-4xl md:text-6xl font-semibold text-slate-900 dark:text-white mb-6">
-          {content.title} <br />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
+        </div> */}
+        <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight mb-6 overflow-hidden">
+          <div className="pb-1">
+            {content.title}
+          </div>
+          <div className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-1">
             {content.highlight}
-          </span>
+          </div>
         </h1>
         <div className="flex justify-center gap-4 mt-10">
           <button 
