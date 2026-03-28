@@ -1,90 +1,41 @@
 "use client";
 import React, { useMemo } from "react";
 import { useParams } from "next/navigation";
-import {
-  Clock,
-  BarChart,
-  ArrowRight,
-  ChevronLeft,
-  Star,
-  Monitor,
-  ShieldCheck,
-  Code2,
-  Cpu,
-  Globe,
-} from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
+import { COURSES_DATA } from "@/lib/data/courses";
+import CourseCard from "@/components/Courses/CourseCard";
 
-// Mock Data Store
-const CATEGORY_DATA = {
-  certifications: {
-    title: "Industry Certifications",
-    subtitle: "Professional validation for the global tech market.",
+const CATEGORY_META = {
+  "software-engineering": {
+    title: "Software Engineering",
+    subtitle: "Master modern development from interactive front-ends to scalable back-ends.",
     color: "from-blue-400 to-indigo-600",
-    courses: [
-      {
-        id: 1,
-        title: "CCNA 200-301",
-        duration: "4 Months",
-        level: "Intermediate",
-        icon: <Globe />,
-        rating: 4.9,
-        desc: "Master networking fundamentals, IP connectivity, and security basics.",
-      },
-      {
-        id: 2,
-        title: "CompTIA Security+",
-        duration: "3 Months",
-        level: "Beginner",
-        icon: <ShieldCheck />,
-        rating: 4.8,
-        desc: "The baseline for cybersecurity careers. Learn threat detection and risk management.",
-      },
-      {
-        id: 3,
-        title: "AWS Cloud Practitioner",
-        duration: "2 Months",
-        level: "Beginner",
-        icon: <Monitor />,
-        rating: 4.7,
-        desc: "Cloud fundamentals and the AWS global infrastructure.",
-      },
-    ],
   },
   "al-ict": {
     title: "A/L ICT Mastery",
     subtitle: "Ace your exams with Sri Lanka's top-ranked curriculum.",
     color: "from-cyan-400 to-blue-500",
-    courses: [
-      {
-        id: 4,
-        title: "Local Syllabus Revision",
-        duration: "6 Months",
-        level: "Exam Prep",
-        icon: <Code2 />,
-        rating: 5.0,
-        desc: "Targeted revision focusing on past papers and marking schemes.",
-      },
-      {
-        id: 5,
-        title: "Cambridge ICT 9626",
-        duration: "1 Year",
-        level: "Advanced",
-        icon: <Cpu />,
-        rating: 4.9,
-        desc: "Comprehensive coverage of IT systems, databases, and sound/video editing.",
-      },
-    ],
   },
+  "data-science": {
+    title: "Data Science",
+    subtitle: "Learn how to extract, analyze, and visualize data to drive business decisions.",
+    color: "from-purple-400 to-pink-500",
+  }
 };
 
 const CourseListingPage = () => {
   const params = useParams();
-  const categoryKey = params.category || "certifications";
-  const data = useMemo(
-    () => CATEGORY_DATA[categoryKey] || CATEGORY_DATA.certifications,
+  const categoryKey = params.category || "software-engineering";
+  const meta = useMemo(
+    () => CATEGORY_META[categoryKey] || CATEGORY_META["software-engineering"],
     [categoryKey],
+  );
+
+  const categoryCourses = useMemo(
+    () => COURSES_DATA.filter((c) => c.categoryId === categoryKey),
+    [categoryKey]
   );
 
   return (
@@ -93,83 +44,42 @@ const CourseListingPage = () => {
     >
       {/* Background Decorative Element */}
       <div
-        className={`fixed top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-10 dark:opacity-20 pointer-events-none bg-linear-to-br ${data.color}`}
+        className={`fixed top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-10 dark:opacity-20 pointer-events-none bg-linear-to-br ${meta.color}`}
       />
 
       <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 relative z-10">
         <ScrollReveal>
           {/* Navigation Breadcrumb */}
           <Link
-            href="/pathways"
-            className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-500 transition-colors mb-12 text-sm font-bold uppercase"
+            href="/courses"
+            className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-500 transition-colors mb-12 text-sm font-bold tracking-wide"
           >
-            <ChevronLeft size={16} /> Back to Pathways
+            <ChevronLeft size={16} /> All Courses
           </Link>
 
           {/* Dynamic Header */}
           <header className="mb-20">
-            <h3 className="text-blue-500 dark:text-slate-400 uppercase text-xs mb-4">
+            <h3 className="text-blue-500 dark:text-slate-400 tracking-wide font-bold text-xs mb-4">
               / Course Catalog
             </h3>
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6">
               Explore{" "}
               <span
-                className={`text-transparent bg-clip-text bg-linear-to-r ${data.color}`}
+                className={`text-transparent bg-clip-text bg-linear-to-r ${meta.color}`}
               >
-                {data.title}
+                {meta.title}
               </span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-              {data.subtitle}
+              {meta.subtitle}
             </p>
           </header>
         </ScrollReveal>
 
         {/* Course Grid */}
         <div className="course-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.courses.map((course, idx) => (
-            <ScrollReveal 
-              key={course.id}
-              animationClass="animate-fade-in"
-              options={{ threshold: 0.1 }}
-            >
-              <div
-                className="group relative bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/5 rounded-[2.5rem] p-8 flex flex-col h-full transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10"
-              >
-                {/* Icon & Rating */}
-                <div className="flex justify-between items-start mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 flex items-center justify-center text-blue-500 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    {React.cloneElement(course.icon, { size: 28 })}
-                  </div>
-                  <div className="flex items-center gap-1 bg-yellow-400/10 text-yellow-600 dark:text-yellow-500 px-3 py-1 rounded-full text-xs font-black">
-                    <Star size={12} fill="currentColor" /> {course.rating}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex gap-3 mb-4">
-                    <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase text-slate-400">
-                      <Clock size={12} /> {course.duration}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase text-slate-400">
-                      <BarChart size={12} /> {course.level}
-                    </span>
-                  </div>
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-blue-500 transition-colors">
-                    {course.title}
-                  </h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">
-                    {course.desc}
-                  </p>
-                </div>
-
-                {/* Action */}
-                <button className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-2xl font-bold text-sm flex items-center justify-center gap-3 transition-all duration-300 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white">
-                  ENROLL NOW <ArrowRight size={16} />
-                </button>
-              </div>
-            </ScrollReveal>
+          {categoryCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
           ))}
         </div>
       </div>
