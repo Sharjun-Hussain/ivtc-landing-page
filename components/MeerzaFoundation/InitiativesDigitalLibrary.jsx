@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { Globe, Download } from "lucide-react";
+import { Globe, Download, LayoutGrid } from "lucide-react";
 import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 const BOOKS = [
@@ -29,45 +29,59 @@ const InitiativesDigitalLibrary = () => {
   const books = useMemo(() => BOOKS, []);
 
   return (
-    <section id="digital-library" className="py-24">
-      <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-        <div>
-          <h2 className="text-3xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
-            <Globe size={28} className="text-[#002147] dark:text-[#00529b]" />
-            Exclusive eBook Collection
-          </h2>
-          <p className="text-slate-500">Authentic Islamic knowledge, accessible to everyone, everywhere.</p>
-        </div>
-        <button className="text-xs font-semibold uppercase text-[#002147] dark:text-[#00529b] border-b border-[#002147]/30 dark:border-[#00529b]/30 pb-1 hover:border-current transition-all outline-none">
-          View All Categories
-        </button>
-      </ScrollReveal>
-
-      <div className="grid md:grid-cols-3 gap-10">
-        {books.map((book, i) => (
-          <ScrollReveal key={i} animationClass="animate-fade-in" options={{ delay: i * 0.1 }}>
-            <div className="group bg-white dark:bg-[#111] p-6 rounded-2xl border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all h-full flex flex-col">
-              <div className="aspect-3/4 bg-slate-100 dark:bg-black rounded-xl mb-6 overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400 font-semibold text-xl opacity-50">
-                   COVER
-                </div>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <button className="h-10 px-8 bg-[#002147] dark:bg-[#003a6e] text-white rounded-3xl font-semibold text-xs uppercase transform translate-y-4 group-hover:translate-y-0 transition-all">
-                        Preview
-                    </button>
-                </div>
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">{book.title}</h3>
-              <p className="text-xs text-slate-500 uppercase mb-4">{book.author}</p>
+    <section id="digital-library" className="bg-white dark:bg-[#0a0a0a] overflow-hidden" aria-labelledby="digital-library-heading">
+      <div className="max-w-7xl mx-auto px-6 py-24">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+          
+          {/* Sticky Left Column */}
+          <div className="lg:w-1/3">
+            <ScrollReveal className="sticky top-32">
+              <h2 id="digital-library-heading" className="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1] text-slate-900 dark:text-white">
+                Digital <br /> Library.
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-medium">
+                Authentic Islamic knowledge, accessible to everyone, everywhere. Explore our curated collection of essential academic and spiritual texts.
+              </p>
               
-              <div className="mt-auto">
-                <button className="w-full py-3 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                  <Download size={16} /> Download PDF ({book.size})
-                </button>
+              <div className="mt-12 inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[#002147] dark:text-blue-400 text-xs font-bold uppercase tracking-widest hover:bg-[#002147] hover:text-white transition-all cursor-pointer">
+                <LayoutGrid size={16} /> View All Categories
               </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Scrolling Right Column */}
+          <div className="lg:w-2/3">
+            <div className="grid md:grid-cols-2 gap-10">
+              {books.map((book, i) => (
+                <ScrollReveal key={i} animationClass="animate-fade-in" options={{ delay: i * 0.1 }}>
+                  <div className="group bg-white dark:bg-[#111] p-8 rounded-[3rem] border border-slate-200 dark:border-white/5 hover:shadow-2xl transition-all duration-500 h-full flex flex-col shadow-sm">
+                    <div className="aspect-3/4 bg-slate-50 dark:bg-black rounded-[2rem] mb-8 overflow-hidden relative border border-slate-100 dark:border-white/5">
+                      <div className="absolute inset-0 flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400 font-bold text-2xl opacity-20">
+                         {book.title.split(' ')[0]}
+                      </div>
+                      <div className="absolute inset-0 bg-[#002147]/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                          <button className="h-12 px-10 bg-white text-[#002147] rounded-2xl font-bold text-xs uppercase tracking-widest transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
+                              Preview
+                          </button>
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
+                      {book.title}
+                    </h3>
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">{book.author}</p>
+                    
+                    <div className="mt-auto">
+                      <button className="w-full py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:bg-[#002147] hover:text-white hover:border-[#002147] transition-all">
+                        <Download size={18} /> {book.size} PDF
+                      </button>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
-          </ScrollReveal>
-        ))}
+          </div>
+        </div>
       </div>
     </section>
   );

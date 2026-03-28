@@ -11,6 +11,7 @@ const ACADEMIC_OFFERS = [
     desc: "Essential academic supplies for students in need. We provide textbooks, notebooks, and writing tools to ensure no student is left behind.",
     icon: PenTool,
     action: "Apply for Support",
+    pill: "Academic Support"
   },
   {
     id: "quran-req",
@@ -18,6 +19,7 @@ const ACADEMIC_OFFERS = [
     desc: "A special initiative for Muslim students who need a copy of the Holy Quran for their studies and spiritual growth.",
     icon: BookOpen,
     action: "Request a Copy",
+    pill: "Spiritual Growth"
   },
 ];
 
@@ -48,110 +50,131 @@ const InitiativesAcademicAid = () => {
       phone: phoneRef.current?.value,
     };
     console.log("Submitting Application:", payload);
-    // Add validation and API call here
   }, []);
 
   return (
-    <section id="academic-aid" className="py-24 border-b border-slate-100 dark:border-white/5">
-      <div className="grid md:grid-cols-2 gap-16 items-start">
-        <div className="space-y-8">
-          <ScrollReveal>
-            <h2 className="text-3xl font-semibold text-slate-900 dark:text-white mb-4">
-              Student Academic Aid
-            </h2>
-            <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-              We believe financial barriers should never stop a student from learning. 
-              Apply below for free textbooks, stationery, or a personal copy of the Holy Quran.
-            </p>
-          </ScrollReveal>
+    <section id="academic-aid" className="bg-white dark:bg-[#0a0a0a] border-b border-slate-100 dark:border-white/5 overflow-hidden" aria-labelledby="academic-aid-heading">
+      <div className="max-w-7xl mx-auto px-6 py-24">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
-          <div className="grid gap-6">
-            {offers.map((offer, idx) => (
-              <ScrollReveal key={offer.id} animationClass="animate-fade-in" options={{ delay: idx * 0.1 }}>
-                <div className="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:border-[#002147]/30 transition-colors">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white dark:bg-white/5 flex items-center justify-center text-[#002147] dark:text-[#00529b] shadow-sm">
-                      <offer.icon size={24} />
+          {/* Sticky Left Column */}
+          <div className="lg:w-1/3">
+            <ScrollReveal className="sticky top-32">
+              <h2 id="academic-aid-heading" className="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1] text-slate-900 dark:text-white">
+                Academic <br /> Foundation.
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-medium">
+                We believe financial barriers should never stop a student from learning. Our foundation provides the essential tools needed for educational success.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Scrolling Right Column */}
+          <div className="lg:w-2/3 space-y-12">
+            
+            {/* Offers Grid */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {offers.map((offer, idx) => (
+                <ScrollReveal key={offer.id} animationClass="animate-fade-in" options={{ delay: idx * 0.1 }}>
+                  <div className="group p-10 rounded-[2.5rem] border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#111] hover:border-[#002147]/30 hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                    <div className="relative mb-8 w-14 h-14">
+                      <div className="absolute inset-0 bg-blue-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="relative w-14 h-14 rounded-2xl bg-white dark:bg-white/5 shadow-sm border border-slate-100 dark:border-white/10 flex items-center justify-center text-[#002147] dark:text-blue-400">
+                        <offer.icon size={26} />
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">{offer.title}</h3>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{offer.desc}</p>
-                      <button 
-                        onClick={() => handleApply(offer.title)}
-                        className="text-xs font-bold uppercase text-[#002147] dark:text-[#00529b] flex items-center gap-2 hover:gap-3 transition-all outline-none"
-                      >
-                        {offer.action} <ArrowRight size={14} />
-                      </button>
+                    
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-white dark:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-6 w-fit">
+                      {offer.pill}
                     </div>
+
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
+                      {offer.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed font-medium grow">
+                      {offer.desc}
+                    </p>
+                    <button 
+                      onClick={() => handleApply(offer.title)}
+                      className="text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-blue-400 flex items-center gap-2 hover:gap-3 transition-all"
+                    >
+                      {offer.action} <ArrowRight size={14} />
+                    </button>
                   </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            {/* Application Form Card */}
+            <ScrollReveal animationClass="animate-slide-up">
+              <div ref={formRef} className="bg-[#002147] dark:bg-blue-950/40 text-white p-12 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                <FileText className="absolute -right-16 -bottom-16 w-80 h-80 text-white/5 dark:text-blue-500/5 group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-1000" />
+                
+                <div className="relative z-10 w-full">
+                  <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-10 tracking-tight flex items-center gap-4">
+                    Application Form.
+                  </h3>
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-bold tracking-widest text-blue-300">First Name</label>
+                        <input 
+                          ref={firstNameRef}
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-blue-500/50 outline-none transition-all placeholder:text-white/20"
+                          placeholder="Abdullah" 
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-bold tracking-widest text-blue-300">Last Name</label>
+                        <input 
+                          ref={lastNameRef}
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-blue-500/50 outline-none transition-all placeholder:text-white/20" 
+                          placeholder="Ahmed" 
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-[10px] uppercase font-bold tracking-widest text-blue-300">Support Needed</label>
+                      <select 
+                        ref={supportTypeRef}
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-blue-500/50 outline-none transition-all appearance-none cursor-pointer"
+                      >
+                        <option value="" className="bg-[#002147]">Select Option...</option>
+                        <option value="Free Books & Stationery" className="bg-[#002147]">Free Books & Stationery</option>
+                        <option value="Free Quran Request" className="bg-[#002147]">Free Quran Request</option>
+                      </select>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                          <label className="text-[10px] uppercase font-bold tracking-widest text-blue-300">District / City</label>
+                          <input 
+                            ref={districtRef}
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-blue-500/50 outline-none transition-all placeholder:text-white/20" 
+                            placeholder="Colombo" 
+                          />
+                      </div>
+
+                      <div className="space-y-2">
+                          <label className="text-[10px] uppercase font-bold tracking-widest text-blue-300">WhatsApp Number</label>
+                          <input 
+                            ref={phoneRef}
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-blue-500/50 outline-none transition-all placeholder:text-white/20" 
+                            placeholder="+94 7..." 
+                          />
+                      </div>
+                    </div>
+
+                    <button type="submit" className="w-full py-5 rounded-2xl bg-white text-[#002147] font-bold text-sm uppercase tracking-widest hover:bg-blue-50 transform hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-2xl">
+                      Submit Application
+                    </button>
+                  </form>
                 </div>
-              </ScrollReveal>
-            ))}
+              </div>
+            </ScrollReveal>
           </div>
         </div>
-
-        {/* APPLICATION FORM */}
-        <ScrollReveal animationClass="animate-slide-up">
-          <div ref={formRef} className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-2xl">
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-              <FileText size={20} className="text-[#002147] dark:text-[#00529b]" /> Application Form
-            </h3>
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-semibold text-slate-500">First Name</label>
-                  <input 
-                    ref={firstNameRef}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all"
-                    placeholder="Abdullah" 
-                  />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-semibold text-slate-500">Last Name</label>
-                  <input 
-                    ref={lastNameRef}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all" 
-                    placeholder="Ahmed" 
-                  />
-                </div>
-              </div>
-              
-              <div className="space-y-1">
-                <label className="text-[10px] uppercase font-semibold text-slate-500">Support Needed</label>
-                <select 
-                  ref={supportTypeRef}
-                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all"
-                >
-                  <option value="">Select Option...</option>
-                  <option value="Free Books & Stationery">Free Books & Stationery</option>
-                  <option value="Free Quran Request">Free Quran Request</option>
-                </select>
-              </div>
-
-              <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-semibold text-slate-500">District / City</label>
-                  <input 
-                    ref={districtRef}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all" 
-                    placeholder="Colombo" 
-                  />
-              </div>
-
-              <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-semibold text-slate-500">WhatsApp Number</label>
-                  <input 
-                    ref={phoneRef}
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#002147]/20 focus:border-[#002147] outline-none transition-all" 
-                    placeholder="+94 7..." 
-                  />
-              </div>
-
-              <button type="submit" className="w-full py-4 rounded-xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm uppercase hover:shadow-lg transition-all mt-4">
-                Submit Application
-              </button>
-            </form>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );
