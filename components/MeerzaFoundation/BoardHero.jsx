@@ -14,24 +14,26 @@ const BoardHero = () => {
   }), []);
 
   return (
-    <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden bg-slate-50 dark:bg-[#0d0d0d]">
+    <section className="relative lg:pt-50 pt-36 pb-20 md:pb-32 overflow-hidden bg-slate-50 dark:bg-[#0d0d0d]">
       <ScrollReveal className="max-w-5xl mx-auto px-6 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] dark:text-[#00529b] text-[10px] font-semibold uppercase mb-8 shadow-sm">
+        {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/5 dark:bg-[#002147]/10 border border-[#002147]/10 dark:border-[#002147]/20 text-[#002147] dark:text-[#00529b] text-[10px] font-semibold uppercase mb-8 shadow-sm">
           <HandHeart size={14} /> {content.badge}
-        </div>
+        </div> */}
 
-        <h1 className="text-5xl md:text-7xl font-semibold text-slate-900 dark:text-white mb-8">
-          {content.title} <br />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
+        <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight mb-6 overflow-hidden">
+          <div className="pb-1">
+            {content.title}
+          </div>
+          <div className="text-transparent bg-clip-text bg-linear-to-r from-[#002147] to-blue-600 dark:from-white dark:to-blue-400 pb-1">
             {content.highlight}
-          </span>
+          </div>
         </h1>
 
         <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10">
           {content.description}
         </p>
 
-        <div className="flex justify-center gap-4 mt-6">
+        {/* <div className="flex justify-center gap-4 mt-6">
           <Link
             href="/meerza-foundation"
             className="h-12 px-8 rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm uppercase hover:scale-105 transition-transform flex items-center justify-center gap-2 outline-none"
@@ -41,7 +43,7 @@ const BoardHero = () => {
           <button className="h-12 px-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm uppercase hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center outline-none">
             Read Reports
           </button>
-        </div>
+        </div> */}
       </ScrollReveal>
     </section>
   );
