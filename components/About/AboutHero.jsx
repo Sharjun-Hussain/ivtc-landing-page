@@ -8,9 +8,9 @@ import ScrollReveal from "@/components/Animations/ScrollReveal";
 
 const AboutHero = () => {
   return useMemo(() => (
-    <section className="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-6 pt-40 pb-32" aria-labelledby="about-hero-title">
+    <section className="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-6 lg:pt-50 pt-36 pb-32" aria-labelledby="about-hero-title">
       <ScrollReveal className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-        <div>
+        {/* <div>
           <ShineBadge className="mb-8">
             <Sparkles
               size={16}
@@ -18,11 +18,11 @@ const AboutHero = () => {
             />
             Sri Lanka's Leading Tech Campus
           </ShineBadge>
-        </div>
+        </div> */}
 
         <h1
           id="about-hero-title"
-          className="text-3xl md:text-8xl lg:text-7xl lg:font-black font-semibold leading-[1.1] md:leading-[1.1] mb-6 tracking-tight overflow-hidden"
+          className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1]  mb-6 tracking-tight overflow-hidden"
         >
           <div className="pb-2">
             Empower Your Future
@@ -38,7 +38,7 @@ const AboutHero = () => {
           Degree and Post-Graduate dreams.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+        {/* <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
           <Button className="h-14 px-12! rounded-full bg-[#002147] text-white hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 font-semibold text-lg shadow-2xl shadow-[#002147]/20 transition-all hover:scale-105 active:scale-95">
             Explore Programs
           </Button>
@@ -48,7 +48,7 @@ const AboutHero = () => {
           >
             Meet Our Faculty
           </Button>
-        </div>
+        </div> */}
       </ScrollReveal>
 
       <div
