@@ -12,11 +12,9 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-white dark:bg-[#0a0a0a]">
       <InitiativesHero />
-      <div className="max-w-7xl mx-auto px-6">
-        <InitiativesAcademicAid />
-        <InitiativesQuranAcademy />
-        <InitiativesDigitalLibrary />
-      </div>
+      <InitiativesAcademicAid />
+      <InitiativesQuranAcademy />
+      <InitiativesDigitalLibrary />
     </main>
   );
 }

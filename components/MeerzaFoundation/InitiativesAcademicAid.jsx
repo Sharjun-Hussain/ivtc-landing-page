@@ -54,44 +54,44 @@ const InitiativesAcademicAid = () => {
 
   return (
     <section id="academic-aid" className="bg-white dark:bg-[#0a0a0a] border-b border-slate-100 dark:border-white/5 overflow-hidden" aria-labelledby="academic-aid-heading">
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
           
           {/* Sticky Left Column */}
           <div className="lg:w-1/3">
-            <ScrollReveal className="sticky top-32">
-              <h2 id="academic-aid-heading" className="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1] text-slate-900 dark:text-white">
+            <ScrollReveal className="lg:sticky lg:top-32">
+              <h2 id="academic-aid-heading" className="text-3xl md:text-6xl font-bold tracking-tight mb-6 md:mb-8 leading-[1.1] text-slate-900 dark:text-white">
                 Academic <br /> Foundation.
               </h2>
-              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-medium">
+              <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed font-medium">
                 We believe financial barriers should never stop a student from learning. Our foundation provides the essential tools needed for educational success.
               </p>
             </ScrollReveal>
           </div>
 
           {/* Scrolling Right Column */}
-          <div className="lg:w-2/3 space-y-12">
+          <div className="lg:w-2/3 space-y-8 md:space-y-12">
             
             {/* Offers Grid */}
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
               {offers.map((offer, idx) => (
                 <ScrollReveal key={offer.id} animationClass="animate-fade-in" options={{ delay: idx * 0.1 }}>
-                  <div className="group p-10 rounded-[2.5rem] border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#111] hover:border-[#002147]/30 hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
-                    <div className="relative mb-8 w-14 h-14">
+                  <div className="group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#111] hover:border-[#002147]/30 hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                    <div className="relative mb-6 md:mb-8 w-12 h-12 md:w-14 md:h-14">
                       <div className="absolute inset-0 bg-blue-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="relative w-14 h-14 rounded-2xl bg-white dark:bg-white/5 shadow-sm border border-slate-100 dark:border-white/10 flex items-center justify-center text-[#002147] dark:text-blue-400">
-                        <offer.icon size={26} />
+                      <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white dark:bg-white/5 shadow-sm border border-slate-100 dark:border-white/10 flex items-center justify-center text-[#002147] dark:text-blue-400">
+                        <offer.icon size={24} />
                       </div>
                     </div>
                     
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-white dark:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-6 w-fit">
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-white dark:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4 md:mb-6 w-fit">
                       {offer.pill}
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 md:mb-4 leading-tight group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
                       {offer.title}
                     </h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed font-medium grow">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 md:mb-8 leading-relaxed font-medium grow">
                       {offer.desc}
                     </p>
                     <button 
@@ -107,15 +107,15 @@ const InitiativesAcademicAid = () => {
 
             {/* Application Form Card */}
             <ScrollReveal animationClass="animate-slide-up">
-              <div ref={formRef} className="bg-[#002147] dark:bg-blue-950/40 text-white p-12 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+              <div ref={formRef} className="bg-[#002147] dark:bg-blue-950/40 text-white p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
                 <FileText className="absolute -right-16 -bottom-16 w-80 h-80 text-white/5 dark:text-blue-500/5 group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-1000" />
                 
                 <div className="relative z-10 w-full">
-                  <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-10 tracking-tight flex items-center gap-4">
+                  <h3 className="text-2xl md:text-4xl font-bold leading-tight mb-8 md:mb-10 tracking-tight flex items-center gap-4">
                     Application Form.
                   </h3>
-                  <form className="space-y-6" onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-2 gap-6">
+                  <form className="space-y-5 md:space-y-6" onSubmit={handleSubmit}>
+                    <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
                         <label className="text-[10px] uppercase font-bold tracking-widest text-blue-300">First Name</label>
                         <input 
