@@ -111,7 +111,7 @@ const Navbar = () => {
               }`}
             >
               <Image
-                src="/ivtc_new_logo.png"
+                src="/ivtc_campus_logo.png"
                 alt="IVTC Campus Logo"
                 fill
                 className="object-contain p-2 transition-all duration-500"

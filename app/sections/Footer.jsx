@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="lg:col-span-5 lg:pr-12 lg:border-r border-white/5">
             <div className="mb-8 w-24 h-24 bg-white rounded-2xl p-4 flex items-center justify-center">
               <Image
-                src="/ivtc_new_logo.png"
+                src="/ivtc_campus_logo.png"
                 alt="IVTC Campus Logo"
                 width={180}
                 height={70}
