@@ -96,9 +96,9 @@ const InitiativesAcademicAid = () => {
                     </p>
                     <button 
                       onClick={() => handleApply(offer.title)}
-                      className="text-xs font-bold text-[#002147] dark:text-blue-400 flex items-center gap-2 hover:gap-3 transition-all"
+                      className="text-xs font-bold text-[#002147] dark:text-blue-400 flex items-center gap-2 group/btn transition-all"
                     >
-                      {offer.action} <ArrowRight size={14} />
+                      {offer.action} <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                     </button>
                   </div>
                 </ScrollReveal>
