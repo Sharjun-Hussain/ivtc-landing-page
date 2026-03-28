@@ -30,13 +30,13 @@ const InitiativesHero = () => {
         <div className="flex justify-center gap-4 mt-10">
           <button 
             onClick={() => document.getElementById('academic-aid')?.scrollIntoView({ behavior: 'smooth' })}
-            className="h-12 px-8 rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm uppercase hover:scale-105 transition-transform flex items-center justify-center gap-2 outline-none"
+            className="h-12 px-8 rounded-3xl bg-[#002147] dark:bg-[#003a6e] text-white font-semibold text-sm hover:scale-105 transition-transform flex items-center justify-center gap-2 outline-none"
           >
             Explore Initiatives
           </button>
           <Link 
             href="/meerza-foundation/board-of-directors"
-            className="h-12 px-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm uppercase hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center outline-none"
+            className="h-12 px-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm hover:bg-slate-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center outline-none"
           >
             Meet the Board
           </Link>

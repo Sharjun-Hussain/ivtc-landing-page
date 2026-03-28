@@ -43,7 +43,7 @@ const InitiativesDigitalLibrary = () => {
                 Authentic Islamic knowledge, accessible to everyone, everywhere. Explore our curated collection of essential academic and spiritual texts.
               </p>
               
-              <div className="mt-8 md:mt-12 inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[#002147] dark:text-blue-400 text-[11px] md:text-xs font-bold uppercase tracking-widest hover:bg-[#002147] hover:text-white transition-all cursor-pointer">
+              <div className="mt-8 md:mt-12 inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[#002147] dark:text-blue-400 text-[11px] md:text-xs font-bold tracking-wide hover:bg-[#002147] hover:text-white transition-all cursor-pointer">
                 <LayoutGrid size={14} /> View All Categories
               </div>
             </ScrollReveal>
@@ -60,7 +60,7 @@ const InitiativesDigitalLibrary = () => {
                          {book.title.split(' ')[0]}
                       </div>
                       <div className="absolute inset-0 bg-[#002147]/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                          <button className="h-10 px-8 bg-white text-[#002147] rounded-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
+                          <button className="h-10 px-8 bg-white text-[#002147] rounded-2xl font-bold text-[10px] md:text-xs tracking-wide transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
                               Preview
                           </button>
                       </div>
@@ -72,7 +72,7 @@ const InitiativesDigitalLibrary = () => {
                     <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 md:mb-8">{book.author}</p>
                     
                     <div className="mt-auto">
-                      <button className="w-full py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-center gap-3 text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:bg-[#002147] hover:text-white hover:border-[#002147] transition-all">
+                      <button className="w-full py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-center gap-3 text-[10px] md:text-xs font-bold tracking-wide text-slate-600 dark:text-slate-300 hover:bg-[#002147] hover:text-white hover:border-[#002147] transition-all">
                         <Download size={16} /> {book.size} PDF
                       </button>
                     </div>

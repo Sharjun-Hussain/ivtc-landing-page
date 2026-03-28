@@ -96,7 +96,7 @@ const InitiativesAcademicAid = () => {
                     </p>
                     <button 
                       onClick={() => handleApply(offer.title)}
-                      className="text-xs font-bold uppercase tracking-widest text-[#002147] dark:text-blue-400 flex items-center gap-2 hover:gap-3 transition-all"
+                      className="text-xs font-bold text-[#002147] dark:text-blue-400 flex items-center gap-2 hover:gap-3 transition-all"
                     >
                       {offer.action} <ArrowRight size={14} />
                     </button>
@@ -166,7 +166,7 @@ const InitiativesAcademicAid = () => {
                       </div>
                     </div>
 
-                    <button type="submit" className="w-full py-5 rounded-2xl bg-white text-[#002147] font-bold text-sm uppercase tracking-widest hover:bg-blue-50 transform hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-2xl">
+                    <button type="submit" className="w-full py-5 rounded-2xl bg-white text-[#002147] font-bold text-sm tracking-wide hover:bg-blue-50 transform hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-2xl">
                       Submit Application
                     </button>
                   </form>

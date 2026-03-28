@@ -75,7 +75,7 @@ const InitiativesQuranAcademy = () => {
                       ))}
                     </ul>
 
-                    <button className="w-full py-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-xs uppercase tracking-widest group-hover:bg-[#002147] dark:group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:scale-[1.02]">
+                    <button className="w-full py-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold text-xs tracking-wide group-hover:bg-[#002147] dark:group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:scale-[1.02]">
                       Register Now
                     </button>
                   </div>
@@ -104,7 +104,7 @@ const InitiativesQuranAcademy = () => {
                      <p className="text-slate-500 text-sm mb-6 md:mb-8 font-medium">Contact our coordinator directly.</p>
                      <div className="inline-flex items-center gap-4 px-6 md:px-8 py-4 bg-[#002147] text-white rounded-2xl shadow-xl hover:scale-105 transition-transform cursor-pointer">
                         <MessageCircle size={20} className="text-green-400" />
-                        <span className="font-bold tracking-widest text-[13px] md:text-sm">+94 71 541 9807</span>
+                        <span className="font-bold tracking-wide text-[13px] md:text-sm">+94 71 541 9807</span>
                      </div>
                   </div>
                 </div>
