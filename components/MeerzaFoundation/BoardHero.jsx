@@ -20,7 +20,7 @@ const BoardHero = () => {
           <HandHeart size={14} /> {content.badge}
         </div> */}
 
-        <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-none tracking-tight mb-6 overflow-hidden">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-none tracking-tight mb-6 overflow-hidden">
           <div className="pb-1">
             {content.title}
           </div>

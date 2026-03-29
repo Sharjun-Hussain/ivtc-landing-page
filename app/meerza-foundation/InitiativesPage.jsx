@@ -125,7 +125,7 @@ const InitiativesPage = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-xs font-bold tracking-wider mb-6 shadow-sm">
             <HeartHandshake size={14} /> Meerza Foundation Initiatives
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-6">
+          <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight text-slate-900 dark:text-white  mb-6">
             Knowledge is a Right, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002147] via-[#003366] to-[#002147] dark:from-[#003a6e] dark:to-[#00529b]">
               Not a Privilege.

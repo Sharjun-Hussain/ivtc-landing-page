@@ -19,7 +19,7 @@ const InitiativesHero = () => {
         {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002147]/10 dark:bg-[#002147]/20 border border-[#002147]/20 dark:border-[#002147]/30 text-[#002147] dark:text-[#00529b] text-[10px] font-semibold  mb-6 shadow-sm">
           <HeartHandshake size={14} /> {content.badge}
         </div> */}
-        <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight mb-6 overflow-hidden">
+        <h1 className="text-3xl sm:text-6xl md:text-8xl lg:text-7xl font-bold leading-[1] tracking-tight mb-6 overflow-hidden">
           <div className="pb-1">
             {content.title}
           </div>
