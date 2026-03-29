@@ -3,15 +3,15 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const footerLinks = [
-  {
-    title: "Programs",
-    links: [
-      { name: "Software Engineering", path: "#" },
-      { name: "Data Science", path: "#" },
-      { name: "Cyber Security", path: "#" },
-      { name: "Cloud Computing", path: "#" },
-    ],
-  },
+  // {
+  //   title: "Programs",
+  //   links: [
+  //     { name: "Software Engineering", path: "#" },
+  //     { name: "Data Science", path: "#" },
+  //     { name: "Cyber Security", path: "#" },
+  //     { name: "Cloud Computing", path: "#" },
+  //   ],
+  // },
   {
     title: "Campus Life",
     links: [
