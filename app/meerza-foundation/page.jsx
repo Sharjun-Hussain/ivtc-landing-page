@@ -5,7 +5,8 @@ import InitiativesDigitalLibrary from "@/components/MeerzaFoundation/Initiatives
 
 export const metadata = {
   title: "Initiatives - Meerza Foundation",
-  description: "Explore our humanitarian and educational initiatives, including student aid, Quran academy, and digital library resources.",
+  description:
+    "Explore our humanitarian and educational initiatives, including student aid, Quran academy, and digital library resources.",
 };
 
 export default function Page() {
@@ -14,7 +15,7 @@ export default function Page() {
       <InitiativesHero />
       <InitiativesAcademicAid />
       <InitiativesQuranAcademy />
-      <InitiativesDigitalLibrary />
+      {/* <InitiativesDigitalLibrary /> */}
     </main>
   );
 }
