@@ -28,13 +28,13 @@ const HeroContent = ({ data }) => {
                             {data?.tagline || "IVTC Campus Sri Lanka"}
                         </span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight md:leading-tight max-w-4xl tracking-tight opacity-0 animate-hero-fade-up [animation-delay:400ms]">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium md:font-semibold text-white leading-tight md:leading-tight max-w-3xl tracking-normal opacity-0 animate-hero-fade-up [animation-delay:400ms]">
                         {data?.title || "Empower Your Digital Future."}
                     </h1>
                     <SanitizedContent 
-                        className="mt-6 text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed opacity-0 animate-hero-fade-up [animation-delay:600ms]
+                        className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-300/90 font-normal max-w-2xl leading-relaxed opacity-0 animate-hero-fade-up [animation-delay:600ms]
                             [&_p]:mb-3 [&_p:last-child]:mb-0
-                            [&_strong]:font-bold [&_strong]:text-white
+                            [&_strong]:font-semibold [&_strong]:text-white
                             [&_em]:italic
                             [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-2
                             [&_ol]:list-decimal [&_ol]:ml-5 [&_ol]:mb-2
