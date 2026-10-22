@@ -5,7 +5,7 @@ import SanitizedContent from "../Courses/SanitizedContent";
 const HeroContent = ({ data }) => {
     return (
         <section className="relative w-full flex justify-center bg-transparent p-0 md:p-6 md:min-h-screen">
-            <div className="relative pt-21 md:pt-0 w-full max-w-[1600px] h-[700px] md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
+            <div className="relative pt-21 md:pt-0 w-full max-w-[1600px] min-h-[700px] md:min-h-0 md:h-auto md:aspect-video lg:max-h-[850px] overflow-hidden rounded-none md:rounded-[4rem] shadow-2xl bg-black transform-gpu translate-z-0">
                 {/* Background Video */}
                 <video
                     autoPlay
@@ -21,7 +21,7 @@ const HeroContent = ({ data }) => {
                 <div className="absolute inset-0 bg-black/60 pointer-events-none" />
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/80 to-transparent pointer-events-none" />
 
-                <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-6 md:px-16 max-w-7xl mx-auto">
+                <div className="relative z-10 flex flex-col items-center justify-center text-center h-full min-h-[calc(700px-5.25rem)] pb-10 md:min-h-0 md:pb-0 px-6 md:px-16 max-w-7xl mx-auto">
                     <div className="mb-6 flex items-center justify-center gap-4 opacity-0 animate-hero-fade-up [animation-delay:200ms]">
                         <span className="w-8 md:w-16 h-[3px] bg-linear-to-r from-transparent to-blue-500"></span>
                         <span className="text-[11px] md:text-xs font-medium text-slate-200 tracking-wider">

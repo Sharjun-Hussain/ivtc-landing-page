@@ -123,28 +123,28 @@ export default async function CourseDetailsPage({ params, searchParams }) {
                   </span>
                 </div>
                 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[1.1] mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
                   {course.title}
                 </h1>
                 
-                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium break-words">
+                <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-normal break-words">
                   {course.desc}
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-slate-200 dark:border-white/10">
-                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-slate-200 dark:border-white/10">
+                  <div className="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
                     <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-blue-600 shrink-0">
                       <Clock size={18} />
                     </div>
                     {course.duration}
                   </div>
-                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <div className="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
                     <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-blue-600 shrink-0">
                       <ShieldCheck size={18} />
                     </div>
                     Lifetime Access
                   </div>
-                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <div className="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
                     <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-blue-600 shrink-0">
                       <Award size={18} />
                     </div>
@@ -164,17 +164,17 @@ export default async function CourseDetailsPage({ params, searchParams }) {
             <div className="lg:col-span-8 space-y-12 w-full">
               <ScrollReveal>
                 <div className="prose dark:prose-invert max-w-none">
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">About this course</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white mb-6">About this course</h3>
                   <SanitizedContent 
                     html={course.fullDesc} 
-                    className="text-slate-600 dark:text-slate-400 leading-relaxed text-[15px] break-words overflow-hidden"
+                    className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base break-words overflow-hidden"
                   />
                 </div>
               </ScrollReveal>
 
               <ScrollReveal>
                 <div className="pt-10">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-6">
                     What you will learn
                   </h3>
                   <div className="flex flex-wrap gap-3">
@@ -193,15 +193,15 @@ export default async function CourseDetailsPage({ params, searchParams }) {
                 <div className="bg-white dark:bg-[#111] rounded-[2rem] sm:rounded-3xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
                   <div className="p-6 sm:p-10 lg:p-10 space-y-6 sm:space-y-8">
                      <div className="hidden sm:block">
-                       <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                       <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white mb-2">
                           Get started today
                        </h3>
-                       <p className="text-xs sm:text-sm font-medium text-slate-500 max-w-[240px]">Secure your spot in this professional program.</p>
+                       <p className="text-xs sm:text-sm font-normal text-slate-500 max-w-[240px]">Secure your spot in this professional program.</p>
                      </div>
 
                      {course.fees && (
                        <div className="pt-0 sm:pt-6 border-t-0 sm:border-t border-slate-100 dark:border-white/5">
-                          <div className="text-[10px] sm:text-xs font-semibold text-slate-500 mb-1 uppercase tracking-tight">Total Course Fee</div>
+                          <div className="text-[10px] sm:text-xs font-medium text-slate-500 mb-1 uppercase tracking-tight">Total Course Fee</div>
                           <div className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Rs. {course.fees}</div>
                        </div>
                      )}
@@ -211,7 +211,7 @@ export default async function CourseDetailsPage({ params, searchParams }) {
                           href={`/?pathway=course&programId=${course.id}#registration`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full h-12 sm:h-14 rounded-xl sm:rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-base shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2 group transition-all"
+                          className="w-full h-12 sm:h-14 rounded-xl sm:rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2 group transition-all"
                         >
                           Registration
                           <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform sm:w-5" />
