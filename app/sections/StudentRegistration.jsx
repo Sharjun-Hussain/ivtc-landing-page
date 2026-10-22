@@ -104,7 +104,7 @@ const StudentRegistration = async ({ cmsData }) => {
               <ShineBadge>
                 {cmsData?.badge || "Official Enrollment Portal"}
               </ShineBadge>
-              <h2 className="text-4xl md:text-5xl font-bold lg:text-6xl text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
                 {cmsData?.title || "Build Your Future Today."}
               </h2>
               <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md leading-relaxed">

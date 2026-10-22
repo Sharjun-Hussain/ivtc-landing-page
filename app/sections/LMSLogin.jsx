@@ -28,7 +28,7 @@ const LMSLogin = () => {
                 <div className="space-y-3">
                   <h2 
                     id="lms-heading"
-                    className="text-3xl md:text-4xl lg:text-5xl text-white leading-[1.1] font-bold"
+                    className="text-2xl sm:text-3xl md:text-4xl text-white leading-[1.15] font-bold"
                   >
                     Your Online<br />
                     <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-100 via-white to-blue-200">

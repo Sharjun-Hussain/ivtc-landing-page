@@ -17,7 +17,7 @@ const CourseGrid = ({ pathways }) => {
             <div className="icon-wrapper w-14 h-14 rounded-2xl border border-slate-200 dark:border-white/10 flex items-center justify-center text-[#002147] dark:text-blue-400 mb-8 transition-all duration-300 group-hover:bg-[#002147] group-hover:text-white dark:group-hover:bg-blue-400 dark:group-hover:text-[#002147]">
               {item.icon}
             </div>
-            <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors duration-300">
+            <h4 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-3 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors duration-300">
               {item.title}
             </h4>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
@@ -26,7 +26,7 @@ const CourseGrid = ({ pathways }) => {
           </div>
 
           <div className="relative z-10 flex items-center justify-between">
-            <span className="text-slate-900 dark:text-white text-xs font-bold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 uppercase">
+            <span className="text-slate-900 dark:text-white text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 uppercase">
               See All Courses{" "}
               <ArrowRight size={14} className="text-[#002147] dark:text-blue-400" />
             </span>

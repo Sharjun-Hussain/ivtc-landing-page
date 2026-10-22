@@ -63,7 +63,7 @@ const CoursePathways = async ({ cmsData }) => {
       <div className="max-w-7xl mx-auto px-6">
         <header className="">
           <ShineBadge className="mb-4">{cmsData?.badge || "Upcoming Intakes — 2026"}</ShineBadge>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
             {cmsData?.title || "Find the Right IT Course for Your Future"}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed whitespace-pre-line">

@@ -69,7 +69,7 @@ const CourseFilters = ({ categories: rawCategories = [] }) => {
               <button
                 key={cat.id || cat.slug}
                 onClick={() => handleFilterChange("category", cat.slug || cat.id)}
-                className={`flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all whitespace-nowrap ${
+                className={`flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-medium tracking-wide transition-all whitespace-nowrap ${
                   currentCategory === (cat.slug || cat.id)
                     ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
                     : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -86,7 +86,7 @@ const CourseFilters = ({ categories: rawCategories = [] }) => {
           <select
             value={currentSort}
             onChange={(e) => handleFilterChange("sort", e.target.value)}
-            className="w-full appearance-none bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-5 py-3.5 rounded-2xl text-sm font-bold tracking-wide text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer"
+            className="w-full appearance-none bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-5 py-3.5 rounded-2xl text-sm font-medium tracking-wide text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer"
           >
             <option value="newest" className="bg-white dark:bg-[#111]">Newest First</option>
             <option value="duration-desc" className="bg-white dark:bg-[#111]">Longest Duration</option>

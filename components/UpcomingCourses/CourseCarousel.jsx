@@ -39,7 +39,7 @@ const CourseCarousel = ({ courses }) => {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div className="absolute top-4 left-4 z-10">
-                    <ShineBadge className="px-3 py-1.5 text-[11px] font-bold bg-black/60 text-white dark:text-white border-white/20 backdrop-blur-md rounded-xl">
+                    <ShineBadge className="px-3 py-1.5 text-[11px] font-medium bg-black/60 text-white dark:text-white border-white/20 backdrop-blur-md rounded-xl">
                       {course.category}
                     </ShineBadge>
                   </div>
@@ -59,7 +59,7 @@ const CourseCarousel = ({ courses }) => {
                     </div>
                   </div>
 
-                  <h4 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
+                  <h4 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-white mb-3 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
                     {course.title}
                   </h4>
 
@@ -69,7 +69,7 @@ const CourseCarousel = ({ courses }) => {
 
                   <Link
                     href={`/courses/${course.categorySlug}/${course.slug}?id=${course.id}`}
-                    className="inline-flex items-center justify-center w-full py-3.5 bg-[#002147] hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 text-white rounded-[1.25rem] text-sm transition-all group/btn font-bold shadow-md shadow-blue-900/10 hover:shadow-lg focus:scale-95"
+                    className="inline-flex items-center justify-center w-full py-3.5 bg-[#002147] hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 text-white rounded-[1.25rem] text-sm transition-all group/btn font-medium shadow-md shadow-blue-900/10 hover:shadow-lg focus:scale-95"
                   >
                     View Details
                     <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />

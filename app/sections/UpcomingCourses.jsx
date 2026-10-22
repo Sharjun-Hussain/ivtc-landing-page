@@ -89,7 +89,7 @@ const UpcomingCourses = async ({ cmsData }) => {
             <ShineBadge className="mb-2 md:mb-0">
               {cmsData?.badge || "Starting Soon"}
             </ShineBadge>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[1.15] md:leading-[1.1] mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.15] md:leading-[1.1] mb-4 tracking-tight">
               {cmsData?.title || "Upcoming Intakes"}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed lg:mx-0 mx-auto font-medium whitespace-pre-line">
