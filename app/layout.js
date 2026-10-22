@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google";
+import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers/theme-provider";
 import { Toaster } from "sonner";
@@ -12,6 +12,12 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 
@@ -87,7 +93,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} font-sans antialiased`}
+        className={`${poppins.variable} ${playfair.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

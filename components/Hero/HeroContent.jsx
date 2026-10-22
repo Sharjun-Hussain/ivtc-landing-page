@@ -18,23 +18,24 @@ const HeroContent = ({ data }) => {
                 </video>
 
                 {/* Overlays */}
-                <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/40 to-transparent pointer-events-none" />
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/60 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/80 to-transparent pointer-events-none" />
 
-                <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-24">
-                    <div className="mb-6 flex items-center gap-4 opacity-0 animate-hero-fade-up [animation-delay:200ms]">
-                        <span className="w-8 md:w-12 h-[3px] bg-linear-to-r from-[#002147] to-blue-900"></span>
-                        <span className="text-[10px] md:text-[11px] font-medium text-slate-200 tracking-wider">
+                <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-6 md:px-16 max-w-7xl mx-auto">
+                    <div className="mb-6 flex items-center justify-center gap-4 opacity-0 animate-hero-fade-up [animation-delay:200ms]">
+                        <span className="w-8 md:w-16 h-[3px] bg-linear-to-r from-transparent to-blue-500"></span>
+                        <span className="text-[11px] md:text-xs font-medium text-slate-200 tracking-wider">
                             {data?.tagline || "IVTC Campus Sri Lanka"}
                         </span>
+                        <span className="w-8 md:w-16 h-[3px] bg-linear-to-l from-transparent to-blue-500"></span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight md:leading-tight max-w-4xl tracking-tight first-letter:uppercase opacity-0 animate-hero-fade-up [animation-delay:400ms]">
+                    <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-semibold text-white leading-[1.08] max-w-6xl tracking-[-0.02em] first-letter:uppercase opacity-0 animate-hero-fade-up [animation-delay:400ms]">
                         {data?.title || "Empower Your Digital Future."}
                     </h1>
                     <SanitizedContent 
-                        className="mt-6 text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed opacity-0 animate-hero-fade-up [animation-delay:600ms]
+                        className="mt-6 text-sm sm:text-base md:text-lg text-slate-300 font-normal max-w-5xl leading-relaxed opacity-0 animate-hero-fade-up [animation-delay:600ms]
                             [&_p]:mb-3 [&_p:last-child]:mb-0
-                            [&_strong]:font-bold [&_strong]:text-white
+                            [&_strong]:font-semibold [&_strong]:text-white
                             [&_em]:italic
                             [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-2
                             [&_ol]:list-decimal [&_ol]:ml-5 [&_ol]:mb-2
@@ -45,10 +46,10 @@ const HeroContent = ({ data }) => {
                             [&_br]:block [&_br]:content-[''] [&_br]:mt-1"
                         html={data?.description || "Master the digital landscape with Sri Lanka's leading campus for A/L ICT, Higher National Diplomas, and Global Degree Pathways. Your journey to technical excellence starts here."}
                     />
-                    <div className="mt-8 md:mt-12 opacity-0 animate-hero-fade-up [animation-delay:800ms]">
+                    <div className="mt-8 md:mt-12 opacity-0 animate-hero-fade-up [animation-delay:800ms] flex justify-center">
                         <Link
                             href={data?.cta_link || "/#registration"}
-                            className="group relative h-12 px-12 bg-[#002147] text-white text-lg font-semibold rounded-3xl hover:bg-[#003366] transition-all shadow-lg flex items-center justify-center w-fit"
+                            className="group relative h-12 px-12 bg-[#002147] text-white text-base md:text-lg font-medium rounded-3xl hover:bg-[#003366] transition-all shadow-lg flex items-center justify-center w-fit"
                         >
                             {data?.cta_text || "Start Learning"}
                         </Link>
