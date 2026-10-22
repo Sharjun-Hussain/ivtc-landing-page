@@ -1,3 +1,11 @@
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata = {
   title: "About IVTC Campus | Top IT Training & Degree Support in Sri Lanka",
   description: "Discover IVTC Campus: Your destination for expert A/L ICT classes, specialized After A/L diploma programs, and dedicated pathways for Degree and Post-Graduate success in Sri Lanka.",
@@ -15,5 +23,5 @@ export const metadata = {
 };
 
 export default function AboutLayout({ children }) {
-  return children;
+  return <div className={`${playfair.variable} font-sans`}>{children}</div>;
 }

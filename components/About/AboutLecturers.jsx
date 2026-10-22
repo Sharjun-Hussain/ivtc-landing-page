@@ -9,7 +9,7 @@ const AboutLecturers = ({ lecturers = [] }) => {
   if (!lecturers || lecturers.length === 0) return null;
 
   return (
-    <section className="py-24 relative overflow-hidden" aria-labelledby="lecturers-heading">
+    <section id="lecturers" className="py-24 relative overflow-hidden scroll-mt-28" aria-labelledby="lecturers-heading">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#002147]/5 dark:bg-[#002147]/10 blur-[120px] rounded-full -z-10" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/5 dark:bg-blue-500/10 blur-[100px] rounded-full -z-10" />
