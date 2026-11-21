@@ -18,8 +18,8 @@ export default function CourseMediaGallery({ media = [] }) {
 
   return (
     <div className="space-y-6">
-      {/* Main Viewer - Redesigned with premium subtle border and shadow */}
-      <div className="relative aspect-video rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-slate-900 group shadow-2xl border border-slate-200/50 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/5">
+      {/* Main Viewer - Refined professional border radius and subtle depth */}
+      <div className="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 group shadow-xl border border-slate-200/80 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/5">
         
         {/* Soft Inner Glow Overlay */}
         <div className="absolute inset-0 z-10 pointer-events-none ring-1 ring-inset ring-white/10" />

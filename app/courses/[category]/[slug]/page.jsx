@@ -7,7 +7,8 @@ import {
   ChevronRight,
   Home,
   CheckCircle2,
-  HelpCircle
+  HelpCircle,
+  Users
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -71,7 +72,9 @@ export default async function CourseDetailsPage({ params, searchParams }) {
       fullDesc: data.full_description || data.short_description || "",
       fees: data.fees_structure ? String(data.fees_structure).replace(/[^0-9]/g, '') : null,
       duration: data.duration ? `${data.duration} ${data.duration_unit || 'month'}${data.duration !== 1 ? 's' : ''}` : "TBA",
-      enrolled: data.enrolled_count || 0,
+      enrolled: Number(data.students_count ?? data.enrolled_count ?? 0),
+      level: data.level || "All Levels",
+      medium: data.medium || "English",
       tags: Array.isArray(data.tags) ? data.tags.map(t => typeof t === 'object' ? t.name : t).filter(Boolean) : [],
       media: [
         ...(data.primary_image ? [{ 
@@ -115,40 +118,60 @@ export default async function CourseDetailsPage({ params, searchParams }) {
             </nav>
 
             {/* --- 2. HERO & MEDIA SECTION --- */}
-            <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 mb-20 items-center">
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 lg:gap-12 mb-16 lg:mb-20 items-center">
               <div className="lg:col-span-6 space-y-6 w-full">
-                <div>
-                  <span className="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-medium border border-blue-500/20">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider border border-blue-500/20">
                     {course.categoryName}
                   </span>
+                  {course.enrolled > 0 && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold border border-emerald-200 dark:border-emerald-500/20">
+                      <Users size={13} className="text-emerald-600 dark:text-emerald-400" />
+                      {course.enrolled.toLocaleString()} Students Enrolled
+                    </span>
+                  )}
+                  {course.level && (
+                    <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-white/10">
+                      {course.level}
+                    </span>
+                  )}
                 </div>
                 
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-slate-900 dark:text-white leading-[1.15] tracking-tight">
                   {course.title}
                 </h1>
                 
-                <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-normal break-words">
+                <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal break-words max-w-xl">
                   {course.desc}
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-slate-200 dark:border-white/10">
-                  <div className="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-blue-600 shrink-0">
-                      <Clock size={18} />
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 dark:border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-xl bg-blue-50/80 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 shadow-xs">
+                      <Clock size={19} />
                     </div>
-                    {course.duration}
+                    <div>
+                      <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Duration</div>
+                      <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">{course.duration}</div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-blue-600 shrink-0">
-                      <ShieldCheck size={18} />
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-xl bg-blue-50/80 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 shadow-xs">
+                      <ShieldCheck size={19} />
                     </div>
-                    Lifetime Access
+                    <div>
+                      <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Format</div>
+                      <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">Campus & Practical</div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-blue-600 shrink-0">
-                      <Award size={18} />
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-xl bg-blue-50/80 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 shadow-xs">
+                      <Award size={19} />
                     </div>
-                    Certificate
+                    <div>
+                      <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Recognition</div>
+                      <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">Certified Program</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -218,6 +241,11 @@ export default async function CourseDetailsPage({ params, searchParams }) {
                         </Link>
                         
                         <div className="space-y-3 pt-6 hidden sm:block">
+                           {course.enrolled > 0 && (
+                             <div className="flex items-center gap-2.5 text-[10px] sm:text-xs font-medium text-slate-600 dark:text-slate-400">
+                               <Users size={14} className="text-blue-500 sm:w-4" /> {course.enrolled.toLocaleString()} students already enrolled
+                             </div>
+                           )}
                            <div className="flex items-center gap-2.5 text-[10px] sm:text-xs font-medium text-slate-600 dark:text-slate-400">
                               <CheckCircle2 size={14} className="text-green-500 sm:w-4" /> Professional certification included
                            </div>
