@@ -67,6 +67,7 @@ const UpcomingCourses = async ({ cmsData }) => {
       title: course.name,
       date: new Date(course.created_at).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' }),
       duration: `${course.duration} ${course.duration_unit}${course.duration !== 1 ? 's' : ''}`,
+      enrolled: Number(course.students_count ?? course.enrolled_count ?? 0),
       desc: course.short_description,
       image: course.primary_image 
         ? `https://api.ivtccampus.lk/${course.primary_image.replace(/\/+/g, '/')}` 
@@ -82,31 +83,44 @@ const UpcomingCourses = async ({ cmsData }) => {
   }
 
   return (
-    <section className="py-24 bg-transparent overflow-hidden">
+    <section className="py-20 md:py-24 bg-transparent overflow-hidden">
       <ScrollReveal className="max-w-7xl mx-auto px-6">
-        <header className="course-header mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <header className="course-header mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <ShineBadge className="mb-2 md:mb-0">
+            <ShineBadge className="mb-3">
               {cmsData?.badge || "Starting Soon"}
             </ShineBadge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.15] md:leading-[1.1] mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.15] md:leading-[1.1] mb-3 md:mb-4 tracking-tight">
               {cmsData?.title || "Upcoming Intakes"}
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed lg:mx-0 mx-auto font-medium whitespace-pre-line">
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal whitespace-pre-line">
               {cmsData?.subtitle || "Reserve your spot for our most anticipated technical programs. Limited seats available for the 2026 academic year."}
             </p>
           </div>
           <Link
             href="/courses"
-            className="inline-flex items-center gap-2 shrink-0 px-7 py-3.5 bg-[#002147] hover:bg-[#003366] text-white text-sm font-bold rounded-2xl transition-all shadow-lg group"
+            className="hidden md:inline-flex items-center gap-2 shrink-0 px-6 py-3 bg-[#002147] hover:bg-[#003366] text-white text-xs font-semibold rounded-xl transition-all shadow-xs group"
           >
             All Courses
-            <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </header>
 
         {courses.length > 0 ? (
-          <CourseCarousel courses={courses} />
+          <>
+            <CourseCarousel courses={courses} />
+
+            {/* Mobile View All Courses Button (cleanly positioned below the carousel) */}
+            <div className="mt-8 flex md:hidden justify-center">
+              <Link
+                href="/courses"
+                className="w-full py-3 bg-[#002147] text-white text-xs font-semibold rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 group"
+              >
+                Explore All Courses
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </>
         ) : (
           <div className="py-20 text-center opacity-50 italic">
             No upcoming intakes scheduled at this moment.

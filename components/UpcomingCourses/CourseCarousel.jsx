@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import { useRef, useState } from "react";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Clock, Users, ArrowRight } from "lucide-react";
+import gsap from "gsap";
 import {
   Carousel,
   CarouselContent,
@@ -11,7 +11,166 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import ShineBadge from "@/components/ui/ShineBadge";
+
+const CarouselCard = ({ course }) => {
+  const [imgError, setImgError] = useState(false);
+  const cardRef = useRef(null);
+  const fillRef = useRef(null);
+  const textRef = useRef(null);
+  const arrowRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (cardRef.current) {
+      gsap.to(cardRef.current, {
+        borderColor: "rgba(0, 33, 71, 0.4)",
+        boxShadow: "0 14px 30px -10px rgba(0, 33, 71, 0.12)",
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+
+    if (fillRef.current) {
+      gsap.killTweensOf(fillRef.current);
+      gsap.to(fillRef.current, {
+        scaleY: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+
+    if (textRef.current) {
+      gsap.killTweensOf(textRef.current);
+      gsap.to(textRef.current, {
+        color: "#ffffff",
+        duration: 0.3,
+        ease: "power1.out",
+      });
+    }
+    if (arrowRef.current) {
+      gsap.killTweensOf(arrowRef.current);
+      gsap.to(arrowRef.current, {
+        x: 4,
+        color: "#ffffff",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (cardRef.current) {
+      gsap.to(cardRef.current, {
+        borderColor: "",
+        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.05)",
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
+
+    if (fillRef.current) {
+      gsap.killTweensOf(fillRef.current);
+      gsap.to(fillRef.current, {
+        scaleY: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+
+    if (textRef.current) {
+      gsap.killTweensOf(textRef.current);
+      gsap.to(textRef.current, {
+        color: "#1e293b",
+        duration: 0.3,
+        ease: "power1.out",
+      });
+    }
+    if (arrowRef.current) {
+      gsap.killTweensOf(arrowRef.current);
+      gsap.to(arrowRef.current, {
+        x: 0,
+        color: "#64748b",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="group h-full bg-white dark:bg-[#0e0e0e] rounded-2xl border border-slate-200/90 dark:border-white/10 overflow-hidden flex flex-col shadow-xs"
+    >
+      {/* Course Media Area */}
+      <div className="relative aspect-video overflow-hidden bg-slate-900/5 dark:bg-white/5">
+        <img
+          src={!imgError ? course.image : "/courses/web-dev.png"}
+          alt={course.title}
+          className="w-full h-full object-cover brightness-[0.98] group-hover:brightness-105 transition-all duration-500 ease-out"
+          onError={() => setImgError(true)}
+        />
+        {/* Clean Glass Category Badge */}
+        <div className="absolute top-3 left-3 z-10">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md bg-white/95 dark:bg-black/85 text-slate-800 dark:text-slate-200 shadow-xs border border-white/50 dark:border-white/10">
+            {course.category}
+          </span>
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 via-transparent to-transparent opacity-40 pointer-events-none" />
+      </div>
+
+      {/* Content Area */}
+      <div className="p-5 flex flex-col flex-1 text-left relative z-10">
+        {/* Title with Uniform Height */}
+        <h4 className="text-[17px] font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 min-h-[46px]">
+          {course.title}
+        </h4>
+
+        {/* Description with Uniform Height */}
+        <div className="mb-4 flex-1">
+          <p className="text-slate-600 dark:text-slate-400 text-[13px] leading-relaxed line-clamp-2 min-h-[38px] font-normal">
+            {course.desc}
+          </p>
+        </div>
+
+        {/* Meta Strip (Duration & Enrolled) */}
+        <div className="flex items-center justify-between pt-3 pb-4 border-t border-slate-100 dark:border-white/5 text-[11px] font-medium text-slate-500 dark:text-slate-400">
+          <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-semibold">
+            <Clock size={13} className="text-blue-600 dark:text-blue-400" />
+            <span>{course.duration}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
+            <Users size={13} className="text-emerald-600 dark:text-emerald-400" />
+            <span>{course.enrolled ? `${course.enrolled.toLocaleString()} Enrolled` : "Enrolling Now"}</span>
+          </div>
+        </div>
+
+        {/* Action Button with Top-to-Bottom Curtain Fill */}
+        <Link
+          href={`/courses/${course.categorySlug}/${course.slug}?id=${course.id}`}
+          className="relative w-full py-2.5 px-4 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden font-semibold text-xs flex items-center justify-center gap-2 shadow-2xs group/btn bg-slate-50 dark:bg-white/5 isolate"
+        >
+          {/* Top-to-Bottom Curtain Background Layer (z-0) */}
+          <span
+            ref={fillRef}
+            className="absolute inset-0 bg-[#002147] origin-top scale-y-0 pointer-events-none rounded-xl z-0"
+          />
+
+          {/* Button Label & Arrow elevated above curtain (z-20) */}
+          <span
+            ref={textRef}
+            className="relative z-20 font-bold text-slate-800 dark:text-slate-100 pointer-events-none"
+          >
+            View Program Details
+          </span>
+          <div ref={arrowRef} className="relative z-20 inline-flex text-slate-500 dark:text-slate-400 pointer-events-none">
+            <ArrowRight size={13} />
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const CourseCarousel = ({ courses }) => {
   return (
@@ -27,63 +186,17 @@ const CourseCarousel = ({ courses }) => {
           {courses.map((course, index) => (
             <CarouselItem
               key={index}
-              className="pl-4 md:pl-6 basis-[80%] sm:basis-[70%] md:basis-1/2 lg:basis-1/4"
+              className="pl-4 md:pl-6 basis-[82%] sm:basis-[65%] md:basis-1/2 lg:basis-1/4"
             >
-              <div className="group h-full bg-white dark:bg-[#0a0a0a] rounded-[2rem] border border-slate-200 dark:border-white/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#002147]/50 dark:hover:border-blue-500/50 flex flex-col">
-                {/* Image Area */}
-                <div className="relative aspect-video overflow-hidden">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <div className="absolute top-4 left-4 z-10">
-                    <ShineBadge className="px-3 py-1.5 text-[11px] font-medium bg-black/60 text-white dark:text-white border-white/20 backdrop-blur-md rounded-xl">
-                      {course.category}
-                    </ShineBadge>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="p-6 md:p-8 flex flex-col flex-1 text-left">
-                  <div className="flex items-center gap-3 mb-4">
-                    {/* <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 tracking-wide">
-                      <Calendar size={14} className="text-[#002147] dark:text-blue-400 opacity-70" />
-                      {course.date}
-                    </div>
-                    <div className="w-1 h-1 rounded-full bg-slate-200 dark:bg-white/10" /> */}
-                    <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 tracking-wide">
-                      <Clock size={14} className="text-[#002147] dark:text-blue-400 opacity-70" />
-                      {course.duration}
-                    </div>
-                  </div>
-
-                  <h4 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-white mb-3 group-hover:text-[#002147] dark:group-hover:text-blue-400 transition-colors">
-                    {course.title}
-                  </h4>
-
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1 font-medium">
-                    {course.desc}
-                  </p>
-
-                  <Link
-                    href={`/courses/${course.categorySlug}/${course.slug}?id=${course.id}`}
-                    className="inline-flex items-center justify-center w-full py-3.5 bg-[#002147] hover:bg-blue-900 dark:bg-white dark:text-black dark:hover:bg-slate-200 text-white rounded-[1.25rem] text-sm transition-all group/btn font-medium shadow-md shadow-blue-900/10 hover:shadow-lg focus:scale-95"
-                  >
-                    View Details
-                    <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
+              <CarouselCard course={course} />
             </CarouselItem>
           ))}
         </CarouselContent>
 
         {/* Carousel Navigation */}
-        <div className="hidden lg:flex justify-end gap-3 mt-12">
-          <CarouselPrevious className="static translate-y-0 h-12 w-12 border-slate-200 dark:border-white/10 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10" />
-          <CarouselNext className="static translate-y-0 h-12 w-12 border-slate-200 dark:border-white/10 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10" />
+        <div className="hidden lg:flex justify-end gap-3 mt-10">
+          <CarouselPrevious className="static translate-y-0 h-10 w-10 border-slate-200 dark:border-white/10 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10" />
+          <CarouselNext className="static translate-y-0 h-10 w-10 border-slate-200 dark:border-white/10 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10" />
         </div>
       </Carousel>
     </div>
