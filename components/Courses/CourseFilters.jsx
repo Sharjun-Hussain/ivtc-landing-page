@@ -12,7 +12,7 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerClose,
-} from "@/components/UI/drawer";
+} from "@/components/ui/drawer";
 
 const SORT_OPTIONS = [
   { value: "popular", label: "Newest First" },
