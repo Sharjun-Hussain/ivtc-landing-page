@@ -74,26 +74,26 @@ const FooterLinks = ({ cmsData }) => {
 
   const displayLinks = buildLinks();
   return (
-    <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 lg:pl-12">
+    <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:pl-12 text-left">
       {displayLinks.map((col, i) => (
         <div key={i}>
-          <h4 className="text-[10px] font-bold uppercase text-white/80 mb-8 tracking-widest">
+          <h4 className="text-[11px] font-semibold uppercase text-slate-300 mb-5 tracking-wider">
             {col.title}
           </h4>
-          <ul className="space-y-5">
+          <ul className="space-y-3.5">
             {col.links.map((link, j) => (
               <li key={j}>
                 <Link
                   href={link.path}
-                  className="group flex items-center text-slate-400 hover:text-white text-sm transition-colors duration-300 w-fit"
+                  className="group flex items-center text-slate-400 hover:text-white text-xs sm:text-sm font-normal transition-colors duration-200 w-fit"
                 >
-                  <span className="relative overflow-hidden pb-1">
+                  <span className="relative overflow-hidden pb-0.5">
                     {link.name}
                     <span className="absolute bottom-0 left-0 w-full h-px bg-white transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                   </span>
                   <ArrowUpRight
-                    size={14}
-                    className="ml-2 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-[opacity,transform] duration-300"
+                    size={12}
+                    className="ml-1.5 opacity-0 -translate-x-1.5 translate-y-1.5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 text-blue-400"
                   />
                 </Link>
               </li>
