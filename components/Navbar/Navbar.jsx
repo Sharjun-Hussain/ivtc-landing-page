@@ -98,12 +98,12 @@ const Navbar = ({ categories = [] }) => {
               : "bg-transparent border-transparent"
             }`}
         >
-          {/* Logo */}
+          {/* Logo & Campus Brand */}
           <Link href="/" className="flex items-center gap-3 z-[110]" onClick={closeMenu}>
             <div
-              className={`relative flex items-center justify-center transition-all duration-500 ease-in-out rounded-full bg-white shadow-xl ${isScrolled && !isMenuOpen
+              className={`relative flex items-center justify-center transition-all duration-500 ease-in-out rounded-full bg-white shadow-xl shrink-0 ${isScrolled && !isMenuOpen
                   ? "w-10 h-10 md:w-14 md:h-14"
-                  : "w-14 h-14 md:w-20 md:h-20"
+                  : "w-12 h-12 md:w-20 md:h-20"
                 }`}
             >
               <Image
@@ -114,6 +114,19 @@ const Navbar = ({ categories = [] }) => {
                 priority
               />
             </div>
+
+            {/* Campus Name - Shown on mobile & tablets */}
+            <span
+              className={`text-base font-bold tracking-tight lg:hidden transition-colors ${
+                isMenuOpen
+                  ? "text-slate-900 dark:text-white"
+                  : isScrolled || pathname !== "/"
+                  ? "text-[#002147] dark:text-white"
+                  : "text-white"
+              }`}
+            >
+              IVTC Campus
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}
