@@ -83,7 +83,7 @@ const CoursesPage = async ({ searchParams }) => {
     duration: `${course?.duration} ${course?.duration_unit}${course?.duration !== 1 ? "s" : ""}`,
     // Cache numeric duration for sorting (converted to months)
     durationValue: (course?.duration || 0) * (course?.duration_unit?.toLowerCase().includes('year') ? 12 : 1),
-    enrolled: course?.enrolled_count || 0, // Fallback placeholder
+    enrolled: Number(course?.students_count ?? course?.enrolled_count ?? 0),
     tags: course?.tags?.map((t) => t.name) || [],
     desc: course?.short_description,
     image: course?.primary_image 

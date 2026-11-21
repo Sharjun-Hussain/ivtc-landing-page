@@ -42,12 +42,12 @@ const CourseCard = ({ course }) => {
 
         {/* Content Area - Optimized for Readability */}
         <div className="p-5 flex flex-col flex-1 relative z-10">
-          <div className="flex gap-3 mb-2.5">
+          <div className="flex items-center gap-3 mb-2.5">
             <span className="flex items-center gap-1.5 text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-500/5 px-2 py-0.5 rounded-md">
               <Clock size={11} /> {course?.duration}
             </span>
-            <span className="flex items-center gap-1.5 text-[10px] font-bold text-slate-500 dark:text-slate-400">
-              <Users size={11} /> {course?.enrolled?.toLocaleString()}
+            <span className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md">
+              <Users size={11} className="text-blue-500" /> {course?.enrolled ? `${course.enrolled.toLocaleString()} Students` : "Enrolling Now"}
             </span>
           </div>
           
